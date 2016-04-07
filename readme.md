@@ -24,6 +24,8 @@
     - id
     - type
     - fields
+    - data(key)
+    - slug(key)
 
 - FieldType
     - definition: FieldTypeDefinition

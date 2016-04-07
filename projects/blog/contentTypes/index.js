@@ -1,3 +1,4 @@
 export default {
-    'post': require('./post');
+    'post': require('./post'),
+    'page': require('./page'),
 }
