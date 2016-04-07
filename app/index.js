@@ -6,6 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './app.global.css';
+import 'flexboxgrid/dist/flexboxgrid.min.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);

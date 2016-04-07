@@ -3,22 +3,37 @@
 - Project
     - definition: ProjectDefinition
 - ProjectDefinition
+    - title
+    - description
     - contentTypes: [ContentTypeDefinition]
     - storage: [StorageDefinition]
 
 - ContentType
     - definition: ContentTypeDefinition
 - ContentTypeDefinition
+    - settings: ContentTypeSettings
     - fields: [FieldDefinition]
     - storage: [StorageDefinition]
+- ContentTypeSettings
+    - title
+    - abbr
+    - plural
+    - description
+    - icon
 - Content
     - id
-    - contentType
+    - type
     - fields
 
 - FieldType
     - definition: FieldTypeDefinition
 - FieldTypeDefinition
+    - type
+    - name
+    - label
+    - hint
+    - attributes
+    - options
 - Field: Instance of a FieldType
     - type: FieldType
     - value
