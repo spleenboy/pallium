@@ -1,0 +1,30 @@
+.container {
+  padding: 0;
+  margin-top: 0;
+}
+
+.appBar
+{
+  padding: 10px;
+}
+
+.appBar h1 {
+  display: inline;
+}
+
+.appBar a,
+.appBar a:active,
+.appBar a:visited
+{
+  color: white;
+}
+
+.appBar a:hover
+{
+  text-decoration: underline;
+}
+
+.body
+{
+    margin-top: 1em;
+}

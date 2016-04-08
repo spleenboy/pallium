@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
-import AppBar from 'material-ui/lib/app-bar';
+import Container from './Container';
+import { Link } from 'react-router';
+import Icon from './Icon';
 import styles from './Home.css';
 
 
 export default class Home extends Component {
-  goTo(path, e) {
-    this.context.router.push(path);
-  }
-
   render() {
     return (
-      <div>
-        <AppBar
-          title="Pallium"
-          onLeftIconButtonTouchTap={this.goTo.bind(this, "/counter")}
-        />
-      </div>
+      <Container>
+        Welcome <Icon name="home" size="48px" color="accent"/>
+      </Container>
     );
   }
 }
-
-Home.contextTypes = {
-  router: React.PropTypes.object,
-};
-

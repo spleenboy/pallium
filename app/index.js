@@ -5,14 +5,9 @@ import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 import configureStore from './store/configureStore';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import './app.global.css';
-import 'flexboxgrid/dist/flexboxgrid.min.css';
-
 const store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
-
-injectTapEventPlugin();
 
 render(
   <Provider store={store}>
