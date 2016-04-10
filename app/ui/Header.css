@@ -1,8 +1,3 @@
-.container {
-  padding: 0;
-  margin-top: 0;
-}
-
 .appBar
 {
   padding: 10px;
@@ -22,9 +17,4 @@
 .appBar a:hover
 {
   text-decoration: underline;
-}
-
-.body
-{
-    margin-top: 1em;
 }

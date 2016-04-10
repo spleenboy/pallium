@@ -5,8 +5,8 @@
 - ProjectDefinition
     - title
     - description
+    - directory: relative to location of project file
     - contentTypes: [ContentTypeDefinition]
-    - storage: [StorageDefinition]
 
 - ContentType
     - definition: ContentTypeDefinition
@@ -16,7 +16,7 @@
     - storage: [StorageDefinition]
 - ContentTypeSettings
     - title
-    - abbr
+    - handle
     - plural
     - description
     - icon
@@ -70,3 +70,12 @@
         - md
         - yaml
 
+## Model
+{
+  projects: [],
+  activeProject: {} || false,
+  activeContentType: {} || false,
+  activeContent: {} || false
+}
+
+# vim: set expandtab sw=2:
