@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './App';
 
-import ProjectPage from './project/ProjectPage';
-import SettingsPage from './settings/SetingsPage';
+import App from './App';
+import ProjectPage from '../project/ProjectPage';
+import SettingsPage from '../settings/SettingsPage';
 
 export default (
   <Route path="/" component={App}>

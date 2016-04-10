@@ -4,8 +4,8 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { hashHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
-import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import rootReducer from './reducers';
+import DevTools from '../dev/DevTools';
 
 const logger = createLogger({
   level: 'info',
@@ -28,8 +28,8 @@ export default function configureStore(initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers'))
+    module.hot.accept('./reducers', () =>
+      store.replaceReducer(require('./reducers'))
     );
   }
 

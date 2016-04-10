@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import * as reducers from '.';
+import projectReducer from '../project/projectReducer';
 
-reducers.routing = routing;
+const reducers = {
+  routing,
+  projectReducer,
+};
 export default combineReducers(reducers);

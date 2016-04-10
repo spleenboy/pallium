@@ -1,5 +1,8 @@
 # Pallium
 
+## Project organization
+This project is organized by [_domain_ rather than _nature_](http://marmelab.com/blog/2015/12/17/react-directory-structure.html).
+
 - Project
     - definition: ProjectDefinition
 - ProjectDefinition

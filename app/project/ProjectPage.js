@@ -2,13 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Container from '../ui/Container';
-import * ProjectActions from './ProjectActions';
+import * as ProjectActions from './ProjectActions';
 
 export class ProjectPage extends Component {
   render() {
-    <Container>
-      <p>Welcome to your project page.</p>
-    </Container>
+    return (
+      <Container>
+        <p>Welcome to your project page.</p>
+      </Container>
+    );
   }
 }
 
