@@ -74,11 +74,11 @@ This project is organized by [_domain_ rather than _nature_](http://marmelab.com
         - yaml
 
 ## Model
+```
 {
   projects: [],
-  activeProject: {} || false,
-  activeContentType: {} || false,
-  activeContent: {} || false
+  project: {} || false,
+  contentType: {} || false,
+  content: {} || false
 }
-
-# vim: set expandtab sw=2:
+```

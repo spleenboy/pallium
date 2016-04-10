@@ -1,7 +1,0 @@
-{
-  projects: [],
-  activeProject: false,
-  activeContentType: false,
-  activeContent: false
-}
-// vim: set expandtab: set sw=2

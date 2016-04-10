@@ -5,6 +5,14 @@ import Container from '../ui/Container';
 import * as ProjectActions from './ProjectActions';
 
 export class ProjectPage extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  }
+
+  go(path) {
+    this.context.router.push(path);
+  }
+
   render() {
     return (
       <Container>
