@@ -1,5 +1,5 @@
-import Actions from './ProjectActions';
-const initialState = [];
+import * as Actions from './ProjectActions';
+const initialState = false;
 const methods = {};
 
 methods[Actions.OPEN] = function(state, action) {
