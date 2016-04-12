@@ -4,7 +4,8 @@ export const Json = 'json';
 export const Yaml = 'yaml';
 
 export default class Transport {
-  constructor(contentKey = '__content') {
+  constructor(format = Json, contentKey = null) {
+    this.format = format;
     this.contentKey = contentKey;
   }
 
@@ -42,34 +43,36 @@ export default class Transport {
       data = safeLoad(parts.front);
     }
 
-    if (parts.content) {
-      data[this.contentKey] = parts.content;
+    if (this.contentKey) {
+      data[this.contentKey] = parts.content || '';
     }
 
     return data;
   }
 
-  export(output, format = Yaml) {
+  export(output) {
     const data = this.clean(output);
-    if (format === Json) {
-      return JSON.stringify(data, true);
+    let content, front;
+    
+    if (this.contentKey) {
+      content = data[this.contentKey] || '';
+      delete data[this.contentKey];
+    } else {
+      content = '';
     }
 
-    if (format !== Yaml) {
-      throw new Error("Invalid format");
+    if (this.format === Yaml) {
+        front = safeDump(data);
+    } else if (this.format === Json) {
+        front = JSON.stringify(data, true);
+    } else {
+        front = '';
     }
 
-    const content = data[this.contentKey] || '';
-    delete data[this.contentKey];
-
-    if (data && content) {
-      // md with front matter
-      return '---\n' + safeDump(data) + '---\n' + content;
-    } else if (data) {
-      // yaml
-      return safeDump(data);
+    if (this.contentKey) {
+      return '---\n' + front + '---\n' + content;
+    } else {
+      return front;
     }
-    // md
-    return content;
   }
 }

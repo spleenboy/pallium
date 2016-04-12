@@ -1,10 +1,10 @@
-export const OPEN = 'project.open';
-export const CLONE = 'project.clone';
+export const OPEN_PROJECT = 'open.project';
+export const CLONE_PROJECT = 'clone.project';
 
 // Opens a project from the file system
 export function open(path) {
   return {
-    type: OPEN,
+    type: OPEN_PROJECT,
     path,
   }
 }
@@ -12,7 +12,7 @@ export function open(path) {
 // Downloads a project from a git remote
 export function clone(path) {
   return {
-    type: CLONE,
+    type: CLONE_PROJECT,
     path,
   }
 }
