@@ -3,6 +3,11 @@ import {safeLoad, safeDump} from ('js-yaml');
 export const Json = 'json';
 export const Yaml = 'yaml';
 
+/**
+ * Handles import and export of json or yaml.
+ * May also handle Markdown files prefixed with
+ * json or yaml front-matter.
+ **/
 export default class Transport {
   constructor(format = Json, contentKey = null) {
     this.format = format;

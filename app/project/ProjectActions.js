@@ -1,11 +1,28 @@
 export const OPEN_PROJECT = 'open.project';
+export const OPENED_PROJECT = 'opened.project';
 export const CLONE_PROJECT = 'clone.project';
+export const THINK = 'think';
+
+export function thinking(done = true) {
+  return {
+    type: THINK,
+    done,
+  };
+}
+
+export function opened(project) {
+  return {
+    type: OPENED_PROJECT,
+    project,
+  }
+}
 
 // Opens a project from the file system
 export function open(path) {
-  return {
-    type: OPEN_PROJECT,
-    path,
+  return (dispatch) => {
+    // @todo: call a file opener... Read the file then call 'opened' with data
+    dispatch(thinking(false));
+    dispatch(opened({}));
   }
 }
 

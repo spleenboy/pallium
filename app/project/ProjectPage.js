@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Container from '../ui/Container';
 import List from '../ui/List';
 import ListItem from '../ui/ListItem';
+import Button from '../ui/Button';
 import * as ProjectActions from './ProjectActions';
 import * as ProjectListActions from './ProjectListActions';
 
@@ -34,7 +35,10 @@ export class ProjectPage extends Component {
 
     return (
       <Container>
-        <List>{items}</List>
+        <List>
+          {items}
+        </List>
+        <Button>+</Button>
       </Container>
     );
   }
