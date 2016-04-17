@@ -77,7 +77,6 @@
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
     "mocha": "^2.4.5",
-    "muicss": "^0.5.0",
     "node-libs-browser": "^1.0.0",
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1",
