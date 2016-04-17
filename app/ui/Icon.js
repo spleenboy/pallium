@@ -4,25 +4,22 @@ import styles from './Icon.css';
 
 export default class Icon extends Component {
   static propTypes = {
-    name: React.PropTypes.string.isRequired,
-    color: React.PropTypes.string,
     size: React.PropTypes.string,
   }
 
   render() {
-    let css = styles.icon;
+    const cns = [
+      styles.icon,
+      'material-icons',
+    ];
     let style = {};
-
-    if (this.props.color) {
-      css += ` mui--text-${this.props.color}`;
-    }
 
     if (this.props.size) {
       style.fontSize = this.props.size;
     }
 
     return (
-      <i className={css} style={style}>{this.props.name}</i>
+      <i className={cns.join(' ')} style={style}>{this.props.children}</i>
     );
   }
 }

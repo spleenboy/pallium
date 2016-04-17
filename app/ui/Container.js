@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MuiContainer from 'muicss/lib/react/container';
 import Header from './Header';
 import Footer from './Footer';
 import styles from './Container.css';
@@ -7,14 +6,25 @@ import styles from './Container.css';
 
 export default class Container extends Component {
   render() {
+    const containerCns = [
+      styles.container, 
+      'mdl-layout',
+      'mdl-js-layout',
+    ];
+
+    const contentCns = [
+      styles.body,
+      'mdl-layout__content',
+    ];
+
     return (
-      <MuiContainer fluid={true} className={styles.container}>
+      <div className={containerCns.join(' ')}>
           <Header />
-          <MuiContainer className={styles.body}>
+          <main className={contentCns.join(' ')}>
             {this.props.children}
-          </MuiContainer>
+          </main>
           <Footer />
-      </MuiContainer>
+      </div>
     );
   }
 }

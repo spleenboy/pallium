@@ -1,20 +1,20 @@
-.appBar
+.header
 {
   padding: 10px;
 }
 
-.appBar h1 {
+.header h1 {
   display: inline;
 }
 
-.appBar a,
-.appBar a:active,
-.appBar a:visited
+.header a,
+.header a:active,
+.header a:visited
 {
   color: white;
 }
 
-.appBar a:hover
+.header a:hover
 {
   text-decoration: underline;
 }
