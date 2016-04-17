@@ -11,7 +11,9 @@ export default class Container extends Component {
     ];
     return (
       <header className={cns.join(' ')}>
-        <h1>Pallium</h1>
+        <div className="mdl-layout__header-row">
+          <div className="mdl-layout-title">Pallium</div>
+        </div>
       </header>
     );
   }
