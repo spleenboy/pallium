@@ -22,6 +22,7 @@ export function opened(project) {
 export function open(path) {
   return (dispatch) => {
     // @todo: Handle errors
+    debugger
     dispatch(Toast.thinking(true));
     fs.readJson(path, (err, project) => {
       dispatch(Toast.thinking(false));

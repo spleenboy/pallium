@@ -3,6 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Container from '../ui/Container';
+import Drawer from '../ui/Drawer';
+import DrawerItem from '../ui/DrawerItem';
+import Main from '../ui/Main';
+
 import List from '../ui/List';
 import ListItem from '../ui/ListItem';
 import Button from '../ui/Button';
@@ -42,20 +46,59 @@ export class ProjectPage extends Component {
   }
 
   render() {
-    const projects = this.props.projectList && this.props.projectList.map((project, i) => {
+    const {project, projectList} = this.props;
+    let drawer, main;
+
+    if (project && project.content) {
+      // An item is being edited
+
+    } else if (project && project.contentType) {
+      // A content type is selected
+
+    } else if (project && project.contentTypes) {
+      // A project is selected
+      let navItems = projectList && projectList.map((project, i) => {
         return (
-          <ListItem key={i} subtitle={project.path} icon="assignment">
-            {project.title}
-          </ListItem>
+          <DrawerItem key={i}>{project.title}</DrawerItem>
         );
-    });
+      });
+
+      let contentTypes = project.contentTypes.map((ct, i) => {
+        return (
+          <ListItem key={i}>{ct.title}</ListItem>
+        );
+      });
+
+      drawer = (
+        <Drawer>{navItems}</Drawer>
+      );
+      main = (
+        <Main>
+          <List>{contentTypes}</List>
+        </Main>
+      );
+    } else {
+      // Full screen project list
+      let links = projectList && projectList.map((project, i) => {
+          return (
+            <ListItem key={i} subtitle={project.path} icon="assignment">
+              {project.title}
+            </ListItem>
+          );
+      });
+      main = (
+        <Main>
+          <List>{links}</List>
+          <Button fab={true} onClick={this.handleOpenClick.bind(this)}>+</Button>
+        </Main>
+      );
+    }
 
     return (
       <Container>
-        <List>
-          {projects}
-        </List>
-        <Button fab={true} onClick={this.handleOpenClick.bind(this)}>+</Button> </Container>
+        {drawer}
+        {main}
+      </Container>
     );
   }
 }
