@@ -44,7 +44,7 @@ export class ProjectPage extends Component {
   render() {
     const projects = this.props.projectList && this.props.projectList.map((project, i) => {
         return (
-          <ListItem key={i} subtitle={project.path}>
+          <ListItem key={i} subtitle={project.path} icon="assignment">
             {project.title}
           </ListItem>
         );

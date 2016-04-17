@@ -50,11 +50,11 @@ export default class ListItem extends Component {
     return (
       <li className={cns.join(' ')}>
         <span className="mdl-list__item-primary-content">
+          {area('avatar material-icons', this.props.avatar)}
+          {area('icon material-icons', this.props.icon)}
           {this.props.children}
           {area('sub-title', this.props.subtitle)}
           {area('text-body', this.props.body)}
-          {area('avatar', this.props.avatar)}
-          {area('icon', this.props.icon)}
         </span>
         {secondary}
       </li>
