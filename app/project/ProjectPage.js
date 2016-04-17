@@ -44,11 +44,8 @@ export class ProjectPage extends Component {
   render() {
     const projects = this.props.projectList && this.props.projectList.map((project, i) => {
         return (
-          <ListItem key={i}>
-            <div className="content">
-              <div className="header">{project.title}</div>
-              <div className="description">{project.path}</div>
-            </div>
+          <ListItem key={i} subtitle={project.path}>
+            {project.title}
           </ListItem>
         );
     });
@@ -58,8 +55,7 @@ export class ProjectPage extends Component {
         <List>
           {projects}
         </List>
-        <Button variant="fab" onClick={this.handleOpenClick.bind(this)}>+</Button>
-      </Container>
+        <Button fab={true} onClick={this.handleOpenClick.bind(this)}>+</Button> </Container>
     );
   }
 }

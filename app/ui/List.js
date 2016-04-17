@@ -3,10 +3,11 @@ import styles from './List.css';
 
 export default class List extends Component {
   render() {
+    const cn = `${styles.list} mdl-list`;
     return (
-      <div className={styles.list}>
+      <ul className={cn}>
         {this.props.children}
-      </div>
+      </ul>
     );
   }
 }
