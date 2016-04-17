@@ -4,7 +4,7 @@ import styles from './Button.css';
 
 export default class Button extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     variant: PropTypes.string,
     color: PropTypes.string,
     size: PropTypes.string,
@@ -17,12 +17,11 @@ export default class Button extends Component {
   }
 
   render() {
-    const props = {variant, color, size, disabled} = this.props;
     return (
       <MuiButton
         className={styles.button}
-        onClick={this.props.handleClick.bind(this)}
-        {...props}>{this.props.children}</MuiButton>
+        onClick={this.handleClick.bind(this)}
+        {...this.props}>{this.props.children}</MuiButton>
     );
   }
 }
