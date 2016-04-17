@@ -1,4 +1,4 @@
-import {safeLoad, safeDump} from ('js-yaml');
+import {safeLoad, safeDump} from 'js-yaml';
 
 export const Json = 'json';
 export const Yaml = 'yaml';
@@ -25,7 +25,7 @@ export default class Transport {
   }
 
   clean(output) {
-    const data = ...output;
+    const data = Object.assign({}, output);
     const keys = Object.keys(data);
     keys.forEach((key) => {
       if (data[key] === undefined) {

@@ -1,13 +1,14 @@
+import Transport from '../storage/Transport';
+import fs from 'fs-extra';
+
+import Toast from '../toast/ToastActions';
+
 export const OPEN_PROJECT = 'open.project';
 export const OPENED_PROJECT = 'opened.project';
 export const CLONE_PROJECT = 'clone.project';
-export const THINK = 'think';
 
-export function thinking(done = true) {
-  return {
-    type: THINK,
-    done,
-  };
+export function error(e) {
+  console.error(e);
 }
 
 export function opened(project) {
@@ -20,9 +21,16 @@ export function opened(project) {
 // Opens a project from the file system
 export function open(path) {
   return (dispatch) => {
-    // @todo: call a file opener... Read the file then call 'opened' with data
-    dispatch(thinking(false));
-    dispatch(opened({}));
+    // @todo: Handle errors
+    dispatch(Toast.thinking(true));
+    fs.readJson(path, (err, project) => {
+      dispatch(Toast.thinking(false));
+      if (!err) {
+        dispatch(opened(project));
+      } else {
+        dispatch(Toast.error(err));
+      }
+    });
   }
 }
 

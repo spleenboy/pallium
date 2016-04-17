@@ -1,22 +1,30 @@
 import * as Actions from './ProjectActions';
 import ContentTypeReducerMethods from './contentType/ContentTypeReducerMethods.js'
 
-const initialState = false;
+const initialState = {
+  thinking: false,
+  error: false,
+};
 const methods = {};
 
 export default function handle(state = initialState, action) {
   if (action.type in methods) {
-    return methods[action.type](state, action);
+    const result = Object.assign({}, state);
+    return methods[action.type](result, action);
   }
   return state;
 }
 
 Object.assign(methods, ContentTypeReducerMethods);
 
-methods[Actions.OPEN_PROJECT] = function(state, action) {
+methods[Actions.OPENED_PROJECT] = function(state, action) {
+  return action.project;
+}
 
+methods[Actions.OPEN_PROJECT] = function(state, action) {
+  return Object.assign({}, state);
 }
 
 methods[Actions.CLONE_PROJECT] = function(state, action) {
-
+  return Object.assign({}, state);
 }
