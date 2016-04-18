@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import Container from '../ui/Container';
 import Drawer from '../ui/Drawer';
-import DrawerItem from '../ui/DrawerItem';
 import Main from '../ui/Main';
 
 import List from '../ui/List';
@@ -59,18 +58,18 @@ export class ProjectPage extends Component {
       // A project is selected
       let navItems = projectList && projectList.map((project, i) => {
         return (
-          <DrawerItem key={i}>{project.title}</DrawerItem>
+          <ListItem key={i}>{project.title}</ListItem>
         );
       });
 
       let contentTypes = project.contentTypes.map((ct, i) => {
         return (
-          <ListItem key={i}>{ct.title}</ListItem>
+          <ListItem key={i}>{ct.settings.title}</ListItem>
         );
       });
 
       drawer = (
-        <Drawer>{navItems}</Drawer>
+        <Drawer title={project.title}><List>{navItems}</List></Drawer>
       );
       main = (
         <Main>

@@ -7,13 +7,11 @@ export default class Drawer extends Component {
   }
 
   render() {
-    const cns = [styles.drawer, "mdl-layout__drawer"];
+    const cns = [styles.drawer];
     return (
       <div className={cns.join(' ')}>
-        <div className="mdl-layout__title">{this.props.title}</div>
-        <nav className="mdl-navigation">
-          {this.props.children}
-        </nav>
+        <div className={styles.title}>{this.props.title}</div>
+        {this.props.children}
       </div>
     );
   }

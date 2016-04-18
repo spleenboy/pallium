@@ -3,7 +3,7 @@ import styles from './Main.css';
 
 export default class Main extends Component {
   render() {
-    const cns = [styles.main, "mdl-layout__content"];
+    const cns = [styles.main];
     return (
       <main className={cns.join(' ')}>
         {this.props.children}

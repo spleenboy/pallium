@@ -1,8 +1,6 @@
 import Transport from '../storage/Transport';
 import fs from 'fs-extra';
 
-import Toast from '../toast/ToastActions';
-
 export const OPEN_PROJECT = 'open.project';
 export const OPENED_PROJECT = 'opened.project';
 export const CLONE_PROJECT = 'clone.project';
@@ -21,8 +19,7 @@ export function opened(project) {
 // Opens a project from the file system
 export function open(path) {
   return (dispatch) => {
-    // @todo: Handle errors
-    debugger
+    const Toast = require('../toast/ToastActions');
     dispatch(Toast.thinking(true));
     fs.readJson(path, (err, project) => {
       dispatch(Toast.thinking(false));

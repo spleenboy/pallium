@@ -2,104 +2,105 @@
     "title": "Blog",
     "description": "A sample blog editor",
     "directory": "content",
-    "contentTypes": {
-        "post": {
-            "settings": {
-                "title": "Post",
-                "plural": "Posts",
-                "abbr": "post",
-                "description": "",
-                "icon": "archive"
-            },
-            "fields": [
-                {
-                    "name": "title",
-                    "label": "Title",
-                    "hint": "Give this post a good name",
-                    "attributes": {
-                        "max": 255,
-                        "required": true,
-                        "autofocus": true
-                    }
-                },
-                {
-                    "name": "postDate",
-                    "type": "date",
-                    "label": "Date of Post",
-                    "attributes": {
-                        "required": true
-                    }
-                },
-                {
-                    "name": "description",
-                    "type": "textarea",
-                    "label": "Description"
-                },
-                {
-                    "name": "body",
-                    "type": "md",
-                    "label": "Content",
-                    "attributes": {
-                        "required": true
-                    }
+    "contentTypes": [
+    {
+      "settings": {
+          "title": "Post",
+          "plural": "Posts",
+          "handle": "post",
+          "description": "",
+          "icon": "archive"
+      },
+      "fields": [
+          {
+              "name": "title",
+              "label": "Title",
+              "hint": "Give this post a good name",
+              "attributes": {
+                  "max": 255,
+                  "required": true,
+                  "autofocus": true
+              }
+          },
+          {
+              "name": "postDate",
+              "type": "date",
+              "label": "Date of Post",
+              "attributes": {
+                  "required": true
+              }
+          },
+          {
+              "name": "description",
+              "type": "textarea",
+              "label": "Description"
+          },
+          {
+              "name": "body",
+              "type": "md",
+              "label": "Content",
+              "attributes": {
+                  "required": true
+              }
+          }
+      ],
+      "storage": {
+          "format": "md",
+          "directory": [
+              "post",
+              {"type": "moment", "format": "YYYY/MM/"}
+          ],
+          "filename": {"type": "reflect", "field": "title"},
+          "title": {"type": "reflect", "field": "title"},
+          "metadata": {
+              "Description": {"type": "reflect", "field": "description"}
+          }
+      }
+    },
+
+    {
+        "settings": {
+            "title": "Page",
+            "plural": "Pages",
+            "handle": "page",
+            "description": "",
+            "icon": "book"
+        },
+        "fields": [
+            {
+                "name": "title",
+                "label": "Title",
+                "hint": "Give this page a good name",
+                "attributes": {
+                    "max": 255,
+                    "required": true,
+                    "autofocus": true
                 }
-            ],
-            "storage": {
-                "format": "md",
-                "directory": [
-                    "post",
-                    {"type": "moment", "format": "YYYY/MM/"}
-                ],
-                "filename": {"type": "reflect", "field": "title"},
-                "title": {"type": "reflect", "field": "title"},
-                "metadata": {
-                    "Description": {"type": "reflect", "field": "description"}
+            },
+            {
+                "name": "description",
+                "type": "textarea",
+                "label": "Description"
+            },
+            {
+                "name": "body",
+                "type": "md",
+                "label": "Content",
+                "attributes": {
+                    "required": true
                 }
             }
-        },
-
-        "page": {
-            "settings": {
-                "title": "Page",
-                "plural": "Pages",
-                "abbr": "page",
-                "description": "",
-                "icon": "book"
-            },
-            "fields": [
-                {
-                    "name": "title",
-                    "label": "Title",
-                    "hint": "Give this page a good name",
-                    "attributes": {
-                        "max": 255,
-                        "required": true,
-                        "autofocus": true
-                    }
-                },
-                {
-                    "name": "description",
-                    "type": "textarea",
-                    "label": "Description"
-                },
-                {
-                    "name": "body",
-                    "type": "md",
-                    "label": "Content",
-                    "attributes": {
-                        "required": true
-                    }
-                }
-            ],
-            "storage": {
-                "directory": "page",
-                "format": "md",
-                "filename": {"type": "reflect", "field": "title"},
-                "title": {"type": "reflect", "field": "title"},
-                "metadata": {
-                    "Description": {"type": "reflect", "field": "description"}
-                }
+        ],
+        "storage": {
+            "directory": "page",
+            "format": "md",
+            "filename": {"type": "reflect", "field": "title"},
+            "title": {"type": "reflect", "field": "title"},
+            "metadata": {
+                "Description": {"type": "reflect", "field": "description"}
             }
         }
     }
+
+    ]
 }
