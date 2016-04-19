@@ -4,18 +4,11 @@ const initialState = [];
 const methods = {};
 
 methods[Actions.LOAD] = function(state, action) {
-  return [];
+  return action.projectList || [];
 }
 
 methods[Actions.ADD] = function(state, action) {
-  let result;
-
-  if (!state) {
-    result = [];
-  } else {
-    result = Array.from(state);
-  }
-
+  let result = state ? Array.from(state) : [];
   const existing = result.findIndex(project => project.path === action.path);
 
   if (existing >= 0) {
@@ -39,11 +32,14 @@ methods[Actions.ADD] = function(state, action) {
 }
 
 methods[Actions.REMOVE] = function(state, action) {
+  let result = state ? Array.from(state) : [];
+  const existing = result.findIndex(project => project.path === action.path);
 
-}
+  if (existing >= 0) {
+    result.splice(existing, 1);
+  }
 
-methods[Actions.SAVE] = function(state, action) {
-
+  return result;
 }
 
 export default function handle(state = initialState, action) {

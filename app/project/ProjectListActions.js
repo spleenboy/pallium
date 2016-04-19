@@ -3,9 +3,10 @@ export const LOAD = 'projects.load';
 export const ADD = 'projects.add';
 export const REMOVE = 'projects.remove';
 
-export function load() {
+export function load(projectList) {
   return {
     type: LOAD,
+    projectList
   }
 }
 
