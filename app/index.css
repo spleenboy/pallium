@@ -1,4 +1,7 @@
 :root {
+  --lime: rgb(160, 255, 90);
+  --blue: #3F51B5;
+  --gray: rgb(200, 200, 200);
 }
 
 body {

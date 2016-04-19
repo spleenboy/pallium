@@ -4,8 +4,8 @@
   width: 25%;
   min-height: 100%;
   overflow: auto;
-  background-color: rgb(160, 255, 90);
-  border-right: 2px solid rgb(200, 200, 200);
+  background-color: var(--lime);
+  border-right: 2px solid var(--gray);
 }
 
 .title {

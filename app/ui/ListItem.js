@@ -3,6 +3,9 @@ import styles from './ListItem.css';
 
 export default class ListItem extends Component {
   static propTypes = {
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+
     icon: PropTypes.node,
     avatar: PropTypes.node,
     subtitle: PropTypes.node,
@@ -12,11 +15,21 @@ export default class ListItem extends Component {
     body: PropTypes.node,
   }
 
+
+  handleClick(e) {
+    this.props.onClick && this.props.onClick(e);
+  }
+
+
   render() {
     const cns = [
       styles.item,
       'mdl-list__item',
     ];
+
+    if (this.props.className) {
+      cns.push(this.props.className);
+    }
 
     const thirdLine = !!this.props.body;
     const secondLine = thirdLine || !!this.props.action || !!this.props.info || !!this.props.subtitle;
@@ -48,7 +61,7 @@ export default class ListItem extends Component {
     }
 
     return (
-      <li className={cns.join(' ')}>
+      <li className={cns.join(' ')} onClick={this.handleClick.bind(this)}>
         <span className="mdl-list__item-primary-content">
           {area('avatar material-icons', this.props.avatar)}
           {area('icon material-icons', this.props.icon)}

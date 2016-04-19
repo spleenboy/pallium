@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import * as Actions from './ContentTypeActions.js';
 import styles from './ContentTypeListComponent.css';
 
 import List from '../../ui/List';
@@ -9,6 +10,11 @@ import ListItem from '../../ui/ListItem';
 import Button from '../../ui/Button';
 
 export class ContentTypeListComponent extends Component {
+  handleSelect(contentType, e) {
+    this.props.selectContentType(contentType.settings.handle);
+  }
+
+
   render() {
     const {project} = this.props;
 
@@ -17,8 +23,14 @@ export class ContentTypeListComponent extends Component {
     }
 
     let contentTypes = project.contentTypes.map((ct, i) => {
+      let cn = project.contentType && project.contentType.settings.handle === ct.settings.handle ? styles.active : "";
       return (
-        <ListItem key={i} icon={ct.settings.icon ? ct.settings.icon : "view list"}>
+        <ListItem
+          key={i}
+          className={cn}
+          onClick={this.handleSelect.bind(this, ct)}
+          icon={ct.settings.icon ? ct.settings.icon : "view list"}
+        >
           {ct.settings.title}
         </ListItem>
       );
@@ -41,6 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
+    selectContentType: Actions.selectContentType
   }, dispatch);
 }
 

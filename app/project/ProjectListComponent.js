@@ -18,6 +18,7 @@ export class ProjectListComponent extends Component {
     this.props.loadProjects();
   }
 
+
   handleOpenClick(e) {
     const openProject = this.props.openProject.bind(this);
     dialog.showOpenDialog({
@@ -33,19 +34,32 @@ export class ProjectListComponent extends Component {
     );
   }
 
+
+  handleSelectClick(path, e) {
+    this.props.openProject(path);
+  }
+
+
   render() {
     const {project, projectList} = this.props;
 
-    let links = projectList && projectList.map((project, i) => {
+    let links = projectList && projectList.map((p, i) => {
+      let cn = project.title === p.title ? styles.active : "";
       return (
-        <ListItem key={i} subtitle={project.description} icon={project.icon ? project.icon : "assignment"}>
-          {project.title}
+        <ListItem
+          key={i}
+          onClick={this.handleSelectClick.bind(this, p.path)}
+          className={cn}
+          subtitle={p.description}
+          icon={p.icon ? p.icon : "assignment"}
+        >
+          {p.title}
         </ListItem>
       );
     });
 
     return (
-      <div className="styles.projectList">
+      <div className={styles.projectList}>
           <Button onClick={this.handleOpenClick.bind(this)}>Open Project</Button>
           <List>{links}</List>
       </div>

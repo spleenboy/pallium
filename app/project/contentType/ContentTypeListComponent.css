@@ -1,3 +1,14 @@
 .contentTypeList {
 
 }
+
+.contentTypeList .active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.contentTypeList li {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--lime);
+  }
+}

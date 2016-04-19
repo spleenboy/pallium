@@ -19,8 +19,13 @@ export class ProjectPage extends Component {
 
     } else if (project && project.contentType) {
       // A content type is selected
-
+      drawer = (
+        <Drawer>
+          <ContentTypeListComponent/>
+        </Drawer>
+      );
     } else if (project && project.contentTypes) {
+      // A project is selected
       drawer = (
         <Drawer title={project.title}>
           <ProjectListComponent/>
