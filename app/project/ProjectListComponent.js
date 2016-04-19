@@ -38,7 +38,7 @@ export class ProjectListComponent extends Component {
 
     let links = projectList && projectList.map((project, i) => {
       return (
-        <ListItem key={i} subtitle={project.path} icon={project.icon ? project.icon : "assignment"}>
+        <ListItem key={i} subtitle={project.description} icon={project.icon ? project.icon : "assignment"}>
           {project.title}
         </ListItem>
       );

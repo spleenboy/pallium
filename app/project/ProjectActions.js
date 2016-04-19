@@ -18,13 +18,20 @@ export function opened(project) {
 
 // Opens a project from the file system
 export function open(path) {
+
   return (dispatch) => {
+
     const Toast = require('../toast/ToastActions');
+    const ProjectList = require('./ProjectListActions');
+
     dispatch(Toast.thinking(true));
     fs.readJson(path, (err, project) => {
+
       dispatch(Toast.thinking(false));
+
       if (!err) {
         dispatch(opened(project));
+        dispatch(ProjectList.add(project, path));
       } else {
         dispatch(Toast.error(err));
       }

@@ -1,7 +1,7 @@
 {
     "title": "Blog",
     "description": "A sample blog editor",
-    "icon": "book",
+    "icon": "chat",
     "directory": "content",
     "contentTypes": [
     {
