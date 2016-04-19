@@ -6,44 +6,10 @@ import Container from '../ui/Container';
 import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
 
-import List from '../ui/List';
-import ListItem from '../ui/ListItem';
-import Button from '../ui/Button';
-
-import * as ProjectActions from './ProjectActions';
-import * as ProjectListActions from './ProjectListActions';
-
-const remote = require('remote');
-const dialog = remote.require('dialog');
+import ProjectListComponent from './ProjectListComponent';
+import ContentTypeListComponent from './contentType/ContentTypeListComponent';
 
 export class ProjectPage extends Component {
-  static contextTypes = {
-    router: React.PropTypes.object.isRequired,
-  }
-
-  componentDidMount(props) {
-    this.props.loadProjects();
-  }
-
-  go(path) {
-    this.context.router.push(path);
-  }
-
-  handleOpenClick(e) {
-    const openProject = this.props.openProject.bind(this);
-    dialog.showOpenDialog({
-      title: "Select a project file",
-      filters: [{name: "JSON", extensions: ['json']}],
-      properties: ['openFile'],
-    },
-    (filenames) => {
-      if (filenames) {
-        openProject(filenames[0]);
-      }
-    }
-    );
-  }
-
   render() {
     const {project, projectList} = this.props;
     let drawer, main;
@@ -55,41 +21,19 @@ export class ProjectPage extends Component {
       // A content type is selected
 
     } else if (project && project.contentTypes) {
-      // A project is selected
-      let navItems = projectList && projectList.map((project, i) => {
-        return (
-          <ListItem key={i}>{project.title}</ListItem>
-        );
-      });
-
-      let contentTypes = project.contentTypes.map((ct, i) => {
-        return (
-          <ListItem key={i}>{ct.settings.title}</ListItem>
-        );
-      });
-
       drawer = (
-        <Drawer title={project.title}><List>{navItems}</List></Drawer>
+        <Drawer title={project.title}>
+          <ProjectListComponent/>
+        </Drawer>
       );
       main = (
         <Main>
-          <List>{contentTypes}</List>
+          <ContentTypeListComponent/>
         </Main>
       );
     } else {
-      // Full screen project list
-      let links = projectList && projectList.map((project, i) => {
-          return (
-            <ListItem key={i} subtitle={project.path} icon="assignment">
-              {project.title}
-            </ListItem>
-          );
-      });
       main = (
-        <Main>
-          <List>{links}</List>
-          <Button fab={true} onClick={this.handleOpenClick.bind(this)}>+</Button>
-        </Main>
+        <Main><ProjectListComponent/></Main>
       );
     }
 
@@ -109,11 +53,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    loadProjects: ProjectListActions.load,
-    openProject: ProjectActions.open,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);
+export default connect(mapStateToProps)(ProjectPage);
