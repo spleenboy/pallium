@@ -6,14 +6,8 @@ import styles from './Container.css';
 
 export default class Container extends Component {
   render() {
-    const cns = [
-      styles.container, 
-      'mdl-layout',
-      'mdl-js-layout',
-    ];
-
     return (
-      <div className={cns.join(' ')}>
+      <div className={styles.container}>
           {this.props.children}
       </div>
     );
