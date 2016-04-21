@@ -1,7 +1,10 @@
 :root {
+  --header-height: 60px;
+  --header-half-height: 30px;
   --white: rgb(255, 255, 255);
   --lime: rgb(160, 255, 90);
-  --blue: #3F51B5;
+  --blue: rgb(63, 81, 181);
+  --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(200, 200, 200);
 }
 

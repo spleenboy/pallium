@@ -1,10 +1,7 @@
 import * as Actions from './ProjectActions';
 import ContentTypeReducerMethods from './contentType/ContentTypeReducerMethods.js'
 
-const initialState = {
-  thinking: false,
-  error: false,
-};
+const initialState = false;
 const methods = {};
 
 export default function handle(state = initialState, action) {
@@ -16,6 +13,10 @@ export default function handle(state = initialState, action) {
 }
 
 Object.assign(methods, ContentTypeReducerMethods);
+
+methods[Actions.CLEAR_PROJECT] = function(state, action) {
+  return initialState;
+}
 
 methods[Actions.OPENED_PROJECT] = function(state, action) {
   return action.project;

@@ -4,9 +4,16 @@ import fs from 'fs-extra';
 export const OPEN_PROJECT = 'open.project';
 export const OPENED_PROJECT = 'opened.project';
 export const CLONE_PROJECT = 'clone.project';
+export const CLEAR_PROJECT = 'clear.project';
 
 export function error(e) {
   console.error(e);
+}
+
+export function clear() {
+  return {
+    type: CLEAR_PROJECT
+  };
 }
 
 export function opened(project) {
