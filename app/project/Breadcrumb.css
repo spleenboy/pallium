@@ -1,0 +1,23 @@
+.breadcrumb {
+  color: var(--white);
+}
+
+.breadcrumb li {
+  font-size: 1.2rem;
+  list-style: none;
+  display: inline;
+  margin-right: 1rem;
+}
+
+.root {
+  font-weight: bold;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:before {
+  content: ":";
+  margin-right: 1rem;
+}

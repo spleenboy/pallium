@@ -14,9 +14,7 @@ export default class Container extends Component {
 
     return (
       <div className={cns.join(' ')}>
-          <Header />
           {this.props.children}
-          <Footer />
       </div>
     );
   }

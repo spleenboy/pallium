@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Container from '../ui/Container';
+import Header from '../ui/Header';
+import Breadcrumb from './Breadcrumb';
 import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
 
@@ -44,6 +46,7 @@ export class ProjectPage extends Component {
 
     return (
       <Container>
+        <Header><Breadcrumb/></Header>
         {drawer}
         {main}
       </Container>
