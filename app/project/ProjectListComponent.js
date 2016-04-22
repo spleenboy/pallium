@@ -7,14 +7,8 @@ import List from '../ui/List';
 import ListItem from '../ui/ListItem';
 
 import * as ProjectActions from './ProjectActions';
-import * as ProjectListActions from './ProjectListActions';
 
 export class ProjectListComponent extends Component {
-  componentDidMount(props) {
-    this.props.loadProjects();
-  }
-
-
   handleSelectClick(path, e) {
     this.props.openProject(path);
   }
@@ -56,7 +50,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    loadProjects: ProjectListActions.load,
+    openProject: ProjectActions.open,
   }, dispatch);
 }
 

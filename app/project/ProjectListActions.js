@@ -1,4 +1,3 @@
-export const SAVE = 'projects.save';
 export const LOAD = 'projects.load';
 export const ADD = 'projects.add';
 export const REMOVE = 'projects.remove';

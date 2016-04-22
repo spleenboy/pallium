@@ -4,7 +4,7 @@ const initialState = [];
 const methods = {};
 
 methods[Actions.LOAD] = function(state, action) {
-  return action.projectList || [];
+  return action.projectList || initialState;
 }
 
 methods[Actions.ADD] = function(state, action) {
