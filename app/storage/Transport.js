@@ -1,7 +1,8 @@
 import {safeLoad, safeDump} from 'js-yaml';
 
-export const Json = 'json';
-export const Yaml = 'yaml';
+export const JSON = 'json';
+export const YAML = 'yaml';
+export const ENCODING = 'utf8';
 
 /**
  * Handles import and export of json or yaml.

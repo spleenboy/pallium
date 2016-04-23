@@ -16,6 +16,7 @@
           {
               "name": "title",
               "label": "Title",
+              "defaultValue": "New Post",
               "hint": "Give this post a good name",
               "attributes": {
                   "max": 255,
@@ -46,7 +47,9 @@
           }
       ],
       "storage": {
-          "format": "md",
+          "format": "json",
+          "extension": "md",
+          "contentKey": "body",
           "directory": [
               "post",
               {"type": "moment", "format": "YYYY/MM/"}
@@ -71,6 +74,7 @@
             {
                 "name": "title",
                 "label": "Title",
+                "defaultValue": "New Page",
                 "hint": "Give this page a good name",
                 "attributes": {
                     "max": 255,
@@ -94,7 +98,9 @@
         ],
         "storage": {
             "directory": "page",
-            "format": "md",
+            "format": "json",
+            "extension": "md",
+            "contentKey": "body",
             "filename": {"type": "reflect", "field": "title"},
             "title": {"type": "reflect", "field": "title"},
             "metadata": {

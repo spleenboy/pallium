@@ -1,5 +1,6 @@
 import * as Actions from './ProjectActions';
-import ContentTypeReducerMethods from './contentType/ContentTypeReducerMethods.js'
+import ContentTypeReducerMethods from './contentType/ContentTypeReducerMethods.js';
+import ContentReducerMethods from './content/ContentReducerMethods.js';
 
 const initialState = false;
 const methods = {};
