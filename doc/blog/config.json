@@ -52,7 +52,7 @@
           "contentKey": "body",
           "directory": [
               "post",
-              {"type": "moment", "format": "YYYY/MM/"}
+              {"type": "moment", "field": "postDate", "format": "YYYY/MM/"}
           ],
           "filename": {"type": "reflect", "field": "title"},
           "title": {"type": "reflect", "field": "title"},

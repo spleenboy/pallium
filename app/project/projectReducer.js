@@ -14,6 +14,7 @@ export default function handle(state = initialState, action) {
 }
 
 Object.assign(methods, ContentTypeReducerMethods);
+Object.assign(methods, ContentReducerMethods);
 
 methods[Actions.CLEAR_PROJECT] = function(state, action) {
   return initialState;

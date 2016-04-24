@@ -1,8 +1,61 @@
+import * as Calculate from './Calculate';
+import path from 'path';
+
 export default class Content {
   constructor(contentType, data = {}) {
     this.contentType = contentType;
     this.values = {};
     this.load(data);
+  }
+
+  toJson() {
+    return {
+      title: this.title,
+      filename: this.filename,
+      directory: this.directory,
+      metadata: this.metadata,
+      values: this.values,
+    }
+  }
+
+  calculate(parts) {
+    parts = (!Array.isArray(parts)) ? [parts] : parts;
+    const values = this.values;
+    return parts.map(part => {
+      if (typeof part === 'object' && part.type in Calculate) {
+        return Calculate[part.type](values, part);
+      } else {
+        return part;
+      }
+    });
+    return null;
+  }
+
+  get title() {
+    const parts = this.calculate(this.contentType.storage.title);
+    return parts.join(' ');
+  }
+
+  get metadata() {
+    const result = {};
+    const settings = this.contentType.storage.metadata;
+    if (!settings) {
+      return result;
+    }
+    for (let key in settings) {
+        result[key] = this.calculate(settings[key]).join(' ');
+    }
+    return result;
+  }
+
+  get filename() {
+    const parts = this.calculate(this.contentType.storage.filename);
+    return parts.join('') + '.' + this.contentType.storage.extension;
+  }
+
+  get directory() {
+    const parts = this.calculate(this.contentType.storage.directory);
+    return parts.join(path.sep);
   }
 
   set(key, value) {
@@ -18,7 +71,6 @@ export default class Content {
     } else {
       this.values[key] = value;
     }
-
   }
 
   get(key) {

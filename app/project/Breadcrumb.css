@@ -13,9 +13,14 @@
   transform: skew(-15deg);
 }
 
-.item span {
+.item .btn {
   display: inline-block;
   transform: skew(15deg);
+}
+
+.item .icon {
+  margin: 0 1rem;
+  font-size: 1.5rem;
 }
 
 .item.link {

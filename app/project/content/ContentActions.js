@@ -1,24 +1,24 @@
-import Transport, { ENCODING } from '../../storage/Transport';
 import fs from 'fs-extra';
+import Transport, { ENCODING } from '../../storage/Transport';
+import Content from './Content';
 
-export const CREATE_CONTENT = 'create.content';
-export const OPENED_CONTENT = 'opened.content';
+export const SET_CONTENT = 'set.content';
 export const CLEAR_CONTENT = 'clear.content';
 
-export function create(contentType) {
+export function update(contentType, data) {
+  const content = new Content(contentType, data);
   return {
-    type: CREATE_CONTENT,
-    contentType
-  }
+    type: SET_CONTENT,
+    content: content.toJson(),
+  };
 }
 
-
-export function opened(contentType, data) {
+export function create(contentType) {
+  const content = new Content(contentType);
   return {
-    type: OPENED_CONTENT,
-    contentType,
-    data,
-  };
+    type: SET_CONTENT,
+    content: content.toJson(),
+  }
 }
 
 
@@ -36,7 +36,7 @@ export function open(contentType, path) {
     fs.readFile(path, ENCODING, (err, data) => {
       dispatch(Toast.thinking(false));
       values = transport.import(data);
-      dispatch(opened(contentType, values));
+      dispatch(update(contentType, values));
     });
   }
 }
