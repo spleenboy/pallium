@@ -10,6 +10,8 @@ import Main from '../ui/Main';
 
 import ProjectListComponent from './ProjectListComponent';
 import ContentTypeListComponent from './contentType/ContentTypeListComponent';
+import ContentListComponent from './content/ContentListComponent';
+import ContentForm from './content/ContentForm';
 
 export class ProjectPage extends Component {
   render() {
@@ -18,7 +20,12 @@ export class ProjectPage extends Component {
 
     if (project && project.content) {
       // An item is being edited
-
+      drawer = (
+        <Drawer><ContentListComponent/></Drawer>
+      );
+      main = (
+        <Main><ContentForm/></Main>
+      );
     } else if (project && project.contentType) {
       // A content type is selected
       drawer = (

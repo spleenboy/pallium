@@ -1,8 +1,10 @@
 import * as Calculate from './Calculate';
 import path from 'path';
+import uid from '../../storage/uid';
 
 export default class Content {
-  constructor(contentType, data = {}) {
+  constructor(contentType, data = {}, id = null) {
+    this.id = id || uid();
     this.contentType = contentType;
     this.values = {};
     this.load(data);
@@ -10,6 +12,7 @@ export default class Content {
 
   toJson() {
     return {
+      id: this.id,
       title: this.title,
       filename: this.filename,
       directory: this.directory,
@@ -56,6 +59,11 @@ export default class Content {
   get directory() {
     const parts = this.calculate(this.contentType.storage.directory);
     return parts.join(path.sep);
+  }
+
+  fullpath(...baseDirs) {
+    let baseDir = path.join(baseDirs);
+    return path.join(baseDir, this.directory, this.filename);
   }
 
   set(key, value) {

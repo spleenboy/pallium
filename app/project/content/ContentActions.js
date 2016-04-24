@@ -5,13 +5,14 @@ import Content from './Content';
 export const SET_CONTENT = 'set.content';
 export const CLEAR_CONTENT = 'clear.content';
 
-export function update(contentType, data) {
-  const content = new Content(contentType, data);
+export function update(contentType, data, id = null) {
+  const content = new Content(contentType, data, id);
   return {
     type: SET_CONTENT,
     content: content.toJson(),
   };
 }
+
 
 export function create(contentType) {
   const content = new Content(contentType);
@@ -22,7 +23,7 @@ export function create(contentType) {
 }
 
 
-export function open(contentType, path) {
+export function open(contentType, path, id) {
 
   const transport = new Transport(
     contentType.storage.format,
@@ -36,7 +37,7 @@ export function open(contentType, path) {
     fs.readFile(path, ENCODING, (err, data) => {
       dispatch(Toast.thinking(false));
       values = transport.import(data);
-      dispatch(update(contentType, values));
+      dispatch(update(contentType, values, id));
     });
   }
 }

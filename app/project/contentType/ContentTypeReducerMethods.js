@@ -2,21 +2,19 @@ import * as Actions from './ContentTypeActions';
 
 const methods = {};
 
+methods[Actions.SET_CONTENT_LIST] = function(state, action) {
+  state.contentType.contentList = action.contentList;
+  return state;
+}
+
 methods[Actions.CLEAR_CONTENT_TYPE] = function(state, action) {
-  const result = Object.assign({}, state);
-  result.contentType = null;
-  return result;
+  state.contentType = null;
+  return state;
 }
 
 methods[Actions.SELECT_CONTENT_TYPE] = function(state, action) {
-  if (!state || !state.contentTypes) {
-    return state;
-  }
-
-  const result = Object.assign({}, state);
-  result.contentType = state.contentTypes.find(ct => ct.settings.handle === action.handle);
-
-  return result;
+  state.contentType = state.contentTypes.find(ct => ct.settings.handle === action.handle);
+  return state;
 }
 
 export default methods;
