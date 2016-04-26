@@ -11,20 +11,20 @@ import Main from '../ui/Main';
 import ProjectListComponent from './ProjectListComponent';
 import ContentTypeListComponent from './content/ContentTypeListComponent';
 import ContentListComponent from './content/ContentListComponent';
-import ContentForm from './content/ContentForm';
+import ContentFormComponent from './content/ContentFormComponent';
 
 export class ProjectPage extends Component {
   render() {
     const {project, projectList} = this.props;
     let drawer, main;
 
-    if (project && project.content) {
+    if (project && project.contentType && project.contentType.content) {
       // An item is being edited
       drawer = (
         <Drawer><ContentListComponent/></Drawer>
       );
       main = (
-        <Main><ContentForm/></Main>
+        <Main><ContentFormComponent/></Main>
       );
     } else if (project && project.contentType) {
       // A content type is selected

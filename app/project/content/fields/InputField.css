@@ -1,0 +1,25 @@
+.inputField {
+  width: 100%;
+  padding: 1rem;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: none;
+  border-bottom: 2px solid var(--gray);
+  color: var(--gray);
+  transition: color 0.5s;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--blue);
+  color: var(--blue);
+}

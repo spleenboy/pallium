@@ -15,14 +15,14 @@ export class ContentListComponent extends Component {
 
 
   render() {
-    const {contentType, content} = this.props;
+    const {contentType, contentList, content} = this.props;
 
-    if (!content || !contentType) {
+    if (!contentList) {
       return null;
     }
 
-    let items = contentType.contentList.map((c, i) => {
-      let cn = c.id === content.id ? styles.active : "";
+    let items = contentList.map((c, i) => {
+      let cn = c.id === content && content.id ? styles.active : "";
       return (
         <ListItem
           key={i}
@@ -54,7 +54,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    openContent: Actions.open,
+    openContent: Actions.openContent,
   }, dispatch);
 }
 
