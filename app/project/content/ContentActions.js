@@ -3,6 +3,7 @@ import fs from 'fs-extra';
 import * as ToastActions from  '../../toast/ToastActions';
 
 import Transport, { ENCODING } from '../../storage/Transport';
+import ContentIndex from './ContentIndex';
 import Content from './Content';
 
 export const SET_CONTENT = 'set.content';

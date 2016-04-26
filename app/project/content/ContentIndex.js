@@ -24,11 +24,11 @@ export default class ContentIndex {
           return reject(err);
         }
         if (old) {
-          this.store.update(old, record, (err, num) {
+          this.store.update(old, record, (err, num) => {
             err && reject(err) || resolve(record, old);
           });
         } else {
-          this.store.insert(record, (err, doc) {
+          this.store.insert(record, (err, doc) => {
             err && reject(err) || resolve(doc);
           });
         }

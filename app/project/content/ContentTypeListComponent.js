@@ -11,7 +11,7 @@ import Button from '../../ui/Button';
 
 export class ContentTypeListComponent extends Component {
   handleSelect(contentType, e) {
-    this.props.selectContentType(contentType.settings.handle);
+    this.props.selectContentType(this.props.project, contentType.settings.handle);
   }
 
 

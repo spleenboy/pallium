@@ -14,7 +14,7 @@ const dialog = remote.require('dialog');
 
 export class Breadcrumb extends Component {
   handleNewContentClick(e) {
-    this.props.createContent(this.props.project.contentType);
+    this.props.createContent(this.props.project);
   }
 
   handleOpenClick(e) {
