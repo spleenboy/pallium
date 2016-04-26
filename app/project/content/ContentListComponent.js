@@ -47,7 +47,8 @@ export class ContentListComponent extends Component {
 function mapStateToProps(state) {
   return {
     contentType: state.project.contentType,
-    content: state.project.content,
+    content: state.project.contentType.content,
+    contentList: state.project.contentType.contentList,
   };
 }
 

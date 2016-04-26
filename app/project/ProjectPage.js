@@ -9,7 +9,7 @@ import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
 
 import ProjectListComponent from './ProjectListComponent';
-import ContentTypeListComponent from './contentType/ContentTypeListComponent';
+import ContentTypeListComponent from './content/ContentTypeListComponent';
 import ContentListComponent from './content/ContentListComponent';
 import ContentForm from './content/ContentForm';
 

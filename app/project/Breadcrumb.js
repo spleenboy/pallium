@@ -7,7 +7,6 @@ import Icon from '../ui/Icon';
 import styles from './Breadcrumb.css';
 
 import * as ProjectActions from './ProjectActions';
-import * as ContentTypeActions from './contentType/ContentTypeActions';
 import * as ContentActions from './content/ContentActions';
 
 const remote = require('remote');
@@ -121,9 +120,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openProject: ProjectActions.open,
     clearProject: ProjectActions.clear,
-    clearContentType: ContentTypeActions.clearContentType,
-    clearContent: ContentActions.clear,
-    createContent: ContentActions.create,
+    clearContentType: ContentActions.clearContentType,
+    clearContent: ContentActions.clearContent,
+    createContent: ContentActions.createContent,
   }, dispatch);
 }
 

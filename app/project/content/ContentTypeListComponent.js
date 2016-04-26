@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from './ContentTypeActions.js';
+import * as Actions from './ContentActions.js';
 import styles from './ContentTypeListComponent.css';
 
 import List from '../../ui/List';

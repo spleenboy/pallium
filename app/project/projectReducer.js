@@ -1,5 +1,4 @@
 import * as Actions from './ProjectActions';
-import ContentTypeReducerMethods from './contentType/ContentTypeReducerMethods.js';
 import ContentReducerMethods from './content/ContentReducerMethods.js';
 
 const initialState = false;
@@ -13,7 +12,6 @@ export default function handle(state = initialState, action) {
   return state;
 }
 
-Object.assign(methods, ContentTypeReducerMethods);
 Object.assign(methods, ContentReducerMethods);
 
 methods[Actions.CLEAR_PROJECT] = function(state, action) {
