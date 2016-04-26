@@ -1,3 +1,7 @@
-export default function uid() {
-  return [1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,b);
+export const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+export default function uid(length = 16) {
+  return 'x'.repeat(length).replace(/[x]/g, c => {
+    return pool[Math.floor(Math.random() * pool.length)];
+  });
 }

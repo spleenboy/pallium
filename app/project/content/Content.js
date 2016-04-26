@@ -3,19 +3,22 @@ import path from 'path';
 import uid from '../../storage/uid';
 
 export default class Content {
-  constructor(contentType, data = {}, id = null) {
-    this.id = id || uid();
-    this.contentType = contentType;
+  constructor(project, data = {}, _id = null) {
+    this._id = _id || uid();
+    this.project = project;
+    this.contentType = project.contentType;
     this.values = {};
     this.load(data);
   }
 
   toJson() {
     return {
-      id: this.id,
+      _id: this._id,
+      contentType: this.contentType.settings.handle,
       title: this.title,
-      filename: this.filename,
       directory: this.directory,
+      filename: this.filename,
+      fullpath: this.fullpath,
       metadata: this.metadata,
       values: this.values,
     }
@@ -61,8 +64,8 @@ export default class Content {
     return parts.join(path.sep);
   }
 
-  fullpath(...baseDirs) {
-    let baseDir = path.join(baseDirs);
+  get fullpath() {
+    let baseDir = path.join(path.dirname(this.project.path), this.project.directory);
     return path.join(baseDir, this.directory, this.filename);
   }
 

@@ -3,7 +3,7 @@
     "description": "A sample blog editor",
     "icon": "chat",
     "directory": "content",
-    "indexDirectory": "content/index",
+    "database": "db/blog.db",
     "contentTypes": [
     {
       "settings": {
