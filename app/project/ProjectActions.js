@@ -37,6 +37,7 @@ export function open(path) {
       dispatch(Toast.thinking(false));
 
       if (!err) {
+        project.path = path;
         dispatch(opened(project));
         dispatch(ProjectList.add(project, path));
       } else {

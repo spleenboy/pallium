@@ -59,7 +59,7 @@ export function clearContent() {
 **/
 export function saveContent(project, data, _id = null) {
   return dispatch => {
-    const index = new ContentIndex(project.database);
+    const index = new ContentIndex(project);
     const content = new Content(project, data, _id);
     const contentType = project.contentType;
     const contentData = content.toJson();
@@ -97,7 +97,7 @@ export function setList(contentList) {
 
 export function loadList(project, handle) {
   return dispatch => {
-    const index = new ContentIndex(project.database);
+    const index = new ContentIndex(project);
     index.find({
       contentType: handle
     })

@@ -1,3 +1,4 @@
+import path from 'path';
 import Datastore from 'nedb';
 
 /**
@@ -9,7 +10,9 @@ const stores = {};
  * Manages the list of content for a project
 **/
 export default class ContentIndex {
-  constructor(filename) {
+  constructor(project) {
+    const baseDir = path.dirname(project.path);
+    const filename = path.join(baseDir, project.database);
     if (!stores[filename]) {
       stores[filename] = new Datastore({filename, autoload: true});
     }
