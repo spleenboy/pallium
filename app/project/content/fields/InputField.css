@@ -1,10 +1,19 @@
 .inputField {
   width: 100%;
   padding: 1rem;
+  transition: color 0.5s;
+}
+
+.active {
+  color: var(--blue);
+}
+
+.inactive {
+  color: var(--gray);
 }
 
 .label {
-  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .input {
@@ -14,12 +23,9 @@
   font-size: 1.5rem;
   border: none;
   border-bottom: 2px solid var(--gray);
-  color: var(--gray);
-  transition: color 0.5s;
 }
 
 .input:focus {
   outline: none;
   border-bottom: 2px solid var(--blue);
-  color: var(--blue);
 }
