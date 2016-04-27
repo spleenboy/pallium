@@ -33,7 +33,7 @@ export default class Transport {
         delete data[key];
       }
       else if (typeof data[key] === 'object') {
-        data[key] = this.cleanup(data[key]);
+        data[key] = this.clean(data[key]);
       }
     });
     return data;
@@ -76,7 +76,7 @@ export default class Transport {
     }
 
     if (this.contentKey) {
-      return '---\n' + front + '---\n' + content;
+      return '---\n' + front + '\n---\n' + content;
     } else {
       return front;
     }

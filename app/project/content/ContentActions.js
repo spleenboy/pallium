@@ -82,14 +82,16 @@ export function saveContent(project, data, _id = null) {
         fs.unlink(old.fullpath);
       }
 
-      dispatch(loadList(project));
+      dispatch(loadList(project, record.contentType));
 
       // Save the new content file
       const transport = new Transport(contentType.storage.format, contentType.storage.contentKey);
       const output = transport.export(data);
 
-      fs.outputFile(savepath, output, err => {
-        dispatch(Toast.error(err, "Error saving content"));
+      fs.outputFile(record.fullpath, output, err => {
+        if (err) {
+          dispatch(ToastActions.error(err, "Error saving content"));
+        }
       });
     });
   };
