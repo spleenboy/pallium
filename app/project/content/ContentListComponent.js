@@ -7,6 +7,7 @@ import styles from './ContentListComponent.css';
 
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
+import Button from '../../ui/Button';
 
 export class ContentListComponent extends Component {
   handleSelect(fullpath, _id, e) {
@@ -27,8 +28,10 @@ export class ContentListComponent extends Component {
         <ListItem
           key={i}
           className={cn}
-          onClick={this.handleSelect.bind(this, c.fullpath, c._id)}
-        >
+          avatar={c.title[0]}
+          subtitle={`${c.directory}${c.filename}`}
+          className={styles.item}
+          onClick={this.handleSelect.bind(this, c.fullpath, c._id)}>
           {c.title}
         </ListItem>
       );

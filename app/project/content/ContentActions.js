@@ -40,6 +40,13 @@ export function createContent(project) {
 }
 
 
+export function deleteContent(project, fullpath, _id) {
+  return dispatch => {
+    dispatch(clearContent());
+  }
+}
+
+
 export function openContent(project, fullpath, _id) {
   return dispatch => {
     dispatch(ToastActions.thinking(true));

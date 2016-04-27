@@ -5,3 +5,23 @@
 .item:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+
+.avatar {
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  color: var(--lime)!important;
+}
+
+.icon {
+
+}
+
+.sub-title {
+
+}
+
+.text-body {
+
+}

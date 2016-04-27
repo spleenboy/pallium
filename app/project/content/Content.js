@@ -1,6 +1,7 @@
 import * as Calculate from './Calculate';
 import path from 'path';
 import uid from '../../storage/uid';
+import slug from '../../storage/slug';
 
 export default class Content {
   constructor(project, data = {}, _id = null) {
@@ -55,7 +56,8 @@ export default class Content {
   }
 
   get filename() {
-    const parts = this.calculate(this.contentType.storage.filename);
+    let parts = this.calculate(this.contentType.storage.filename);
+    parts = parts.map(slug);
     return parts.join('') + '.' + this.contentType.storage.extension;
   }
 

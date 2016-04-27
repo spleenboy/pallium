@@ -1,3 +1,11 @@
-.contentList {
+.contentList .item {
+  transition: background 0.5s;
+}
 
+.item {
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: var(--lime);
 }

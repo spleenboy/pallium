@@ -40,11 +40,11 @@ export default class ListItem extends Component {
       cns.push('mdl-list__item--two-line');
     }
 
-    const area = (type, children) => {
+    const area = (type, children, extras = '') => {
       if (!children) {
         return null;
       }
-      let cn = `mdl-list__item-${type}`;
+      let cn = `mdl-list__item-${type} ${styles[type]} ${extras}`;
       return (
         <span className={cn}>{children}</span>
       );
@@ -63,8 +63,8 @@ export default class ListItem extends Component {
     return (
       <li className={cns.join(' ')} onClick={this.handleClick.bind(this)}>
         <span className="mdl-list__item-primary-content">
-          {area('avatar material-icons', this.props.avatar)}
-          {area('icon material-icons', this.props.icon)}
+          {area('icon', this.props.icon, 'material-icons')}
+          {area('avatar', this.props.avatar)}
           {this.props.children}
           {area('sub-title', this.props.subtitle)}
           {area('text-body', this.props.body)}
