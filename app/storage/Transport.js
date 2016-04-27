@@ -10,7 +10,7 @@ export const ENCODING = 'utf8';
  * json or yaml front-matter.
  **/
 export default class Transport {
-  constructor(format = JSON_FORMAT, contentKey = null) {
+  constructor(format = YAML_FORMAT, contentKey = null) {
     this.format = format;
     this.contentKey = contentKey;
   }
