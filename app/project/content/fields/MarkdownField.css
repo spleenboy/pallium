@@ -1,0 +1,19 @@
+.editor {
+
+}
+
+.textarea {
+  composes: input from './InputField.css';
+}
+
+.preview {
+  overflow: auto;
+  cursor: pointer;
+  border: 1px solid var(--gray);
+  transition: all 0.2s;
+}
+
+.preview:hover {
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}

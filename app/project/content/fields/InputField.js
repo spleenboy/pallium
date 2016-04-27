@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './InputField.css';
 
-export default class Inputfield extends Component {
+export default class InputField extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,21 +39,35 @@ export default class Inputfield extends Component {
   }
 
 
-  render() {
+  renderLabel() {
+    const {name, label} = this.props.definition;
+    return (
+      <label className={styles.label} htmlFor={name}>{label}</label>
+    );
+  }
+
+
+  renderInput() {
     const {
       name,
       type,
       label,
-      hint,
       attributes
     } = this.props.definition;
 
+    return (
+      <input ref="input" className={styles.input} name={name} id={name} type={type} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
+    );
+  }
+
+
+  render() {
     let mode = this.state.active ? styles.active : styles.inactive;
 
     return (
-      <div className={`${styles.inputField} ${mode}`}>
-        <input ref="input" className={styles.input} name={name} id={name} type={type} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
-        <label className={styles.label} htmlFor={name}>{label}</label>
+      <div className={`${styles.inputField} ${mode}`} onClick={this.handleFocus.bind(this)}>
+        {this.renderInput()}
+        {this.renderLabel()}
       </div>
     );
   }

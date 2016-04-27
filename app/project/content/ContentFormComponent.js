@@ -16,6 +16,7 @@ export class ContentFormComponent extends Component {
   handleSave(e) {
     const {project, content} = this.props;
     this.props.saveContent(project, content.values, content._id);
+    this.props.clearContent();
   }
 
   handleFieldValueChange(definition, value, e) {
@@ -26,7 +27,7 @@ export class ContentFormComponent extends Component {
     const {contentType, content} = this.props;
 
     const fields = contentType.fields.map((def, i) => {
-      const Field = Fields[def.type || 'text'];
+      const Field = Fields[def.type || 'default'];
       if (!Field) {
         console.error("Invalid field definition", def);
       }

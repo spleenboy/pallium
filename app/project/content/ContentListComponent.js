@@ -22,7 +22,7 @@ export class ContentListComponent extends Component {
     }
 
     let items = contentList.map((c, i) => {
-      let cn = c.id === content && content.id ? styles.active : "";
+      let cn = c._id === content && content._id ? styles.active : "";
       return (
         <ListItem
           key={i}
