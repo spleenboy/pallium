@@ -4,16 +4,10 @@ import marked from 'marked';
 import styles from './MarkdownField.css';
 import InputField from './InputField';
 
-export const DEFAULT_ROWS = 4;
-export const ROW_HEIGHT = 18;
+const DEFAULT_ROWS = 4;
+const ROW_HEIGHT = 32;
 
-export default class Textareafield extends InputField {
-  inlineStyle() {
-    const rows = this.props.definition.rows || DEFAULT_ROWS;
-    const height = rows & ROW_HEIGHT;
-    return {height};
-  }
-
+export default class MarkdownField extends InputField {
   renderEditor() {
     const {
       name,
@@ -22,7 +16,7 @@ export default class Textareafield extends InputField {
     } = this.props.definition;
 
     return (
-      <textarea ref="input" className={styles.textarea} style={this.inlineStyle()} name={name} id={name} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
+      <textarea ref="input" className={styles.textarea} rows={rows ? rows : DEFAULT_ROWS} name={name} id={name} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
     );
   }
 
@@ -34,7 +28,7 @@ export default class Textareafield extends InputField {
     }
 
     return (
-      <div ref="preview" className={styles.preview} style={this.inlineStyle()} dangerouslySetInnerHTML={preview(this.props.value)}></div>
+      <div ref="preview" className={styles.preview} dangerouslySetInnerHTML={preview(this.props.value)}></div>
     );
   }
 

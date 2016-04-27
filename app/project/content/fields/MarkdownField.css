@@ -8,12 +8,23 @@
 
 .preview {
   overflow: auto;
+  max-height: 80%;
+  padding: 1rem;
   cursor: pointer;
   border: 1px solid var(--gray);
+  color: var(--gray);
   transition: all 0.2s;
 }
 
 .preview:hover {
-  color: var(--blue);
+  color: var(--black);
   border: 1px solid var(--blue);
+}
+
+.preview:hover h1 {
+  color: var(--blue);
+}
+
+.preview:hover h2 {
+  color: var(--orange);
 }

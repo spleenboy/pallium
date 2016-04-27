@@ -36,11 +36,13 @@
           {
               "name": "description",
               "type": "textarea",
+              "rows": 5,
               "label": "Description"
           },
           {
               "name": "body",
               "type": "md",
+              "rows": 20,
               "label": "Content",
               "attributes": {
                   "required": true
@@ -91,6 +93,7 @@
             {
                 "name": "body",
                 "type": "md",
+                "rows": 20,
                 "label": "Content",
                 "attributes": {
                     "required": true

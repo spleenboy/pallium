@@ -2,8 +2,10 @@
   --header-height: 60px;
   --header-half-height: 30px;
   --white: rgb(255, 255, 255);
+  --black: rgb(30, 30, 30);
   --lime: rgb(160, 255, 90);
   --blue: rgb(63, 81, 181);
+  --orange: rgb(255, 212, 0);
   --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(200, 200, 200);
 }
