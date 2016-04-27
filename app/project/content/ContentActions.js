@@ -50,8 +50,8 @@ export function openContent(project, fullpath, _id) {
 
     fs.readFile(fullpath, ENCODING, (err, data) => {
       dispatch(ToastActions.thinking(false));
-      values = transport.import(data);
-      dispatch(update(project, values, _id));
+      const values = transport.import(data);
+      dispatch(setContent(project, values, _id));
     });
   }
 }

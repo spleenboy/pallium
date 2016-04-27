@@ -19,10 +19,10 @@ export default class ContentIndex {
     this.store = stores[filename];
   }
 
-  save(content) {
-    const record = content.toJson();
+  // Saves a JSON content object
+  save(record) {
     return new Promise((resolve, reject) => {
-      this.store.findOne({_id: content._id}, (err, old) => {
+      this.store.findOne({_id: record._id}, (err, old) => {
         if (err) {
           return reject(err);
         }

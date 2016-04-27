@@ -49,9 +49,7 @@ export class Breadcrumb extends Component {
 
 
   render() {
-    const {project, projectList} = this.props;
-    const contentType = project && project.contentType;
-    const content = project && project.content;
+    const {project, projectList, contentType, content} = this.props;
 
     const items = [(
       <div className={styles.item + ' ' + styles.root + ' ' + styles.link} key={0}>
@@ -78,9 +76,9 @@ export class Breadcrumb extends Component {
           <span className={styles.btn} onClick={this.handleClearContent.bind(this)}>{contentType.settings.plural}</span>
         );
 
-        if (project.content) {
+        if (content) {
           add(
-            <span className={styles.btn}>{project.content.title}</span>
+            <span className={styles.btn}>{content.title}</span>
           );
         } else {
           add(
@@ -113,6 +111,8 @@ function mapStateToProps(state) {
   return {
     projectList: state.projectList,
     project: state.project,
+    contentType: state.project && state.project.contentType,
+    content: state.project && state.project.contentType && state.project.contentType.content,
   };
 }
 

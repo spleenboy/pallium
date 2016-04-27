@@ -9,8 +9,8 @@ import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentListComponent extends Component {
-  handleSelect(path, e) {
-    this.props.openContent(this.props.contentType, path);
+  handleSelect(fullpath, _id, e) {
+    this.props.openContent(this.props.project, fullpath, _id);
   }
 
 
@@ -27,8 +27,7 @@ export class ContentListComponent extends Component {
         <ListItem
           key={i}
           className={cn}
-          onClick={this.handleSelect.bind(this, c.path)}
-          icon={c.settings.icon ? ct.settings.icon : "view list"}
+          onClick={this.handleSelect.bind(this, c.fullpath, c._id)}
         >
           {c.title}
         </ListItem>
@@ -45,10 +44,15 @@ export class ContentListComponent extends Component {
 }
 
 function mapStateToProps(state) {
+  const project = state.project;
+  const contentType = project && project.contentType;
+  const content = contentType && contentType.content;
+  const contentList = contentType && contentType.contentList;
   return {
-    contentType: state.project.contentType,
-    content: state.project.contentType.content,
-    contentList: state.project.contentType.contentList,
+    project,
+    contentType,
+    content,
+    contentList,
   };
 }
 

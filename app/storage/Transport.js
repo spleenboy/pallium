@@ -1,7 +1,7 @@
 import {safeLoad, safeDump} from 'js-yaml';
 
-export const JSON = 'json';
-export const YAML = 'yaml';
+export const JSON_FORMAT = 'json';
+export const YAML_FORMAT = 'yaml';
 export const ENCODING = 'utf8';
 
 /**
@@ -10,7 +10,7 @@ export const ENCODING = 'utf8';
  * json or yaml front-matter.
  **/
 export default class Transport {
-  constructor(format = Json, contentKey = null) {
+  constructor(format = JSON_FORMAT, contentKey = null) {
     this.format = format;
     this.contentKey = contentKey;
   }
@@ -67,9 +67,9 @@ export default class Transport {
       content = '';
     }
 
-    if (this.format === Yaml) {
+    if (this.format === YAML_FORMAT) {
         front = safeDump(data);
-    } else if (this.format === Json) {
+    } else if (this.format === JSON_FORMAT) {
         front = JSON.stringify(data, true);
     } else {
         front = '';

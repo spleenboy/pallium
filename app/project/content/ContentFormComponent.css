@@ -5,3 +5,24 @@
 .fields {
 
 }
+
+.bottom {
+  width: 100%;
+  border-top: 1px solid var(--blue);
+  background-color: var(--gray);
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+}
+
+.bottom .buttons {
+  margin-right: 20px;
+}
+
+.bottom .buttons button {
+  margin: 0.5rem;
+}

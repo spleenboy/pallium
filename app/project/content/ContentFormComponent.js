@@ -8,8 +8,14 @@ import * as Actions from './ContentActions.js';
 import styles from './ContentFormComponent.css';
 
 export class ContentFormComponent extends Component {
-  handleSave(e) {
+  handleCancel(e) {
+    this.props.clearContent();
+  }
 
+
+  handleSave(e) {
+    const {project, content} = this.props;
+    this.props.saveContent(project, content.values, content._id);
   }
 
   handleFieldValueChange(definition, value, e) {
@@ -33,7 +39,10 @@ export class ContentFormComponent extends Component {
           {fields}
         </div>
         <div className={styles.bottom}>
-          <Button onClick={this.handleSave.bind(this)}>Save</Button>
+          <div className={styles.buttons}>
+            <Button onClick={this.handleCancel.bind(this)}>Cancel</Button>
+            <Button primary={true} raised={true} onClick={this.handleSave.bind(this)}>Save</Button>
+          </div>
         </div>
       </div>
     );
@@ -43,8 +52,9 @@ export class ContentFormComponent extends Component {
 
 function mapStateToProps(state) {
   return {
-    contentType: state.project.contentType,
-    content: state.project.contentType.content,
+    project: state.project,
+    contentType: state.project && state.project.contentType,
+    content: state.project && state.project.contentType && state.project.contentType.content,
   };
 }
 
@@ -52,6 +62,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     saveContent: Actions.saveContent,
     updateContent: Actions.updateContent,
+    clearContent: Actions.clearContent,
   }, dispatch);
 }
 
