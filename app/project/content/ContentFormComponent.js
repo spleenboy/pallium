@@ -13,7 +13,7 @@ export class ContentFormComponent extends Component {
   }
 
   handleFieldValueChange(definition, value, e) {
-
+    this.props.updateContent(definition.name, value);
   }
 
   render() {
@@ -24,7 +24,7 @@ export class ContentFormComponent extends Component {
       if (!Field) {
         console.error("Invalid field definition", def);
       }
-      return <Field key={i} definition={def} onChange={this.handleFieldValueChange.bind(this)}/>
+      return <Field key={i} definition={def} value={content.values[def.name]} onValueChange={this.handleFieldValueChange.bind(this)}/>
     });
 
     return (
@@ -51,6 +51,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     saveContent: Actions.saveContent,
+    updateContent: Actions.updateContent,
   }, dispatch);
 }
 

@@ -7,10 +7,19 @@ import ContentIndex from './ContentIndex';
 import Content from './Content';
 
 export const SET_CONTENT = 'set.content';
+export const UPDATE_CONTENT = 'update.content';
 export const CLEAR_CONTENT = 'clear.content';
 export const SET_CONTENT_TYPE = 'set.contentType';
 export const CLEAR_CONTENT_TYPE = 'clear.contentType';
 export const SET_CONTENT_LIST = 'set.contentList';
+
+
+export function updateContent(key, value) {
+  return {
+    type: UPDATE_CONTENT,
+    key, value
+  }
+}
 
 
 export function setContent(project, data, _id = null) {

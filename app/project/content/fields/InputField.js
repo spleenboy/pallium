@@ -14,6 +14,7 @@ export default class Inputfield extends Component {
   static get PropTypes() {
     return {
       definition: PropTypes.object.isRequired,
+      value: PropTypes.object.isRequired,
       onValueChange: PropTypes.func.isRequired,
       onFocus: PropTypes.func,
       onBlur: PropTypes.func,
@@ -23,18 +24,18 @@ export default class Inputfield extends Component {
 
   handleFocus(e) {
     this.setState({active: true});
-    this.props.onFocus && this.props.onFocus(e);
+    this.props.onFocus && this.props.onFocus(this.props.definition, this.refs.input.value, e);
   }
 
 
   handleBlur(e) {
     this.setState({active: false});
-    this.props.onBlur && this.props.onBlur(e);
+    this.props.onBlur && this.props.onBlur(this.props.definition, this.refs.input.value, e);
   }
 
 
   handleValueChange(e) {
-    this.props.onValueChange && this.props.onValueChange(this.props.definition, e.value, e);
+    this.props.onValueChange && this.props.onValueChange(this.props.definition, this.refs.input.value, e);
   }
 
 
@@ -43,19 +44,15 @@ export default class Inputfield extends Component {
       name,
       type,
       label,
-      defaultValue,
-      value,
       hint,
       attributes
     } = this.props.definition;
-
-    const calculatedValue = typeof value !== 'undefined' ? value : defaultValue;
 
     let mode = this.state.active ? styles.active : styles.inactive;
 
     return (
       <div className={`${styles.inputField} ${mode}`}>
-        <input className={styles.input} name={name} id={name} type={type} value={calculatedValue} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
+        <input ref="input" className={styles.input} name={name} id={name} type={type} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
         <label className={styles.label} htmlFor={name}>{label}</label>
       </div>
     );

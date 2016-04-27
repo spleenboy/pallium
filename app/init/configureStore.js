@@ -10,8 +10,6 @@ import filter from 'redux-storage-decorator-filter';
 import rootReducer from './reducers';
 
 import createLogger from 'redux-logger';
-import DevTools from '../dev/DevTools';
-import { persistState } from 'redux-devtools';
 
 const isProduction = process.env.MODE_ENV === 'production';
 
@@ -34,23 +32,11 @@ if (isProduction) {
     collapsed: true,
   });
 
-  enhancer = compose(
-    applyMiddleware(thunk, router, logger, remember),
-    DevTools.instrument(),
-    persistState(
-      window.location.href.match(
-        /[?&]debug_session=([^&]+)\b/
-      )
-    )
-  );
+  enhancer = applyMiddleware(thunk, router, logger, remember);
 }
 
-const createPersistentStore = compose(
-  persistState(['projectList', 'project'])
-)(createStore);
-
 export default function configureStore(initialState) {
-  const store = createPersistentStore(rootReducer, initialState, enhancer);
+  const store = createStore(rootReducer, initialState, enhancer);
 
   const restore = storage.createLoader(engine);
   restore(store);

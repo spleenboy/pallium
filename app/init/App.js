@@ -7,17 +7,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
-        {
-          (() => {
-            if (process.env.NODE_ENV !== 'production') {
-              const DevTools = require('../dev/DevTools');
-              return <DevTools />;
-            }
-          })()
-        }
-      </div>
+      <div>{this.props.children}</div>
     );
   }
 }

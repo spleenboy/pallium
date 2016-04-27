@@ -1,9 +1,24 @@
 import * as Actions from './ContentActions';
+import Content from './Content';
 
 const methods = {};
 
 methods[Actions.SET_CONTENT] = function(state, action) {
   state.contentType.content = action.content;
+  return state;
+}
+
+methods[Actions.UPDATE_CONTENT] = function(state, action) {
+  const project = state;
+  const contentValues = project.contentType.content.values;
+  const _id = project.contentType.content._id;
+
+  contentValues[action.key] = action.value;
+
+  const content = new Content(project, contentValues, _id);
+
+  state.contentType.content = content.toJson();
+
   return state;
 }
 
