@@ -1,9 +1,10 @@
-.editor {
-
-}
-
 .textarea {
   composes: input from './InputField.css';
+  border: 1px solid transparent;
+}
+
+.textarea:hover {
+  border: 1px solid var(--gray);
 }
 
 .preview {

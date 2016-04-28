@@ -31,7 +31,7 @@ export class ContentTypeListComponent extends Component {
           onClick={this.handleSelect.bind(this, ct)}
           icon={ct.settings.icon ? ct.settings.icon : "view list"}
         >
-          {ct.settings.title}
+          {ct.settings.plural}
         </ListItem>
       );
     });

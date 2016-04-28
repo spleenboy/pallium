@@ -8,6 +8,13 @@ const DEFAULT_ROWS = 4;
 const ROW_HEIGHT = 32;
 
 export default class MarkdownField extends InputField {
+  onComponentDidUpdate(prevProps, prevState) {
+    if (!prevState.active && this.state.active) {
+      this.refs.input.select();
+    }
+  }
+
+
   renderEditor() {
     const {
       name,
@@ -23,7 +30,7 @@ export default class MarkdownField extends InputField {
 
   renderPreview() {
     const preview = (value) => {
-      const __html = marked(value);
+      const __html = marked(value || '');
       return {__html};
     }
 

@@ -50,7 +50,7 @@ export default class Transport {
     }
 
     if (this.contentKey) {
-      data[this.contentKey] = parts.content || '';
+      data[this.contentKey] = (parts.content || '').trim();
     }
 
     return data;

@@ -7,5 +7,21 @@
 }
 
 .item:hover {
-  background-color: var(--lime);
+  background-color: var(--orange);
+}
+
+.metadata {
+
+}
+
+.metadata .term {
+  font-style: italic;
+}
+
+.metadata .term:after {
+  content: ": ";
+}
+
+.metadata .definition {
+  clear: right;
 }
