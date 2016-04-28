@@ -29,3 +29,37 @@
   outline: none;
   border-bottom: 2px solid var(--blue);
 }
+
+input[type=color] {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+}
+
+input[type=date] {
+  width: 14rem;
+}
+
+input[type=month] {
+  width: 16rem;
+}
+
+input[type=number] {
+  width: 8rem;
+}
+
+.inputField.radio .label,
+.inputField.checkbox .label,
+.inputField.radio .input,
+.inputField.checkbox .input
+{
+  display: inline;
+}
+
+.inputField.radio .input,
+.inputField.checkbox .input
+{
+  width: auto;
+  transform: scale(2);
+  margin-right: 1rem;
+}

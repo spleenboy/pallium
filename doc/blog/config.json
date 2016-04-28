@@ -41,6 +41,12 @@
             }
         },
         {
+            "name": "checkbox",
+            "type": "checkbox",
+            "label": "checkbox",
+            "value": "checked"
+        },
+        {
             "name": "color",
             "type": "color",
             "label": "color",
