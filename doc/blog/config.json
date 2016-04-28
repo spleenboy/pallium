@@ -44,7 +44,11 @@
             "name": "checkbox",
             "type": "checkbox",
             "label": "checkbox",
-            "value": "checked"
+            "options": [
+                {"label": "Option 1", "value": "Option 1"},
+                {"label": "Option 2", "value": "Option 2"},
+                {"label": "Option 3", "value": "Option 3"}
+            ]
         },
         {
             "name": "color",

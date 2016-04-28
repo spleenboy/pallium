@@ -55,19 +55,3 @@ input[type=time] {
 input[type=week] {
   width: 14rem;
 }
-
-.inputField.radio .label,
-.inputField.checkbox .label,
-.inputField.radio .input,
-.inputField.checkbox .input
-{
-  display: inline;
-}
-
-.inputField.radio .input,
-.inputField.checkbox .input
-{
-  width: auto;
-  transform: scale(2);
-  margin-right: 1rem;
-}

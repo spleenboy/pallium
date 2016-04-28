@@ -27,22 +27,7 @@ export default class Transport {
   }
 
   clean(output) {
-    const data = Object.assign({}, output);
-    const keys = Object.keys(data);
-    keys.forEach((key) => {
-      if (data[key] === undefined) {
-        delete data[key];
-      }
-      else if (typeof data[key] === 'object') {
-        let cleaned = this.clean(data[key]);
-        if (JSON.stringify(cleaned) !== EMPTY_JSON_OBJECT) {
-            data[key] = this.clean(data[key]);
-        } else {
-            data[key] = null;
-        }
-      }
-    });
-    return data;
+    return Object.assign({}, output);
   }
 
   import(input) {
