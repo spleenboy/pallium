@@ -1,5 +1,6 @@
-import {safeLoad, safeDump} from 'js-yaml';
+import {safeLoad, dump} from 'js-yaml';
 
+export const EMPTY_JSON_OBJECT = JSON.stringify({});
 export const JSON_FORMAT = 'json';
 export const YAML_FORMAT = 'yaml';
 export const ENCODING = 'utf8';
@@ -33,7 +34,12 @@ export default class Transport {
         delete data[key];
       }
       else if (typeof data[key] === 'object') {
-        data[key] = this.clean(data[key]);
+        let cleaned = this.clean(data[key]);
+        if (JSON.stringify(cleaned) !== EMPTY_JSON_OBJECT) {
+            data[key] = this.clean(data[key]);
+        } else {
+            data[key] = null;
+        }
       }
     });
     return data;
@@ -68,7 +74,7 @@ export default class Transport {
     }
 
     if (this.format === YAML_FORMAT) {
-        front = safeDump(data);
+        front = dump(data);
     } else if (this.format === JSON_FORMAT) {
         front = JSON.stringify(data, true);
     } else {
@@ -76,7 +82,7 @@ export default class Transport {
     }
 
     if (this.contentKey) {
-      return '---\n' + front + '\n---\n' + content;
+      return '---\n' + front.trim() + '\n---\n' + content;
     } else {
       return front;
     }

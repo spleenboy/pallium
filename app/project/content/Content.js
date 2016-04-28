@@ -35,7 +35,6 @@ export default class Content {
         return part;
       }
     });
-    return null;
   }
 
   get title() {
@@ -104,7 +103,7 @@ export default class Content {
         this.values[field.name] = field.defaultValue;
       } else {
         // Nothing to see
-        this.values[field.name] = null;
+        this.values[field.name] = "";
       }
     });
   }
