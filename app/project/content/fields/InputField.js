@@ -72,14 +72,26 @@ export default class InputField extends Component {
   }
 
 
+  renderHeader() {
+    return null;
+  }
+
+
+  renderError() {
+    return null;
+  }
+
+
   render() {
     let mode = this.state.active ? styles.active : styles.inactive;
     let type = styles[this.props.definition.type] || '';
 
     return (
       <div className={`${styles.inputField} ${mode} ${type}`} onClick={this.handleFocus.bind(this)}>
+        {this.renderHeader()}
         {this.renderInput()}
         {this.renderLabel()}
+        {this.renderError()}
       </div>
     );
   }

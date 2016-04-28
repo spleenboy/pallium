@@ -49,9 +49,9 @@ input[type=number] {
 }
 
 input[type=time] {
-  width: 8rem;
+  width: 14rem;
 }
 
 input[type=week] {
-  width: 14rem;
+  width: 18rem;
 }

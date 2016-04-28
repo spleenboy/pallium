@@ -1,0 +1,32 @@
+.range {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  border-bottom: 2px solid var(--gray);
+  height: 0px;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background: var(--gray);
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  background: var(--orange);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 0;
+  height: 3rem;
+  width: 1rem;
+  border-radius: 3px;
+  border: 1px solid var(--gray);
+  cursor: pointer;
+}
