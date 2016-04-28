@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import marked from 'marked';
+import autosize from 'autosize';
 
 import styles from './MarkdownField.css';
 import InputField from './InputField';
@@ -8,10 +9,12 @@ const DEFAULT_ROWS = 4;
 const ROW_HEIGHT = 32;
 
 export default class MarkdownField extends InputField {
-  onComponentDidUpdate(prevProps, prevState) {
-    if (!prevState.active && this.state.active) {
-      this.refs.input.select();
-    }
+  componentDidMount() {
+    autosize(this.refs.input);
+  }
+
+  componentWillUnmount() {
+    autosize.destroy(this.refs.input);
   }
 
 

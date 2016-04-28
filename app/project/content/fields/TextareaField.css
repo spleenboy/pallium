@@ -2,6 +2,7 @@
   composes: input from './InputField.css';
   border: 1px solid transparent;
   transition: border 0.5s;
+  min-height: 10rem;
 }
 
 .textarea:hover {

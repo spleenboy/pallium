@@ -70,6 +70,7 @@
             "type": "email",
             "label": "email",
             "attributes": {
+                "placeholder": "example@domain.com"
             }
         },
         {

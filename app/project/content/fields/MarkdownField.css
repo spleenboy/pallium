@@ -1,6 +1,7 @@
 .textarea {
   composes: input from './InputField.css';
   border: 1px solid transparent;
+  height: auto;
 }
 
 .textarea:hover {
@@ -8,8 +9,7 @@
 }
 
 .preview {
-  overflow: auto;
-  max-height: 80%;
+  height: auto;
   padding: 1rem;
   cursor: pointer;
   border: 1px solid var(--gray);
