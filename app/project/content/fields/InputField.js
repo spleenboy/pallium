@@ -56,7 +56,18 @@ export default class InputField extends Component {
     } = this.props.definition;
 
     return (
-      <input ref="input" className={styles.input} name={name} id={name} type={type} value={this.props.value} {...attributes} onChange={this.handleValueChange.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}/>
+      <input
+        ref="input"
+        className={styles.input}
+        name={name}
+        id={name}
+        type={type}
+        value={this.props.value}
+        onChange={this.handleValueChange.bind(this)}
+        onFocus={this.handleFocus.bind(this)}
+        onBlur={this.handleBlur.bind(this)}
+        {...attributes}
+      />
     );
   }
 

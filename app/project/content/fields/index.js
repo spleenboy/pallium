@@ -1,6 +1,6 @@
 export default {
   'default': require('./InputField'),
-  'date': require('./DateField'),
   'md': require('./MarkdownField'),
+  'select': require('./SelectField'),
   'textarea': require('./TextareaField'),
 };

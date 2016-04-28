@@ -124,6 +124,7 @@
             "type": "select",
             "label": "select",
             "options": [
+                {"label": "Select an Option...", "value": ""},
                 {"label": "Option 1", "value": "Value 1"},
                 {"label": "Option 2", "value": "Value 2"}
             ]

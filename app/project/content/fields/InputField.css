@@ -48,6 +48,14 @@ input[type=number] {
   width: 8rem;
 }
 
+input[type=time] {
+  width: 8rem;
+}
+
+input[type=week] {
+  width: 14rem;
+}
+
 .inputField.radio .label,
 .inputField.checkbox .label,
 .inputField.radio .input,

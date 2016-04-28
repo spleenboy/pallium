@@ -1,0 +1,8 @@
+.selectField {
+  display: block;
+  -webkit-appearance: button;
+  background-color: var(--orange);
+  color: var(--black);
+  font-size: 1.5rem;
+  padding: 1rem;
+}
