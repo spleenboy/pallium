@@ -82,18 +82,16 @@ export class Breadcrumb extends Component {
           );
         } else {
           add(
-            <span onClick={this.handleNewContentClick.bind(this)} className={styles.btn}>
-              New {contentType.settings.title}
-              <Icon className={styles.icon}>{contentType.settings.icon ? contentType.settings.icon : "add"}</Icon>
+            <span onClick={this.handleNewContentClick.bind(this)} className={styles.btn} title={`Add a new ${contentType.settings.title}`}>
+              <Icon className={styles.icon}>add</Icon>
             </span>
           );
         }
       }
     } else {
         add(
-          <span onClick={this.handleOpenClick.bind(this)} className={styles.btn}>
-            Open a Project
-            <Icon className={styles.icon}>add</Icon>
+          <span onClick={this.handleOpenClick.bind(this)} className={styles.btn} title="Open a Project">
+            <Icon className={styles.icon}>folder open</Icon>
           </span>
         );
     }

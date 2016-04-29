@@ -1,0 +1,14 @@
+.item {
+  border: 2px solid var(--gray);
+  background-color: var(--orange-film);
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.header {
+  background-color: var(--white-film);
+}
+
+.inputs {
+
+}

@@ -6,6 +6,7 @@
   --lime: rgb(160, 255, 90);
   --blue: rgb(63, 81, 181);
   --orange: rgb(255, 212, 0);
+  --orange-film: rgba(255, 212, 0, 0.3);
   --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(200, 200, 200);
 }

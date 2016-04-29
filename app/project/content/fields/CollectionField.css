@@ -1,0 +1,10 @@
+.collection {
+  composes: inputField from './InputField.css';
+}
+
+.items {
+}
+
+.header {
+  font-weight: bold;
+}

@@ -73,7 +73,12 @@ export default class InputField extends Component {
 
 
   renderHeader() {
-    return null;
+    const {hint} = this.props.definition;
+    if (!hint) return null;
+
+    return (
+      <div className={styles.hint}>{hint}</div>
+    );
   }
 
 

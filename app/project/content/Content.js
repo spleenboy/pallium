@@ -55,8 +55,7 @@ export default class Content {
   }
 
   get filename() {
-    let parts = this.calculate(this.contentType.storage.filename);
-    parts = parts.map(slug);
+    const parts = this.calculate(this.contentType.storage.filename);
     return parts.join('') + '.' + this.contentType.storage.extension;
   }
 

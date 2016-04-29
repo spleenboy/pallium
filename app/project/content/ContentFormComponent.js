@@ -28,7 +28,14 @@ export class ContentFormComponent extends Component {
 
     const fields = contentType.fields.map((def, i) => {
       let Field = (def.type in Fields) ? Fields[def.type] : Fields['default'];
-      return <Field key={i} definition={def} value={content.values[def.name]} onValueChange={this.handleFieldValueChange.bind(this)}/>
+      return (
+        <Field
+          key={i}
+          definition={def}
+          value={content.values[def.name]}
+          onValueChange={this.handleFieldValueChange.bind(this)}
+        />
+      );
     });
 
     return (

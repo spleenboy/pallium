@@ -12,6 +12,10 @@
   color: var(--gray);
 }
 
+.hint {
+  font-style: italic;
+}
+
 .label {
   text-transform: uppercase;
 }

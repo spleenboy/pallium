@@ -1,3 +1,4 @@
+import CollectionField from './CollectionField';
 import HiddenField from './HiddenField';
 import InputField from './InputField';
 import MarkdownField from './MarkdownField';
@@ -8,6 +9,7 @@ import TextareaField from './TextareaField';
 
 export default {
   'checkbox': OptionListField,
+  'collection': CollectionField,
   'default': InputField,
   'hidden': HiddenField,
   'md': MarkdownField,

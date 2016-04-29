@@ -53,9 +53,36 @@
         {
             "name": "color",
             "type": "color",
-            "label": "color",
-            "attributes": {
+            "label": "color"
+        },
+        {
+            "name": "collection",
+            "type": "collection",
+            "label": "collection",
+            "itemName": "item",
+            "fields": [
+            {
+                "name": "title",
+                "type": "text",
+                "label": "Item Title"
+            },
+            {
+                "name": "description",
+                "type": "textarea",
+                "label": "Item Description"
+            },
+            {
+                "name": "tags",
+                "type": "collection",
+                "label": "Tags",
+                "fields": [
+                {
+                    "name": "tag",
+                    "label": "Tag"
+                }
+                ]
             }
+            ]
         },
         {
             "name": "date",
