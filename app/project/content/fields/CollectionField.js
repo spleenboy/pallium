@@ -53,7 +53,6 @@ export default class CollectionField extends InputField {
       name,
       hint,
       label,
-      fields,
       definitions
     } = this.props.definition;
     const values = this.asArray(this.props.value);

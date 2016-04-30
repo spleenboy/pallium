@@ -1,7 +1,9 @@
 ---
 text: Example Title
-checkbox: ''
-color: ''
+checkbox:
+  - ''
+  - Option 2
+color: '#9ee95c'
 collection:
   - title: A tagged item
     tags:
@@ -14,10 +16,13 @@ file: ''
 hidden: secret
 month: ''
 number: ''
+object:
+  title: Object title
+  subtitle: Object subtitle
 password: ''
 radio: ''
-range: ''
-select: ''
+range: '3'
+select: Value 1
 textarea: ''
 time: ''
 url: ''

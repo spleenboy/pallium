@@ -11,7 +11,7 @@
             "plural": "Projects",
             "handle": "project",
             "description": "Create Pallium project configuration files",
-            "icon": "extension"
+            "icon": "book"
         },
         "storage": {
           "format": "json",
@@ -262,6 +262,21 @@
             "name": "number",
             "type": "number",
             "label": "number"
+        },
+        {
+            "name": "object",
+            "type": "object",
+            "label": "object",
+            "fields": [
+            {
+                "name": "title",
+                "label": "title"
+            },
+            {
+                "name": "subtitle",
+                "label": "subtitle"
+            }
+            ]
         },
         {
             "name": "password",
