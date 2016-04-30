@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Button from '../../ui/Button';
-import Fields from './fields';
+import Field from './fields/Field';
 import * as Actions from './ContentActions.js';
 import styles from './ContentFormComponent.css';
 
@@ -27,7 +27,6 @@ export class ContentFormComponent extends Component {
     const {contentType, content} = this.props;
 
     const fields = contentType.fields.map((def, i) => {
-      let Field = (def.type in Fields) ? Fields[def.type] : Fields['default'];
       return (
         <Field
           key={i}

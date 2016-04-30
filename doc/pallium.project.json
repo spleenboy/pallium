@@ -7,6 +7,64 @@
     "contentTypes": [
     {
         "settings": {
+            "title": "Project",
+            "plural": "Projects",
+            "handle": "project",
+            "description": "Create Pallium project configuration files",
+            "icon": "extension"
+        },
+        "storage": {
+          "format": "json",
+          "extension": "json",
+          "directory": "projects",
+          "filename": {"type": "slug", "field": "title"},
+          "title": {"type": "reflect", "field": "title"},
+          "metadata": {
+              "Description": {"type": "reflect", "field": "description"}
+          }
+        },
+        "fields": [
+        {
+            "name": "title",
+            "label": "Title",
+            "hint": "The title of your project",
+            "attributes": {
+                "required": true,
+                "autofocus": true
+            }
+        },
+        {
+            "type": "textarea",
+            "name": "description",
+            "label": "Description"
+        },
+        {
+            "name": "icon",
+            "label": "Icon",
+            "hint": "Use any Google Material Design icon name"
+        },
+        {
+            "name": "directory",
+            "label": "Directory",
+            "hint": "The relative directory where your content will be saved",
+            "defaultValue": "content",
+            "attributes": {
+                "required": true
+            }
+        },
+        {
+            "name": "database",
+            "label": "Database",
+            "hint": "The relative filename for your database file",
+            "defaultValue": "content/index.db",
+            "attributes": {
+                "required": true
+            }
+        }
+        ]
+    },
+    {
+        "settings": {
             "title": "Todo",
             "plural": "Todos",
             "handle": "todo",
@@ -65,6 +123,200 @@
             "name": "description",
             "type": "md",
             "label": "Description"
+        }
+        ]
+    },
+
+    {
+        "settings": {
+            "title": "Example",
+            "plural": "Examples",
+            "handle": "example",
+            "description": "Examples of the different types of fields",
+            "icon": "extension"
+        },
+        "storage": {
+          "format": "yaml",
+          "extension": "md",
+          "contentKey": "md",
+          "directory": [
+              "example",
+              {"type": "substring", "field": "text", "start": 0, "count": 1}
+          ],
+          "filename": {"type": "reflect", "field": "text"},
+          "title": {"type": "reflect", "field": "text"},
+          "metadata": {
+              "Date": {"type": "moment", "field": "date", "format": "YYYY/MM/DD"},
+              "Description": {"type": "reflect", "field": "textarea"}
+          }
+        },
+        "fields": [
+        {
+            "name": "text",
+            "label": "text",
+            "defaultValue": "Example Title",
+            "hint": "Give this post a good name",
+            "attributes": {
+                "max": 255,
+                "required": true,
+                "autofocus": true
+            }
+        },
+        {
+            "name": "checkbox",
+            "type": "checkbox",
+            "label": "checkbox",
+            "options": [
+                {"label": "Option 1", "value": "Option 1"},
+                {"label": "Option 2", "value": "Option 2"},
+                {"label": "Option 3", "value": "Option 3"}
+            ]
+        },
+        {
+            "name": "color",
+            "type": "color",
+            "label": "color"
+        },
+        {
+            "name": "collection",
+            "type": "collection",
+            "label": "collection",
+            "definitions": [
+            {
+                "label": "Tagged Item",
+                "fields": [
+                {
+                    "name": "title",
+                    "type": "text",
+                    "label": "Item Title"
+                },
+                {
+                    "name": "tags",
+                    "type": "collection",
+                    "label": "Tags",
+                    "definitions": [
+                    {
+                        "label": "Tag",
+                        "fields": [
+                        {
+                            "name": "tag",
+                            "label": "Tag"
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            },
+            {
+                "label": "Untagged Item",
+                "fields": [
+                {
+                    "name": "title",
+                    "type": "text",
+                    "label": "Item Title"
+                }
+                ]
+            }
+            ]
+        },
+        {
+            "name": "date",
+            "type": "date",
+            "label": "date",
+            "attributes": {
+                "required": true
+            }
+        },
+        {
+            "name": "email",
+            "type": "email",
+            "label": "email",
+            "attributes": {
+                "placeholder": "example@domain.com"
+            }
+        },
+        {
+            "name": "file",
+            "type": "file",
+            "label": "file"
+        },
+        {
+            "name": "hidden",
+            "type": "hidden",
+            "label": "hidden",
+            "value": "secret"
+        },
+        {
+            "name": "month",
+            "type": "month",
+            "label": "month"
+        },
+        {
+            "name": "md",
+            "type": "md",
+            "rows": 20,
+            "label": "md"
+        },
+        {
+            "name": "number",
+            "type": "number",
+            "label": "number"
+        },
+        {
+            "name": "password",
+            "type": "password",
+            "label": "password"
+        },
+        {
+            "name": "radio",
+            "type": "radio",
+            "label": "radio",
+            "options": [
+                {"label": "Option 1", "value": "Value 1"},
+                {"label": "Option 2", "value": "Value 2"}
+            ]
+        },
+        {
+            "name": "range",
+            "type": "range",
+            "label": "range",
+            "attributes": {
+                "min": 1,
+                "max": 11,
+                "step": 1
+            }
+        },
+        {
+            "name": "select",
+            "type": "select",
+            "label": "select",
+            "options": [
+                {"label": "Select an Option...", "value": ""},
+                {"label": "Option 1", "value": "Value 1"},
+                {"label": "Option 2", "value": "Value 2"}
+            ]
+        },
+        {
+            "name": "textarea",
+            "type": "textarea",
+            "label": "textarea",
+            "rows": 5
+        },
+        {
+            "name": "time",
+            "type": "time",
+            "label": "time"
+        },
+        {
+            "name": "url",
+            "type": "url",
+            "label": "url"
+        },
+        {
+            "name": "week",
+            "type": "week",
+            "label": "week"
         }
         ]
     }

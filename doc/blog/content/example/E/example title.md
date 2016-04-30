@@ -9,8 +9,11 @@ collection:
     tags:
       - tag: Red
       - tag: Blue
+      - tag: Green
     description: 'Here be a description of Title #1'
   - title: 'Title # 2'
+    tags:
+      - tag: Red
 date: null
 email: null
 file: null

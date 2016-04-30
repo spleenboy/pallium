@@ -12,9 +12,13 @@ export default class CollectionField extends InputField {
     return Array.isArray(value) ? value : [];
   }
 
-  handleAdd(start, e) {
+  handleAdd(start, definition, e) {
     let value = this.asArray(this.props.value);
-    value.splice(start, 0, {});
+    const item = {};
+    definition.fields.forEach(field => {
+      item[field.name] = field.value || field.defaultValue || null;
+    });
+    value.splice(start, 0, item);
     this.props.onValueChange(this.props.definition, value, e);
   }
 
@@ -31,23 +35,38 @@ export default class CollectionField extends InputField {
   }
 
 
+  pickDefinition(item) {
+    const keys = Object.keys(item || {});
+    const defs = this.props.definition.definitions;
+    return defs.find(def => {
+      const names = def.fields.map(field => {
+        return field.name;
+      });
+      return names.length === keys.length &&
+             names.every((el, i) => el === keys[i]);
+    });
+  }
+
+
   render() {
     const {
       name,
       hint,
       label,
-      itemName,
-      fields
+      fields,
+      definitions
     } = this.props.definition;
     const values = this.asArray(this.props.value);
     const level = this.props.level || 0;
 
     const items = values.map((value, i) => {
+      const def = this.pickDefinition(value);
+      if (!def) return null;
       return (
         <CollectionFieldItem
           key={i}
           level={level + 1}
-          definition={this.props.definition}
+          definition={def}
           value={value} 
           onRemove={this.handleRemove.bind(this, i)}
           onValueChange={this.handleItemChange.bind(this, i)}
@@ -55,15 +74,19 @@ export default class CollectionField extends InputField {
       );
     });
 
+    const buttons = definitions.map((def, i) => {
+      return (
+        <Button key={i} onClick={this.handleAdd.bind(this, values.length, def)} raised={true}>
+          {def.label} <Icon>add</Icon>
+        </Button>
+      );
+    });
+
     return (
       <div className={styles.collection}>
         <div className={styles.header}>{label}</div>
         <div className={styles.items}>{items}</div>
-        <div className={styles.add}>
-          <Button onClick={this.handleAdd.bind(this, values.length)}>
-            New {itemName} <Icon>add</Icon>
-          </Button>
-        </div>
+        <div className={styles.buttons}>{buttons}</div>
       </div>
     );
   }

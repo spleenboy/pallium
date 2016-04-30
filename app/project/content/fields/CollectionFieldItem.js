@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
 import styles from './CollectionFieldItem.css';
-import Fields from './index';
 import InputField from './InputField';
+import Field from './Field';
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
 
@@ -21,7 +21,7 @@ export default class CollectionFieldItem extends InputField {
 
   render() {
     const {
-      itemName,
+      label,
       fields
     } = this.props.definition;
 
@@ -30,7 +30,6 @@ export default class CollectionFieldItem extends InputField {
     const levelStyle = styles['level' + level];
 
     const inputs = fields.map((def, i) => {
-      let Field = (def.type in Fields) ? Fields[def.type] : Fields['default'];
       return (
         <Field
           key={i}
