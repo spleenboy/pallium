@@ -50,6 +50,7 @@ export class Breadcrumb extends Component {
 
   render() {
     const {project, projectList, contentType, content} = this.props;
+    const single = contentType && !contentType.settings.plural;
 
     const items = [(
       <div className={styles.item + ' ' + styles.root + ' ' + styles.link} key={0}>
@@ -73,14 +74,16 @@ export class Breadcrumb extends Component {
 
       if (contentType) {
         add(
-          <span className={styles.btn} onClick={this.handleClearContent.bind(this)}>{contentType.settings.plural}</span>
+          <span className={styles.btn} onClick={this.handleClearContent.bind(this)}>
+            {single ? contentType.settings.title : contentType.settings.plural}
+          </span>
         );
 
         if (content) {
           add(
             <span className={styles.btn}>{content.title}</span>
           );
-        } else {
+        } else if (!single) {
           add(
             <span onClick={this.handleNewContentClick.bind(this)} className={styles.btn} title={`Add a new ${contentType.settings.title}`}>
               <Icon className={styles.icon}>add</Icon>

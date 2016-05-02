@@ -121,6 +121,16 @@ export function loadList(project, handle) {
     })
     .then(docs => {
       dispatch(setList(docs));
+
+      const single = !project.contentType.settings.plural;
+
+      // If there's no plural for the content type, select the first item
+      // or create a new one.
+      if (single && docs.length) {
+        dispatch(openContent(project, docs[0].fullpath, docs[0]._id));
+      } else if (single) {
+        dispatch(createContent(project));
+      }
     });
   }
 }
@@ -143,6 +153,7 @@ export function setContentType(contentType) {
 export function selectContentType(project, handle) {
   const contentType = project.contentTypes.find(ct => ct.settings.handle === handle);
   return dispatch => {
+    project.contentType = contentType;
     dispatch(setContentType(contentType));
     dispatch(loadList(project, handle));
   };

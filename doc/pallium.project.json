@@ -190,7 +190,6 @@
     {
         "settings": {
             "title": "Example",
-            "plural": "Examples",
             "handle": "example",
             "description": "Examples of the different types of fields",
             "icon": "extension"

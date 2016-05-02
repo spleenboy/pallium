@@ -83,7 +83,7 @@ export default class CollectionField extends InputField {
 
     return (
       <div className={styles.collection}>
-        <div className={styles.header}>{label} {level}</div>
+        <div className={styles.header}>{label}</div>
         <div className={styles.items}>{items}</div>
         <div className={styles.buttons}>{buttons}</div>
       </div>
