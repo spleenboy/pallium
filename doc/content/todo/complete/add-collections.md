@@ -1,6 +1,6 @@
 ---
 title: Add collections
-status: In Progress
+status: Complete
 priority: Medium
 description: |
   Allow a collection field type.

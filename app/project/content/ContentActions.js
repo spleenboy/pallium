@@ -82,20 +82,20 @@ export function saveContent(project, data, _id = null) {
 
     // Save the index
     index.save(contentData)
-    .then((record, old) => {
+    .then(({doc, oldDoc}) => {
 
       // Delete the old file
-      if (old && old.fullpath !== record.fullpath) {
-        fs.unlink(old.fullpath);
+      if (oldDoc && oldDoc.fullpath !== doc.fullpath) {
+        fs.unlink(oldDoc.fullpath);
       }
 
-      dispatch(loadList(project, record.contentType));
+      dispatch(loadList(project, doc.contentType));
 
       // Save the new content file
       const transport = new Transport(contentType.storage.format, contentType.storage.contentKey);
       const output = transport.export(data);
 
-      fs.outputFile(record.fullpath, output, err => {
+      fs.outputFile(doc.fullpath, output, err => {
         if (err) {
           dispatch(ToastActions.error(err, "Error saving content"));
         }

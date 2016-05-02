@@ -20,18 +20,18 @@ export default class ContentIndex {
   }
 
   // Saves a JSON content object
-  save(record) {
+  save(doc) {
     return new Promise((resolve, reject) => {
-      this.store.findOne({_id: record._id}, (err, old) => {
+      this.store.findOne({_id: doc._id}, (err, oldDoc) => {
         if (err) {
           return reject(err);
         }
-        if (old) {
-          this.store.update(old, record, (err, num) => {
-            err && reject(err) || resolve(record, old);
+        if (oldDoc) {
+          this.store.update(oldDoc, doc, (err, num) => {
+            err && reject(err) || resolve({doc, oldDoc});
           });
         } else {
-          this.store.insert(record, (err, doc) => {
+          this.store.insert(doc, (err, doc) => {
             err && reject(err) || resolve(doc);
           });
         }
