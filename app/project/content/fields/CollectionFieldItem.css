@@ -1,6 +1,6 @@
 .item {
   border: 1px solid var(--gray);
-  background-color: var(--orange);
+  background-color: var(--orange-film);
   border-radius: 2px;
   margin: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
