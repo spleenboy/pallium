@@ -10,7 +10,7 @@ export default class SelectField extends InputField {
 
     const optionList = options.map((option, i) => {
       return (
-        <option key={i} value={option.value}>{option.label}</option>
+        <option key={i} value={option.value}>{option.label ? option.label : option.value}</option>
       );
     });
     return (

@@ -9,6 +9,7 @@
   --orange-film: rgba(255, 212, 0, 0.3);
   --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(200, 200, 200);
+  --warning: rgb(255, 50, 50);
 }
 
 body {

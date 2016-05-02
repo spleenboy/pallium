@@ -223,9 +223,16 @@
             }
         },
         {
+            "name": "array",
+            "label": "array",
+            "type": "array",
+            "hint": "This field saves multiple strings as an array"
+        },
+        {
             "name": "checkbox",
             "type": "checkbox",
             "label": "checkbox",
+            "hint": "Saves multiple selections as an array, unless only one option is listed. With only one option, the value is saved as a string", 
             "options": [
                 {"label": "Option 1", "value": "Option 1"},
                 {"label": "Option 2", "value": "Option 2"},
@@ -235,12 +242,14 @@
         {
             "name": "color",
             "type": "color",
-            "label": "color"
+            "label": "color",
+            "hint": "Uses the built-in color picker to save a color"
         },
         {
             "name": "collection",
             "type": "collection",
             "label": "collection",
+            "hint": "Save an array of objects. This field supports multiple levels of objects.",
             "definitions": [
             {
                 "label": "Tagged Item",
@@ -260,7 +269,15 @@
                         "fields": [
                         {
                             "name": "tag",
-                            "label": "Tag"
+                            "label": "Tag",
+                            "type": "select",
+                            "options": [
+                                {"value": "", "label": "---None---"},
+                                {"value": "Red"},
+                                {"value": "Green"},
+                                {"value": "Blue"},
+                                {"value": "Orange"}
+                            ]
                         }
                         ]
                     }

@@ -89,12 +89,13 @@ export default class OptionListField extends InputField {
                 value={option.value}
                 checked={checked(option.value)}
             />
-            <div className={styles.label}>{option.label}</div>
+            <div className={styles.label}>{option.label ? option.label : option.value}</div>
         </label>
       );
     });
     return (
       <div className={`${styles.optionList} ${mode} ${type}`} onClick={this.handleFocus.bind(this)}>
+        {this.renderHeader()}
         {optionList}
         <div className={styles.heading}>{label}</div>
       </div>

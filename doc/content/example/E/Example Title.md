@@ -1,5 +1,11 @@
 ---
 text: Example Title
+array:
+  - More
+  - than
+  - you
+  - can
+  - handle!
 checkbox:
   - ''
   - Option 2
@@ -7,8 +13,8 @@ color: '#9ee95c'
 collection:
   - title: A tagged item
     tags:
-      - tag: A tag
-      - tag: A second tag
+      - tag: Green
+      - tag: Blue
   - title: An untagged item
 date: ''
 email: ''

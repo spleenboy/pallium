@@ -1,3 +1,4 @@
+import ArrayField from './ArrayField';
 import CollectionField from './CollectionField';
 import HiddenField from './HiddenField';
 import InputField from './InputField';
@@ -9,6 +10,7 @@ import SelectField from './SelectField';
 import TextareaField from './TextareaField';
 
 export default {
+  'array': ArrayField,
   'checkbox': OptionListField,
   'collection': CollectionField,
   'default': InputField,
