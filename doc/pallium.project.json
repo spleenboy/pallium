@@ -28,6 +28,7 @@
             "name": "title",
             "label": "Title",
             "hint": "The title of your project",
+            "defaultValue": "New Project",
             "attributes": {
                 "required": true,
                 "autofocus": true
@@ -60,9 +61,68 @@
             "attributes": {
                 "required": true
             }
+        },
+        {
+            "name": "contentTypes",
+            "label": "Content Types",
+            "type": "collection",
+            "hint": "The different types of content to support",
+            "definitions": [
+            {
+                "label": "Content Type",
+                "fields": [
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "label": "Settings",
+                    "fields": [
+                    {
+                        "name": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "name": "plural",
+                        "label": "Plural"
+                    },
+                    {
+                        "name": "handle",
+                        "label": "Handle"
+                    },
+                    {
+                        "name": "description",
+                        "label": "Description",
+                        "type": "textarea"
+                    },
+                    {
+                        "name": "icon",
+                        "label": "Icon"
+                    },
+                    {
+                        "name": "storage",
+                        "type": "object",
+                        "label": "Storage",
+                        "fields": [
+                        {
+                            "name": "format",
+                            "label": "Format",
+                            "type": "radio",
+                            "defaultValue": "yaml",
+                            "options": [
+                                {"label": "Yaml", "value": "yaml"},
+                                {"label": "Json", "value": "json"}
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
         }
         ]
     },
+
     {
         "settings": {
             "title": "Todo",

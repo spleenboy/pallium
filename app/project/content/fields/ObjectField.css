@@ -1,5 +1,7 @@
 .object {
-  composes: inputField from './InputField.css';
+  width: 90%;
+  padding: 5%;
+  transition: color 0.5s;
 }
 
 .header {
@@ -7,5 +9,6 @@
 }
 
 .inputs {
-
+  composes: item from './CollectionFieldItem.css';
+  margin: 20px;
 }

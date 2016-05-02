@@ -1,12 +1,21 @@
 .item {
-  border: 2px solid var(--gray);
-  background-color: var(--orange-film);
-  border-radius: 4px;
-  margin: 2px;
+  border: 1px solid var(--gray);
+  background-color: var(--orange);
+  border-radius: 2px;
+  margin: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .header {
   background-color: var(--white-film);
+}
+
+.level1 {
+  background-color: var(--orange);
+}
+
+.level2 {
+  background-color: var(--gray);
 }
 
 .inputs {
