@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import InputField from './InputField';
+import Icon from '../../../ui/Icon';
 import styles from './OptionListField.css';
 
 export default class OptionListField extends InputField {
@@ -52,9 +53,9 @@ export default class OptionListField extends InputField {
   }
 
 
-  handleValueChange(value, e) {
+  handleValueChange(value, checked, e) {
     let newValue;
-    if (e.currentTarget.checked) {
+    if (checked) {
       newValue = this.addValue(value);
     } else {
       newValue = this.removeValue(value);
@@ -77,20 +78,26 @@ export default class OptionListField extends InputField {
     }
 
     const optionList = options.map((option, i) => {
+      const isChecked = checked(option.value);
+      const css = isChecked ? styles.checked : styles.unchecked;
+
+      let icon;
+      if (type === 'radio') {
+        icon = isChecked ? "radio_button_checked" : "radio_button_unchecked";
+      } else if (type === 'checkbox') {
+        icon = isChecked ? "check_box": "check_box_outline_blank";
+      }
+
       return (
-        <label className={styles.option} key={i}>
-            <input
-                type={type}
-                name={name}
-                className={styles.input}
-                onChange={this.handleValueChange.bind(this, option.value)}
-                onFocus={this.handleFocus.bind(this)}
-                onBlur={this.handleBlur.bind(this)}
-                value={option.value}
-                checked={checked(option.value)}
-            />
+        <div className={`${styles.option} ${css}`} key={i}>
+          <button
+            key={i}
+            onClick={this.handleValueChange.bind(this, option.value, !isChecked)}
+          >
+            <Icon name={icon} size="2rem" />
             <div className={styles.label}>{option.label ? option.label : option.value}</div>
-        </label>
+          </button>
+        </div>
       );
     });
     return (

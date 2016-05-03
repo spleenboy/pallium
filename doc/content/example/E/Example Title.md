@@ -8,7 +8,7 @@ array:
   - handle!
 checkbox:
   - ''
-  - Option 2
+  - Option 3
 color: '#9ee95c'
 collection:
   - title: A tagged item
@@ -26,7 +26,7 @@ object:
   title: Object title
   subtitle: Object subtitle
 password: ''
-radio: ''
+radio: Value 2
 range: '3'
 select: Value 1
 textarea: ''

@@ -12,29 +12,39 @@
 
 .option {
   display: block;
-  line-height: 3rem;
+  width: auto;
+  margin-right: 1rem;
 }
 
-.option:hover {
+.option.checked button {
   color: var(--blue);
 }
 
-.label {
-  composes: label from './InputField.css';
-  display: inline;
-  margin-right: 2rem;
+.option.unchecked button {
+  color: var(--gray);
 }
 
-.input {
-  font-size: 1.5rem;
+.option:hover button {
+  color: var(--blue);
+}
+
+.option button {
+  line-height: 3rem;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.label {
   display: inline;
-  width: auto;
-  transform: scale(2);
-  margin-right: 1rem;
+  vertical-align: bottom;
+  margin-left: 1rem;
+  font-size: 2rem;
 }
 
 .heading {
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   border: none;
   border-top: 2px solid var(--gray);
   text-transform: uppercase;
