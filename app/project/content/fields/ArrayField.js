@@ -35,7 +35,7 @@ export default class ArrrayField extends InputField {
       badges = this.props.value.map((item, i) => {
         return (
           <button className={styles.badge} key={i} onClick={this.handleRemove.bind(this, i)} title="Delete">
-            <Icon>delete</Icon>
+            <Icon name="delete_forever"/>
             {item}
           </button>
         );

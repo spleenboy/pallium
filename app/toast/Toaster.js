@@ -22,12 +22,29 @@ export default class Toaster extends Component {
   render() {
     const display = this.state.open ? styles.opened : styles.closed; 
     const thinking = this.props.thinking ? styles.thinking : styles.silent;
+    const messages = this.props.messages.map((m, i) => {
+      return (
+        <div key={i} className={styles.message}>
+          <div className={styles.title}></div>
+          <div className={styles.body}></div>
+          <div className={styles.actions}></div>
+        </div>
+      );
+    });
+
+    if (!this.props.messages.length) {
+      messages.push(
+        <div key={0} className={styles.message}>
+          <div className={styles.title}></div>
+          <div className={styles.body}>Nothing to see here!</div>
+        </div>
+      );
+    }
 
     return (
-      <div className={`${styles.toaster} ${display}`}>
+      <div className={`${styles.toaster} ${display} ${thinking}`}>
         <div className={styles.messages}>
-            <p>Hello</p>
-            <em className="material-icons">arrow downward</em>
+          {messages}
         </div>
         <div className={styles.pulltab}>
           <button onClick={this.handleToggle.bind(this)} className={styles.toggle}>
