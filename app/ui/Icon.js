@@ -4,6 +4,7 @@ import styles from './Icon.css';
 
 export default class Icon extends Component {
   static propTypes = {
+    name: React.PropTypes.string.isRequired,
     size: React.PropTypes.string,
     className: React.PropTypes.string,
   }
@@ -11,7 +12,6 @@ export default class Icon extends Component {
   render() {
     const cns = [
       styles.icon,
-      'material-icons',
     ];
 
     if (this.props.className) {
@@ -25,7 +25,7 @@ export default class Icon extends Component {
     }
 
     return (
-      <i className={cns.join(' ')} style={style}>{this.props.children}</i>
+      <em className={cns.join(' ')} style={style}>{this.props.name}</em>
     );
   }
 }

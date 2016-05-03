@@ -86,7 +86,7 @@ export class Breadcrumb extends Component {
         } else if (!single) {
           add(
             <span onClick={this.handleNewContentClick.bind(this)} className={styles.btn} title={`Add a new ${contentType.settings.title}`}>
-              <Icon className={styles.icon}>add</Icon>
+              <Icon className={styles.icon} name="add"/>
             </span>
           );
         }
@@ -94,7 +94,7 @@ export class Breadcrumb extends Component {
     } else {
         add(
           <span onClick={this.handleOpenClick.bind(this)} className={styles.btn} title="Open a Project">
-            <Icon className={styles.icon}>folder open</Icon>
+            <Icon className={styles.icon} name="folder open"/>
           </span>
         );
     }

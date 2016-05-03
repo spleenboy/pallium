@@ -2,8 +2,7 @@ import * as Actions from './ToastActions';
 
 const initialState = {
   thinking: false,
-  message: false,
-  type: false,
+  messages: [],
 };
 const methods = {};
 
@@ -15,10 +14,19 @@ export default function handle(state = initialState, action) {
   return state;
 }
 
-methods[Actions.ERROR] = function(state, action) {
-  state.type = 'error';
-  state.message = action.message || action.error.getMessage();
-  return state
+methods[Actions.CLEAR] = function(state, action) {
+  state.messages = [];
+  return state;
+}
+
+methods[Actions.ADD] = function(state, action) {
+  state.messages.push(action.message);
+  return state;
+}
+
+methods[Actions.DISMISS] = function(state, action) {
+  state.messages.splice(action.index, 1);
+  return state;
 }
 
 methods[Actions.THINK] = function(state, action) {

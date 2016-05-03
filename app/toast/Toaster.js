@@ -1,19 +1,40 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Toaster.css';
+import Icon from '../ui/Icon';
 
 export default class Toaster extends Component {
-  static propTypes = {
-    type: PropTypes.string,
-    text: PropTypes.string,
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
   }
 
-  handleClick(e) {
-    this.props.onClick && this.props.onClick(e);
+  static propTypes = {
+    thinking: PropTypes.bool,
+    messages: PropTypes.array,
+  }
+
+  handleToggle(e) {
+    this.setState({open: !this.state.open});
   }
 
   render() {
+    const display = this.state.open ? styles.opened : styles.closed; 
+    const thinking = this.props.thinking ? styles.thinking : styles.silent;
+
     return (
-      <div className={styles.toaster}>{this.props.text}</div>
+      <div className={`${styles.toaster} ${display}`}>
+        <div className={styles.messages}>
+            <p>Hello</p>
+            <em className="material-icons">arrow downward</em>
+        </div>
+        <div className={styles.pulltab}>
+          <button onClick={this.handleToggle.bind(this)} className={styles.toggle}>
+              <Icon name="arrow_downward"/>
+          </button>
+        </div>
+      </div>
     );
   }
 }

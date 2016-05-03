@@ -76,7 +76,7 @@ export default class CollectionField extends InputField {
     const buttons = definitions.map((def, i) => {
       return (
         <Button key={i} onClick={this.handleAdd.bind(this, values.length, def)} raised={true}>
-          {def.label} <Icon>add</Icon>
+          {def.label} <Icon name="add"/>
         </Button>
       );
     });

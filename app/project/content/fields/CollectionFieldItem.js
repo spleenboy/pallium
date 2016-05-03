@@ -44,7 +44,7 @@ export default class CollectionFieldItem extends InputField {
     return (
       <div className={`${styles.item} ${levelStyle}`}>
         <div className={styles.header}>
-          <Button onClick={this.handleRemove.bind(this)}><Icon>delete</Icon></Button>
+          <Button onClick={this.handleRemove.bind(this)}><Icon name="delete"/></Button>
         </div>
         <div className={styles.inputs}>{inputs}</div>
       </div>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Container from '../ui/Container';
 import Header from '../ui/Header';
 import Breadcrumb from './Breadcrumb';
+import Toaster from '../toast/Toaster';
 import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
 
@@ -57,6 +58,7 @@ export class ProjectPage extends Component {
     return (
       <Container>
         <Header><Breadcrumb/></Header>
+        <Toaster thinking={this.props.thinking} messages={this.props.messages}/>
         {drawer}
         {main}
       </Container>
@@ -68,6 +70,8 @@ function mapStateToProps(state) {
   return {
     projectList: state.projectList,
     project: state.project,
+    thinking: state.toast.thinking,
+    messages: state.toast.messages,
   };
 }
 
