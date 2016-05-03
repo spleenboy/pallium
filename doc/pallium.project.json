@@ -129,7 +129,11 @@
             "plural": "Todos",
             "handle": "todo",
             "description": "Plans in the works",
-            "icon": "done all"
+            "icon": "done all",
+            "groupBy": "values.status",
+            "groupDirection": "desc",
+            "orderBy": ["values.priority"],
+            "orderDirection": ["desc"]
         },
         "storage": {
           "format": "yaml",
@@ -161,11 +165,11 @@
             "name": "status",
             "type": "radio",
             "label": "Status",
-            "defaultValue": "not started",
+            "defaultValue": "Not Started",
             "options": [
-                {"label": "Complete", "value": "Complete"},
-                {"label": "In Progress", "value": "In Progress"},
-                {"label": "Not Started", "value": "Not Started"}
+                {"value": "Complete"},
+                {"value": "In Progress"},
+                {"value": "Not Started"}
             ]
         },
         {

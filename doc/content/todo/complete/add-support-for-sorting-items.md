@@ -1,6 +1,6 @@
 ---
 title: Add support for sorting items
-status: Not Started
+status: Complete
 priority: Medium
 description: ''
 ---

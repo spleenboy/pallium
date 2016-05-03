@@ -1,6 +1,6 @@
 ---
 title: Add support for content type "singles"
-status: Not Started
+status: Complete
 priority: Medium
 description: ''
 ---

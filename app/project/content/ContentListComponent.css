@@ -10,6 +10,14 @@
   background-color: var(--orange);
 }
 
+.header {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+  color: var(--blue);
+}
+
 .metadata {
 
 }

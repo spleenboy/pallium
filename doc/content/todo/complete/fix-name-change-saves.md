@@ -1,6 +1,6 @@
 ---
 title: Fix name change saves
-status: In Progress
+status: Complete
 priority: High
 description: >-
   The old file should be deleted if the filename changes. Empty directories
