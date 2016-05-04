@@ -215,6 +215,10 @@
         },
         "fields": [
         {
+            "type": "markup",
+            "value": "# Examples\nThis is a `markup` field. You can use it to inject Markdown content into your form."
+        },
+        {
             "name": "text",
             "label": "text",
             "defaultValue": "Example Title",

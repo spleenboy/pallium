@@ -3,6 +3,7 @@ import CollectionField from './CollectionField';
 import HiddenField from './HiddenField';
 import InputField from './InputField';
 import MarkdownField from './MarkdownField';
+import MarkupField from './MarkupField';
 import ObjectField from './ObjectField';
 import OptionListField from './OptionListField';
 import RangeField from './RangeField';
@@ -16,6 +17,7 @@ export default {
   'default': InputField,
   'hidden': HiddenField,
   'md': MarkdownField,
+  'markup': MarkupField,
   'object': ObjectField,
   'radio': OptionListField,
   'range': RangeField,
