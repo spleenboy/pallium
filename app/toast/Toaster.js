@@ -13,6 +13,11 @@ export default class Toaster extends Component {
   static propTypes = {
     thinking: PropTypes.bool,
     messages: PropTypes.array,
+    onDismiss: PropTypes.func.isRequired,
+  }
+
+  handleDismiss(index, e) {
+    this.props.onDismiss(index);
   }
 
   handleToggle(e) {
@@ -28,7 +33,11 @@ export default class Toaster extends Component {
         <div key={i} className={`${styles.message} ${styles[m.type]}`}>
           <div className={styles.title}>{m.title}</div>
           <div className={styles.body}>{m.text}</div>
-          <div className={styles.actions}></div>
+          <div className={styles.actions}>
+            <button onclick={this.handleDismiss.bind(this, i)} className={styles.dismiss}>
+                <Icon name="delete_swap"/>
+            </button>
+          </div>
         </div>
       );
     });

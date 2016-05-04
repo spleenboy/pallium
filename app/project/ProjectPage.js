@@ -14,6 +14,8 @@ import ContentTypeListComponent from './content/ContentTypeListComponent';
 import ContentListComponent from './content/ContentListComponent';
 import ContentFormComponent from './content/ContentFormComponent';
 
+import ToastActions from '../toast/ToastActions';
+
 export class ProjectPage extends Component {
   render() {
     const {project, projectList} = this.props;
@@ -58,7 +60,11 @@ export class ProjectPage extends Component {
     return (
       <Container>
         <Header><Breadcrumb/></Header>
-        <Toaster thinking={this.props.thinking} messages={this.props.messages}/>
+        <Toaster
+          thinking={this.props.thinking}
+          messages={this.props.messages}
+          onDismiss={this.props.dismissToast}
+        />
         {drawer}
         {main}
       </Container>
@@ -73,6 +79,13 @@ function mapStateToProps(state) {
     thinking: state.toast.thinking,
     messages: state.toast.messages,
   };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    dismissToast: ToastActions.dismiss,
+    clearToast: ToastActions.clear,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps)(ProjectPage);
