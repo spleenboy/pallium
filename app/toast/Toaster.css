@@ -1,6 +1,6 @@
 .toaster {
   width: 100%;
-  height: 120px;
+  height: 140px;
   position: fixed;
   background-color: var(--orange);
   border: 2px solid var(--gray);
@@ -30,7 +30,7 @@
   position: absolute;
   right: 0px;
   top: 0px;
-  margin-top: 120px;
+  margin-top: 140px;
   text-align: center;
   cursor: pointer;
 }
@@ -62,15 +62,30 @@
 
 .messages {
   width: 100%;
+  margin: 1rem;
   padding: 1rem;
 }
 
 .message {
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.message.error {
+  background-color: var(--warning);
+  color: var(--white);
+}
+
+.message.info {
+
+}
+
+.message.warning {
 
 }
 
 .message .title {
-
+  font-size: 2rem;
 }
 
 .message .body {
@@ -83,7 +98,7 @@
 
 @media screen and (min-width: 750px) {
   .messages {
-    width: 75%;
+    width: 70%;
     margin-left: 25%;
   }
 }

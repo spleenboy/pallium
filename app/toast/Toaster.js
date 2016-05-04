@@ -22,11 +22,12 @@ export default class Toaster extends Component {
   render() {
     const display = this.state.open ? styles.opened : styles.closed; 
     const thinking = this.props.thinking ? styles.thinking : styles.silent;
+
     const messages = this.props.messages.map((m, i) => {
       return (
-        <div key={i} className={styles.message}>
-          <div className={styles.title}></div>
-          <div className={styles.body}></div>
+        <div key={i} className={`${styles.message} ${styles[m.type]}`}>
+          <div className={styles.title}>{m.title}</div>
+          <div className={styles.body}>{m.text}</div>
           <div className={styles.actions}></div>
         </div>
       );

@@ -41,7 +41,7 @@ export function open(path) {
         dispatch(opened(project));
         dispatch(ProjectList.add(project, path));
       } else {
-        dispatch(Toast.error(err));
+        dispatch(Toast.error("File Error", "There's a problem with your project file: " + err.message, err));
       }
     });
   }

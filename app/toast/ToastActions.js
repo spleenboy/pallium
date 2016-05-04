@@ -16,9 +16,10 @@ export function dismiss(index) {
   }
 }
 
-export function confirm(text, callback = null) {
+export function confirm(title, text, callback = null) {
   const message = {
     type: 'confirm',
+    title,
     text,
     callback
   };
@@ -28,10 +29,11 @@ export function confirm(text, callback = null) {
   }
 }
 
-export function error(e, text = null) {
+export function error(title, text, e) {
   const message = {
     type: 'error',
-    text: text || e.message,
+    title,
+    text,
     error: e,
   }
   return {
