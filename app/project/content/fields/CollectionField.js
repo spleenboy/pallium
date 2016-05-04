@@ -6,6 +6,7 @@ import CollectionFieldItem from './CollectionFieldItem';
 
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
+import SortableList from '../../../ui/SortableList';
 
 export default class CollectionField extends InputField {
   asArray(value) {
@@ -84,7 +85,9 @@ export default class CollectionField extends InputField {
     return (
       <div className={styles.collection}>
         <div className={styles.header}>{label}</div>
-        <div className={styles.items}>{items}</div>
+        <div className={styles.items}>
+          <SortableList items={items}/>
+        </div>
         <div className={styles.buttons}>{buttons}</div>
       </div>
     );
