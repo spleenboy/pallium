@@ -47,7 +47,7 @@ export default class ArrrayField extends InputField {
         <div className={styles.badges}>{badges}</div>
         <div className={styles.input}>
           <input ref="input" onKeyPress={this.handleKeyPress.bind(this)}/>
-          <Button raised={true} onClick={this.handleAdd.bind(this)} title="Add"><Icon name="add"/></Button>
+          <Button onClick={this.handleAdd.bind(this)} title="Add"><Icon name="add"/></Button>
         </div>
       </div>
     );

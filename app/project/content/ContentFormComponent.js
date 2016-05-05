@@ -19,9 +19,17 @@ export class ContentFormComponent extends Component {
     this.props.clearContent();
   }
 
+
+  handleDelete(e) {
+    const {project, content} = this.props;
+    this.props.deleteContent(project, content.fullpath, content._id);
+  }
+
+
   handleFieldValueChange(definition, value, e) {
     this.props.updateContent(definition.name, value);
   }
+
 
   render() {
     const {contentType, content} = this.props;
@@ -44,8 +52,9 @@ export class ContentFormComponent extends Component {
         </div>
         <div className={styles.bottom}>
           <div className={styles.buttons}>
+            <Button mode="warning" className={styles.deleteBtn} onClick={this.handleDelete.bind(this)}>Delete</Button>
             <Button onClick={this.handleCancel.bind(this)}>Cancel</Button>
-            <Button primary={true} raised={true} onClick={this.handleSave.bind(this)}>Save</Button>
+            <Button mode="primary" onClick={this.handleSave.bind(this)}>Save</Button>
           </div>
         </div>
       </div>
@@ -67,6 +76,7 @@ function mapDispatchToProps(dispatch) {
     saveContent: Actions.saveContent,
     updateContent: Actions.updateContent,
     clearContent: Actions.clearContent,
+    deleteContent: Actions.deleteContent,
   }, dispatch);
 }
 

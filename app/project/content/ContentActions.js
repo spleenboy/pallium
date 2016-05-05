@@ -1,10 +1,12 @@
 import fs from 'fs-extra';
+import path from 'path';
 
 import * as ToastActions from  '../../toast/ToastActions';
 
 import Transport, { ENCODING } from '../../storage/Transport';
 import ContentIndex from './ContentIndex';
 import Content from './Content';
+import prune from '../../storage/prune';
 
 export const SET_CONTENT = 'set.content';
 export const UPDATE_CONTENT = 'update.content';
@@ -42,7 +44,19 @@ export function createContent(project) {
 
 export function deleteContent(project, fullpath, _id) {
   return dispatch => {
-    dispatch(clearContent());
+    const index = new ContentIndex(project);
+
+    index.remove(_id)
+    .then(num => {
+      process.nextTick(() => {
+        fs.access(fullpath, fs.W_OK, (err) => {
+          !err && fs.unlink(fullpath);
+        });
+        prune(project.path);
+      });
+      dispatch(clearContent());
+      dispatch(loadList(project, project.contentType.settings.handle));
+    });
   }
 }
 

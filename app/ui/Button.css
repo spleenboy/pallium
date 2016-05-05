@@ -1,3 +1,31 @@
 .button {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  border: 0;
+  outline: 0;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-out;
+}
 
+.button:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -webkit-filter: saturate(1.5);
+}
+
+.primary {
+  background-color: var(--blue);
+  color: white;
+}
+
+.secondary {
+  background-color: var(--orange);
+  color: var(--black);
+}
+
+.warning {
+  background-color: var(--warning);
 }

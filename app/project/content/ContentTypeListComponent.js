@@ -7,7 +7,6 @@ import styles from './ContentTypeListComponent.css';
 
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
-import Button from '../../ui/Button';
 
 export class ContentTypeListComponent extends Component {
   handleSelect(contentType, e) {

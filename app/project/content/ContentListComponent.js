@@ -8,7 +8,6 @@ import styles from './ContentListComponent.css';
 
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
-import Button from '../../ui/Button';
 
 export class ContentListComponent extends Component {
   handleSelect(fullpath, _id, e) {

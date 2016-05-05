@@ -23,6 +23,7 @@
   margin-right: 20px;
 }
 
-.bottom .buttons button {
-  margin: 0.5rem;
+.deleteBtn {
+  position: absolute;
+  left: 2rem;
 }
