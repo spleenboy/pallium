@@ -12,7 +12,7 @@ export default class SortableList extends Component {
   render() {
     const items = this.props.items.map((item, i) => {
       return (
-        <div className={styles.item}>
+        <div className={styles.item} draggable={true}>
           {item}
         </div>
       );

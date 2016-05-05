@@ -32,7 +32,7 @@ export default class ContentIndex {
           });
         } else {
           this.store.insert(doc, (err, doc) => {
-            err && reject(err) || resolve(doc);
+            err && reject(err) || resolve({doc});
           });
         }
       });

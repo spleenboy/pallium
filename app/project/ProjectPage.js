@@ -14,7 +14,7 @@ import ContentTypeListComponent from './content/ContentTypeListComponent';
 import ContentListComponent from './content/ContentListComponent';
 import ContentFormComponent from './content/ContentFormComponent';
 
-import ToastActions from '../toast/ToastActions';
+import * as ToastActions from '../toast/ToastActions';
 
 export class ProjectPage extends Component {
   render() {
@@ -88,4 +88,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps)(ProjectPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);
