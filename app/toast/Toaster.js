@@ -56,10 +56,12 @@ export default class Toaster extends Component {
         <div className={styles.messages}>
           {messages}
         </div>
-        <div className={styles.pulltab}>
-          <button onClick={this.handleToggle.bind(this)} className={styles.toggle}>
+        <div className={styles.footer} onClick={this.handleToggle.bind(this)}>
+          <div className={styles.pulltab}>
+            <button className={styles.toggle}>
               <Icon name="arrow_downward"/>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     );

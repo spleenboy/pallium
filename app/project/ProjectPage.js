@@ -55,6 +55,9 @@ export class ProjectPage extends Component {
       main = (
         <Main><ProjectListComponent/></Main>
       );
+      drawer = (
+        <Drawer />
+      );
     }
 
     return (
