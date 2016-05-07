@@ -58,6 +58,15 @@ export default class SortableList extends Component {
 
 
   render() {
+    if (!this.props.items) {
+      return null;
+    }
+
+    if (this.props.items.length < 2) {
+      return (
+        <div>{this.props.items}</div>
+      );
+    }
 
     const dropzone = (ctx, index, key) => {
       return (

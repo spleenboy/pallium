@@ -10,14 +10,19 @@
   background-color: var(--white-film);
 }
 
+.header .title {
+  display: inline;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+
 .level1 {
-  background-color: var(--orange);
+  background-color: var(--off-white);
 }
 
 .level2 {
-  background-color: var(--gray);
 }
 
-.inputs {
+.inputs .label {
 
 }
