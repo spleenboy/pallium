@@ -15,17 +15,21 @@
 }
 
 .droppable {
+  margin: 5px 0;
   height: 0;
+  border-radius: 4px;
+  border: 2px solid transparent;
   transition: height 0.5s ease-in;
 }
 
-.sorting > .item > .droppable {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+.sorting > .droppable {
+  border: 2px dotted var(--gray);
   height: 4rem;
 }
 
-.sorting > .item > .droppable:hover {
-  background-color: var(--white-film);
+.droppable.active {
+  border: 2px dotted var(--gray);
+  background-color: var(--lime);
 }
 
 .sorting > .item {
@@ -34,9 +38,7 @@
 
 .draggable {
   cursor: move;
-  border: 1px solid transparent;
 }
 
 .draggable:hover {
-  border: 1px dotted var(--blue);
 }

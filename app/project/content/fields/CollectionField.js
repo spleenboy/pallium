@@ -6,12 +6,20 @@ import CollectionFieldItem from './CollectionFieldItem';
 
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
-import SortableList from '../../../ui/SortableList';
+import SortableList from '../../../ui/SortableList'
 
 export default class CollectionField extends InputField {
   asArray(value) {
     return Array.isArray(value) ? value : [];
   }
+
+
+  handleSort(oldIndex, newIndex) {
+    const items = this.asArray(this.props.value);
+    items.splice(newIndex, 0, items.splice(oldIndex, 1)[0]);
+    this.props.onValueChange(this.props.definition, items);
+  }
+
 
   handleAdd(start, definition, e) {
     let value = this.asArray(this.props.value);
@@ -86,7 +94,7 @@ export default class CollectionField extends InputField {
       <div className={styles.collection}>
         <div className={styles.header}>{label}</div>
         <div className={styles.items}>
-          <SortableList items={items}/>
+          <SortableList onChange={this.handleSort.bind(this)} items={items}/>
         </div>
         <div className={styles.buttons}>{buttons}</div>
       </div>

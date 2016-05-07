@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './ArrayField.css';
 import InputField from './InputField';
+
+import SortableList from '../../../ui/SortableList';
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
 
@@ -28,6 +30,13 @@ export default class ArrrayField extends InputField {
   }
 
 
+  handleSort(oldIndex, newIndex) {
+    const values = Array.isArray(this.props.value) ? this.props.value : [];
+    values.splice(newIndex, 0, values.splice(oldIndex, 1)[0]);
+    this.props.onValueChange(this.props.definition, values);
+  }
+
+
   renderInput() {
     let badges = null;
 
@@ -44,7 +53,9 @@ export default class ArrrayField extends InputField {
 
     return (
       <div className={styles.input}>
-        <div className={styles.badges}>{badges}</div>
+        <div className={styles.badges}>
+          <SortableList onChange={this.handleSort.bind(this)} items={badges}/>
+        </div>
         <div className={styles.input}>
           <input ref="input" onKeyPress={this.handleKeyPress.bind(this)}/>
           <Button onClick={this.handleAdd.bind(this)} title="Add"><Icon name="add"/></Button>
