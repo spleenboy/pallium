@@ -22,6 +22,30 @@ methods[Actions.UPDATE_CONTENT] = function(state, action) {
   return state;
 }
 
+methods[Actions.TRASH_CONTENT] = function(state, action) {
+  state.contentType.content = null;
+
+  if (!state.trash) {
+    state.trash = {};
+  }
+
+  state.trash[action.content._id] = action.content;
+
+  return state;
+}
+
+methods[Actions.RESTORE_CONTENT] = function(state, action) {
+  const restored = state.trash[action._id];
+
+  if (restored) {
+    state.contentType = state.contentTypes.find(ct => ct.settings.handle === restored.contentType);
+    state.contentType.content = restored;
+    delete state.trash[action._id];
+  }
+
+  return state;
+}
+
 methods[Actions.CLEAR_CONTENT] = function(state, action) {
   state.contentType.content = null;
   return state;

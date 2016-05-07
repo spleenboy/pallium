@@ -78,7 +78,6 @@
 .message {
   z-index: 2;
   width: 100%;
-  margin: 1rem;
   margin-bottom: 50px;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -99,31 +98,33 @@
   color: var(--black);
 }
 
-.message.info {
-
-}
-
-.message.warning {
-
+.message.confirm {
+  background-color: var(--white-film);
+  color: var(--black);
 }
 
 .message .title {
   font-size: 2rem;
+  font-weight: bold;
+  margin-right: 2rem;
+  display: inline;
 }
 
 .message .body {
+  display: inline;
 }
 
 .message .actions {
-
+  text-align: right;
 }
 
 @media screen and (min-width: 750px) {
   .message {
-    width: 70%;
+    width: 75%;
     margin-left: 25%;
   }
 }
+
 @-webkit-keyframes bob {
   0% {transform: translate(0, 0);}
   50% {transform: translate(0, 5px);}

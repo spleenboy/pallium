@@ -22,7 +22,7 @@ export class ContentFormComponent extends Component {
 
   handleDelete(e) {
     const {project, content} = this.props;
-    this.props.deleteContent(project, content.fullpath, content._id);
+    this.props.deleteContent(project, content.values, content._id);
   }
 
 

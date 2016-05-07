@@ -27,6 +27,12 @@ export class Toaster extends Component {
   }
 
 
+  handleAction(action, index, e) {
+    action();
+    this.props.dismissToast(index);
+  }
+
+
   handleDismiss(index, e) {
     this.props.dismissToast(index);
   }
@@ -54,9 +60,9 @@ export class Toaster extends Component {
     if (message) {
       if (message.actions) {
         for (var label in message.actions) {
-          let action = message.actions[key];
+          let action = message.actions[label];
           actions.push(
-            <Button key={actions.length} mode="text" onClick={action}>{label}</Button>
+            <Button key={actions.length} mode="text" onClick={this.handleAction.bind(this, action, messageIndex)}>{label}</Button>
           );
         }
       }

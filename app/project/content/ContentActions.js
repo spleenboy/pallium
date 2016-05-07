@@ -11,6 +11,9 @@ import prune from '../../storage/prune';
 export const SET_CONTENT = 'set.content';
 export const UPDATE_CONTENT = 'update.content';
 export const CLEAR_CONTENT = 'clear.content';
+export const TRASH_CONTENT = 'trash.content';
+export const RESTORE_CONTENT = 'restore.content';
+
 export const SET_CONTENT_TYPE = 'set.contentType';
 export const CLEAR_CONTENT_TYPE = 'clear.contentType';
 export const SET_CONTENT_LIST = 'set.contentList';
@@ -42,20 +45,40 @@ export function createContent(project) {
 }
 
 
-export function deleteContent(project, fullpath, _id) {
+export function restoreContent(_id) {
+  return {
+    type: RESTORE_CONTENT,
+    _id
+  }
+}
+
+
+export function deleteContent(project, data, _id) {
   return dispatch => {
+    const content = new Content(project, data, _id);
     const index = new ContentIndex(project);
 
     index.remove(_id)
     .then(num => {
       process.nextTick(() => {
-        fs.access(fullpath, fs.W_OK, (err) => {
-          !err && fs.unlink(fullpath);
+        fs.access(content.fullpath, fs.W_OK, (err) => {
+          !err && fs.unlink(content.fullpath);
         });
         prune(project.path);
       });
-      dispatch(clearContent());
+
+      dispatch(trashContent(project, data, _id));
       dispatch(loadList(project, project.contentType.settings.handle));
+
+      const undo = function() {
+        dispatch(restoreContent(_id));
+      }
+
+      dispatch(ToastActions.confirm(
+        "Deleted",
+        `"${content.title}" has been deleted.`,
+        {"Undo": undo}
+      ));
     });
   }
 }
@@ -74,6 +97,15 @@ export function openContent(project, fullpath, _id) {
       const values = transport.import(data);
       dispatch(setContent(project, values, _id));
     });
+  }
+}
+
+
+export function trashContent(project, data, _id) {
+  const content = new Content(project, data, _id);
+  return {
+    type: TRASH_CONTENT,
+    content: content.toJson(),
   }
 }
 
