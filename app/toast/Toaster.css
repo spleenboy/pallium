@@ -1,6 +1,7 @@
 .toaster {
   width: 100%;
-  height: 140px;
+  height: 100px;
+  overflow: hidden;
   position: fixed;
   background-color: var(--orange);
   border: 2px solid var(--gray);
@@ -9,10 +10,14 @@
 
 .opened {
   margin-top: var(--header-height);
+  min-height: 100px;
+  height: auto;
 }
 
 .closed {
-  margin-top: -50px;
+  margin-top: 0;
+  min-height: 100px;
+  height: 100px;
 }
 
 .toaster.closed:hover {
@@ -23,12 +28,17 @@
 .footer {
   width: 100%;
   height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
   cursor: pointer;
 }
 
 .footer, .pulltab {
+  z-index: 3;
   transition: background-color 0.5s ease-out;
-  background-color: transparent;
+  background-color: var(--orange);
 }
 
 .footer:hover, .pulltab:hover {
@@ -43,7 +53,7 @@
 .pulltab button {
   outline: 0;
   border: 0;
-  background: none;
+  background: transparent;
   width: 100%;
   transition: transform 0.5s;
   cursor: pointer;
@@ -65,20 +75,28 @@
 .silent {
 }
 
-.messages {
+.message {
+  z-index: 2;
   width: 100%;
   margin: 1rem;
-  padding: 1rem;
-}
-
-.message {
+  margin-bottom: 50px;
   padding: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+.opened .message {
+  transform: scaleY(1);
+}
+
+.closed .message {
+  transform: scaleY(0);
+  margin-bottom: 100px;
 }
 
 .message.error {
   background-color: var(--warning);
-  color: var(--white);
+  color: var(--black);
 }
 
 .message.info {
@@ -94,7 +112,6 @@
 }
 
 .message .body {
-
 }
 
 .message .actions {
@@ -102,7 +119,7 @@
 }
 
 @media screen and (min-width: 750px) {
-  .messages {
+  .message {
     width: 70%;
     margin-left: 25%;
   }

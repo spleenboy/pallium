@@ -16,12 +16,12 @@ export function dismiss(index) {
   }
 }
 
-export function confirm(title, text, callback = null) {
+export function confirm(title, text, actions = null) {
   const message = {
     type: 'confirm',
     title,
     text,
-    callback
+    actions,
   };
   return {
     type: ADD,
