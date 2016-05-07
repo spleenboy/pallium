@@ -2,7 +2,7 @@
   display: none;
   position: fixed;
   width: 25%;
-  min-height: 100%;
+  height: 100%;
   overflow: auto;
   background-color: var(--lime);
   border-right: 2px solid var(--gray);
