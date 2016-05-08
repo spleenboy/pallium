@@ -1,11 +1,15 @@
-.textarea {
+.markdown {
   composes: input from './InputField.css';
   border: 1px solid transparent;
   height: auto;
 }
 
-.textarea:hover {
+.markdown:hover {
   border: 1px solid var(--gray);
+}
+
+.textarea {
+
 }
 
 .preview {

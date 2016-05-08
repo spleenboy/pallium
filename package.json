@@ -91,6 +91,7 @@
   },
   "dependencies": {
     "autosize": "^3.0.15",
+    "catdown": "^1.1.0",
     "css-modules-require-hook": "^4.0.0",
     "electron-debug": "^0.5.2",
     "fs-extra": "^0.26.7",
