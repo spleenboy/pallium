@@ -1,0 +1,47 @@
+{
+  "title": "Notes",
+  "description": "A tool for writing notes",
+  "icon": "note",
+  "directory": "content",
+  "database": "content/index.db",
+  "contentTypes": [
+    {
+      "settings": {
+        "title": "Note",
+        "plural": "notes",
+        "handle": "note",
+        "icon": "note_add"
+      },
+      "storage": {
+        "contentKey": "content",
+        "directory": [
+          "notes"
+        ],
+        "filename": {
+          "field": "title",
+          "type": "slug"
+        },
+        "title": {
+          "field": "title",
+          "type": "field"
+        }
+      },
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title",
+          "hint": null,
+          "defaultValue": null
+        },
+        {
+          "name": "content",
+          "type": "md",
+          "label": "Notes",
+          "hint": null,
+          "defaultValue": null
+        }
+      ]
+    }
+  ]
+}

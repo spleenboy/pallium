@@ -1,6 +1,6 @@
 ---
 title: Add delete
-status: In Progress
+status: Complete
 priority: Medium
 description: |-
   Add a delete button to the content editor.

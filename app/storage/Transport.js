@@ -31,13 +31,24 @@ export default class Transport {
   }
 
   import(input) {
+    if (!input) {
+      return {};
+    }
     const parts = this.split(input);
     let data = {};
 
     if (parts.front && parts.front.charAt(0) === '{') {
+      // JSON front matter
       data = JSON.parse(parts.front);
+    } else if (parts.content && parts.content.charAt(0) === '{') {
+      // Pure JSON
+      data = JSON.parse(parts.content);
     } else if (parts.front) {
+      // YAML front matter
       data = safeLoad(parts.front);
+    } else if (parts.content) {
+      // Pure YAML
+      data = safeLoad(parts.content);
     }
 
     if (this.contentKey) {
@@ -61,7 +72,7 @@ export default class Transport {
     if (this.format === YAML_FORMAT) {
         front = dump(data);
     } else if (this.format === JSON_FORMAT) {
-        front = JSON.stringify(data, true);
+        front = JSON.stringify(data, null, 2);
     } else {
         front = '';
     }

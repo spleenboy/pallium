@@ -9,7 +9,7 @@ export default class Content {
     this.project = project;
     this.contentType = project.contentType;
     this.values = {};
-    this.load(data);
+    this.load(project.contentType.fields, data);
   }
 
   toJson() {
@@ -88,21 +88,22 @@ export default class Content {
     return this.values[key];
   }
 
-  load(data) {
+  load(fields, data) {
     this.values = {};
-    this.contentType.fields.forEach(field => {
-      if ("value" in field) {
+    fields.forEach(field => {
+      let key = field.name || field.label;
+      if (key && "value" in field) {
         // A value is forced by the content type.
-        this.values[field.name] = field.value;
-      } else if (field.name in data) {
+        this.values[key] = field.value;
+      } else if (key in data) {
         // A value is specified in the data. 
-        this.values[field.name] = data[field.name];
-      } else if ("defaultValue" in field) {
+        this.values[key] = data[field.name];
+      } else if (key && "defaultValue" in field) {
         // Use the default.
-        this.values[field.name] = field.defaultValue;
-      } else {
+        this.values[key] = field.defaultValue;
+      } else if (key) {
         // Nothing to see
-        this.values[field.name] = "";
+        this.values[key] = "";
       }
     });
   }

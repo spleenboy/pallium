@@ -1,6 +1,6 @@
 ---
 title: Make collection items sortable
-status: In Progress
+status: Complete
 priority: Medium
 description: ''
 ---
