@@ -2,7 +2,7 @@
   "title": "Notes",
   "description": "A tool for writing notes",
   "icon": "note",
-  "directory": "content",
+  "directory": "notes",
   "database": "content/index.db",
   "contentTypes": [
     {
@@ -14,16 +14,14 @@
       },
       "storage": {
         "contentKey": "content",
-        "directory": [
-          "notes"
-        ],
+        "directory": [],
         "filename": {
-          "field": "title",
-          "type": "slug"
+          "type": "slug",
+          "field": "title"
         },
         "title": {
-          "field": "title",
-          "type": "field"
+          "type": "reflect",
+          "field": "title"
         }
       },
       "fields": [
