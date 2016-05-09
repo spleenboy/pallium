@@ -53,6 +53,7 @@ export class Toaster extends Component {
     let {open, messageIndex} = this.state;
 
     const display = open ? styles.opened : styles.closed;
+    const mode    = this.props.count > 0 ? styles.active : styles.inactive;
     const message = messages[messageIndex] || messages[0] || false;
 
     let notice, footer;
@@ -97,7 +98,7 @@ export class Toaster extends Component {
     }
 
     return (
-      <div className={`${styles.toaster} ${display}`}>
+      <div className={`${styles.toaster} ${display} ${mode}`}>
         {notice}
         {footer}
       </div>

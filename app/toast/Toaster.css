@@ -11,6 +11,14 @@
   z-index: 800;
 }
 
+.active {
+
+}
+
+.inactive {
+
+}
+
 .opened {
   margin-top: var(--header-height);
   min-height: 100px;
@@ -23,7 +31,7 @@
   height: 100px;
 }
 
-.toaster.closed:hover {
+.active.toaster.closed:hover {
   -webkit-animation: bob 1s ease-in-out;
   -webkit-animation-iteration-count: infinite;
 }
@@ -35,6 +43,9 @@
   bottom: 0;
   right: 0;
   text-align: right;
+}
+
+.active .footer {
   cursor: pointer;
 }
 
@@ -43,7 +54,7 @@
   background-color: var(--orange);
 }
 
-.footer:hover, .pulltab:hover {
+.active .footer:hover, .active .pulltab:hover {
   background-color: var(--white-film);
 }
 
