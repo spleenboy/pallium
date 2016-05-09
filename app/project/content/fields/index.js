@@ -1,5 +1,6 @@
 import ArrayField from './ArrayField';
 import CollectionField from './CollectionField';
+import FileField from './FileField';
 import HiddenField from './HiddenField';
 import InputField from './InputField';
 import MarkdownField from './MarkdownField';
@@ -15,6 +16,7 @@ export default {
   'checkbox': OptionListField,
   'collection': CollectionField,
   'default': InputField,
+  'file': FileField,
   'hidden': HiddenField,
   'md': MarkdownField,
   'markup': MarkupField,

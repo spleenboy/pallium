@@ -2,7 +2,8 @@
     "title": "Pallium",
     "description": "Documentation for the Pallium application",
     "icon": "code",
-    "directory": "content",
+    "contentDirectory": "content",
+    "assetDirectory": "assets",
     "database": "content/pallium.db",
     "contentTypes": [
     {
@@ -49,9 +50,18 @@
             "hint": "Use any Google Material Design icon name"
         },
         {
-            "name": "directory",
-            "label": "Directory",
+            "name": "contentDirectory",
+            "label": "Content Directory",
             "hint": "The relative directory where your content will be saved",
+            "defaultValue": "content",
+            "attributes": {
+                "required": true
+            }
+        },
+        {
+            "name": "assetDirectory",
+            "label": "Asset Directory",
+            "hint": "The relative directory where uploaded assets will be saved",
             "defaultValue": "content",
             "attributes": {
                 "required": true
@@ -356,7 +366,7 @@
               "example",
               {"type": "substring", "field": "text", "start": 0, "count": 1}
           ],
-          "filename": {"type": "reflect", "field": "text"},
+          "filename": {"type": "slug", "field": "text"},
           "title": {"type": "reflect", "field": "text"},
           "metadata": {
               "Date": {"type": "moment", "field": "date", "format": "YYYY/MM/DD"},
@@ -473,7 +483,10 @@
         {
             "name": "file",
             "type": "file",
-            "label": "file"
+            "label": "file",
+            "hint": "This field type allows uploads of one or more files",
+            "multiple": true,
+            "accept": ["gif", "jpg", "png", "svg", "txt", "json"]
         },
         {
             "name": "hidden",

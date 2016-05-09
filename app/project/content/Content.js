@@ -18,6 +18,8 @@ export default class Content {
       contentType: this.contentType.settings.handle,
       title: this.title,
       directory: this.directory,
+      basedir: this.basedir,
+      assetdir: this.assetdir,
       filename: this.filename,
       fullpath: this.fullpath,
       metadata: this.metadata,
@@ -64,9 +66,16 @@ export default class Content {
     return parts.join(path.sep);
   }
 
+  get basedir() {
+    return path.join(path.dirname(this.project.path), this.project.contentDirectory);
+  }
+
+  get assetdir() {
+    return path.join(this.basedir, this.project.assetDirectory);
+  }
+
   get fullpath() {
-    let baseDir = path.join(path.dirname(this.project.path), this.project.directory);
-    return path.join(baseDir, this.directory, this.filename);
+    return path.join(this.basedir, this.directory, this.filename);
   }
 
   set(key, value) {
