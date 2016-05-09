@@ -55,9 +55,9 @@ export class Toaster extends Component {
     const display = open ? styles.opened : styles.closed;
     const message = messages[messageIndex] || messages[0] || false;
 
-    let notice = null;
-    let actions = [];
+    let notice, footer;
     if (message) {
+      let actions = [];
       if (message.actions) {
         for (var label in message.actions) {
           let action = message.actions[label];
@@ -78,18 +78,28 @@ export class Toaster extends Component {
           <div className={styles.actions}>{actions}</div>
         </div>
       );
-    }
-
-    return (
-      <div className={`${styles.toaster} ${display}`}>
-        {notice}
+      footer = (
         <div className={styles.footer} onClick={this.handleToggle.bind(this)}>
+          <div className={styles.toastTitle}>{this.props.title}</div>
           <div className={styles.pulltab}>
             <button className={styles.toggle}>
               <Icon name="arrow_downward"/>
             </button>
           </div>
         </div>
+      );
+    } else {
+      footer = (
+        <div className={styles.footer}>
+          <div className={styles.toastTitle}>{this.props.title}</div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={`${styles.toaster} ${display}`}>
+        {notice}
+        {footer}
       </div>
     );
   }
@@ -99,6 +109,7 @@ function mapStateToProps(state) {
   return {
     count: state.toast.messages.length,
     messages: state.toast.messages,
+    title: state.toast.title,
   };
 }
 

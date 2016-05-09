@@ -2,7 +2,8 @@
   composes: input from './InputField.css';
   border: 1px solid transparent;
   transition: border 0.5s;
-  min-height: 10rem;
+  min-height: 1rem;
+  font-family: 'Roboto Slab';
 }
 
 .textarea:hover {

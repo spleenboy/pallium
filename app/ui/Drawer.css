@@ -6,7 +6,9 @@
   overflow: auto;
   background-color: var(--lime);
   border-right: 2px solid var(--gray);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding-top: 100px;
+  z-index: 900;
 }
 
 .title {

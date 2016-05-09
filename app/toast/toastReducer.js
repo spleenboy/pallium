@@ -1,6 +1,7 @@
 import * as Actions from './ToastActions';
 
 const initialState = {
+  title: null,
   thinking: false,
   messages: [],
 };
@@ -11,6 +12,12 @@ export default function handle(state = initialState, action) {
     return methods[action.type](state, action);
   }
   return state;
+}
+
+methods[Actions.SET_TITLE] = function(state, action) {
+  const result = Object.assign({}, state);
+  result.title = action.title;
+  return result;
 }
 
 methods[Actions.CLEAR] = function(state, action) {

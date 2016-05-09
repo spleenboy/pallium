@@ -5,7 +5,10 @@
   position: fixed;
   background-color: var(--orange);
   border: 2px solid var(--gray);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
   transition: all 0.5s ease-in-out;
+  z-index: 800;
 }
 
 .opened {
@@ -36,7 +39,6 @@
 }
 
 .footer, .pulltab {
-  z-index: 3;
   transition: background-color 0.5s ease-out;
   background-color: var(--orange);
 }

@@ -1,13 +1,14 @@
 .header
 {
   position: fixed;
-  z-index: 5;
+  z-index: 1000;
   padding: 0;
   width: 100%;
   height: var(--header-height);
   line-height: var(--header-height);
   vertical-align: middle;
   background-color: var(--blue);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header a,

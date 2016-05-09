@@ -2,6 +2,14 @@ export const CLEAR = 'toast.clear';
 export const ADD = 'toast.add';
 export const DISMISS = 'toast.dismiss';
 export const THINK = 'toast.think';
+export const SET_TITLE = 'toast.title';
+
+export function setTitle(title) {
+  return {
+    type: SET_TITLE,
+    title,
+  };
+}
 
 export function clear() {
   return {

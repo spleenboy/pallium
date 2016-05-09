@@ -3,6 +3,7 @@ import marked from 'marked';
 import Catdown from 'catdown';
 
 import styles from './MarkdownField.css';
+import globalStyles from './MarkdownField.global.css';
 import InputField from './InputField';
 
 const DEFAULT_ROWS = 4;

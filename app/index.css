@@ -12,7 +12,9 @@
   --orange-film: rgba(255, 212, 0, 0.3);
   --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(200, 200, 200);
+  --gray-film: rgba(200, 200, 200, 0.7);
   --warning: rgb(255, 50, 50);
+  --shadow: rgba(0, 0, 0, 0.5);
 }
 
 body {
