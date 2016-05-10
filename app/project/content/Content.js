@@ -19,7 +19,6 @@ export default class Content {
       title: this.title,
       directory: this.directory,
       basedir: this.basedir,
-      assetdir: this.assetdir,
       filename: this.filename,
       fullpath: this.fullpath,
       metadata: this.metadata,
@@ -71,16 +70,44 @@ export default class Content {
   }
 
   get assetdir() {
-    return path.join(this.basedir, this.project.assetDirectory);
+    return path.join(path.dirname(this.project.path), this.project.assetDirectory);
   }
 
   get fullpath() {
     return path.join(this.basedir, this.directory, this.filename);
   }
 
+  expandAssetShortPath(definition, shortpath) {
+    return path.join(
+      this.assetdir,
+      shortpath
+    );
+  }
+
+  calculateAssetShortPath(definition, fullpath) {
+    const filename = path.basename(fullpath);
+
+    if (!definition.directory) {
+      return filename;
+    }
+
+    const subdirs = this.calculate(definition.directory);
+    return path.join(
+      subdirs.join(path.sep),
+      filename
+    );
+  }
+
+  assetShortPathToFullPath(shortpath) {
+    return path.join(
+      this.assetdir,
+      shortpath
+    );
+  }
+
   set(key, value) {
     const field = this.contentType.fields.find(f => f.name === key);
-    if (!field) {
+    if (!field || !key) {
       console.error("Invalid key", key);
       return;
     }

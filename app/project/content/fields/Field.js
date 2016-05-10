@@ -8,7 +8,6 @@ export default class Field extends Component {
       definition: PropTypes.object.isRequired,
       value: PropTypes.object.isRequired,
       onValueChange: PropTypes.func.isRequired,
-      assetDirectory: PropTypes.string.isRequired,
     }
   }
 
@@ -23,7 +22,6 @@ export default class Field extends Component {
 
     return (
       <Element
-        assetDirectory={this.props.assetDirectory}
         definition={def}
         value={this.props.value}
         onValueChange={this.handleValueChange.bind(this)}

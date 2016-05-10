@@ -32,13 +32,12 @@ export class ContentFormComponent extends Component {
 
 
   render() {
-    const {project, contentType, content} = this.props;
+    const {contentType, content} = this.props;
 
     const fields = contentType.fields.map((def, i) => {
       return (
         <Field
           key={i}
-          assetDirectory={content.assetdir}
           definition={def}
           value={content.values[def.name]}
           onValueChange={this.handleFieldValueChange.bind(this)}

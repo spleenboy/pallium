@@ -14,7 +14,7 @@ export function moment(values, {field, format}) {
 
 export function substring(values, {field, start, count}) {
   const value = _.get(values, field);
-  return value ? value.substr(start, count) : '';
+  return value ? value.substr(start, count).trim() : '';
 }
 
 export function kebab(values, {field, defaultValue}) {

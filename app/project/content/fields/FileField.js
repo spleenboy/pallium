@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 const remote = require('remote');
 const dialog = remote.require('dialog');
@@ -7,12 +9,15 @@ import fs from 'fs-extra';
 import path from 'path';
 import _ from 'lodash';
 
+import * as Actions from '../../../toast/ToastActions.js';
+import Content from '../Content';
+
 import styles from './FileField.css';
 import InputField from './InputField';
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
 
-export default class FileField extends InputField {
+export class FileField extends InputField {
   filepaths() {
     const {value} = this.props;
     if (!value) {
@@ -27,21 +32,30 @@ export default class FileField extends InputField {
   }
 
 
-  deleteFile(filepath) {
-    const fullpath = path.join(this.props.assetDirectory, filepath);
-    fs.remove(fullpath, (err) => {
-      err && console.error("Error removing file", fullpath, err);
+  deleteFile(shortpath) {
+    const {project, contentValues, contentId, definition} = this.props;
+    const content = new Content(project, contentValues, contentId);
+    const rmpath = content.expandAssetShortPath(definition, shortpath);
+
+    fs.remove(rmpath, err => {
+      if (!err) return;
+      this.props.popError("Delete Error", `The file ${shortpath} could not be deleted`, err);
     });
   }
 
 
-  addFile(filepath) {
-    const filename = path.basename(filepath);
-    const savepath = path.join(this.props.assetDirectory, filename);
-    fs.copy(filepath, savepath, (err) => {
-      err && console.error("Error copying file", filepath, "to", savepath, err);
+  addFile(fullpath) {
+    const {project, contentValues, contentId, definition} = this.props;
+    const content = new Content(project, contentValues, contentId);
+    const shortpath = content.calculateAssetShortPath(definition, fullpath);
+    const savepath = content.assetShortPathToFullPath(shortpath);
+
+    fs.copy(fullpath, savepath, err => {
+      if (!err) return;
+      this.props.popError("Copy Error", `The file ${fullpath} could not copied to ${savepath}`, err);
     });
-    return filename;
+
+    return shortpath;
   }
 
 
@@ -67,10 +81,10 @@ export default class FileField extends InputField {
   }
 
 
-  handleDelete(filepath, index, e) {
-    this.deleteFile(filepath);
+  handleDelete(shortpath, index, e) {
+    this.deleteFile(shortpath);
     const paths = this.filepaths();
-    _.remove(paths, p => p === filepath);
+    _.remove(paths, p => p === shortpath);
     this.props.onValueChange(this.props.definition, paths);
   }
 
@@ -129,3 +143,23 @@ export default class FileField extends InputField {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const project = state.project;
+  const contentType = project.contentType;
+  const content = contentType.content;
+  return {
+    project: project,
+    contentType: contentType,
+    contentValues: content.values,
+    contentId: content._id,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    popError: Actions.error,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FileField);

@@ -27,7 +27,7 @@ export default class Transport {
   }
 
   clean(output) {
-    return Object.assign({}, output);
+    return JSON.parse(JSON.stringify(output));
   }
 
   import(input) {
