@@ -10,7 +10,7 @@ Rules.required = function(value) {
 }
 
 Rules.pattern = function(value, {pattern}) {
-  const regex = new Regex(pattern);
+  const regex = new RegExp(pattern);
   return !regex.test(value);
 }
 
@@ -30,14 +30,22 @@ export default class Validation extends Component {
       return null;
     }
 
-    const errors = [];
+    const messages = [];
+    let isValid = true;
     rules.forEach(rule => {
       if (rule.type in Rules) {
         const invalid = Rules[rule.type];
         if (invalid(value, rule)) {
-          errors.push(
-            <div className={styles.error} key={errors.length}>
+          isValid = false;
+          messages.push(
+            <div className={styles.error} key={messages.length}>
               {rule.message}
+            </div>
+          );
+        } else if (rule.label) {
+          messages.push(
+            <div className={styles.label} key={messages.length}>
+              {rule.label}
             </div>
           );
         }
@@ -46,15 +54,15 @@ export default class Validation extends Component {
       }
     });
 
-    this.props.onValidation && this.props.onValidation(errors);
+    this.props.onValidation && this.props.onValidation(isValid, messages);
 
-    if (!errors) {
+    if (!messages) {
       return null;
     }
 
     return (
-      <div className={styles.errors}>
-        {errors}
+      <div className={styles.messages}>
+        {messages}
       </div>
     );
   }

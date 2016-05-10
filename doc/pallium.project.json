@@ -392,11 +392,13 @@
             "label": "text",
             "defaultValue": "Example Title",
             "hint": "Give this post a good name",
-            "attributes": {
-                "max": 255,
-                "required": true,
-                "autofocus": true
+            "validation": [
+            {
+                "type": "required",
+                "label": "* Required",
+                "message": "* You didn't listen!"
             }
+            ]
         },
         {
             "name": "array",
@@ -480,6 +482,7 @@
             "validation": [
             {
                 "type": "required",
+                "label": "* Required",
                 "message": "Please provide a date"
             }
             ]

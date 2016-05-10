@@ -1,8 +1,13 @@
-.errors {
-  color: var(--warning);
+.messages {
   font-size: 1.2rem;
 }
 
 .error {
+  color: var(--warning);
+  display: block;
+}
+
+.label {
+  color: var(--gray);
   display: block;
 }
