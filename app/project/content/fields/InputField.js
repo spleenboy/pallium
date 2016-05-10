@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import styles from './InputField.css';
+import Validation from './Validation';
 
 export default class InputField extends Component {
   constructor(props) {
@@ -83,7 +84,10 @@ export default class InputField extends Component {
 
 
   renderError() {
-    return null;
+    const {validation} = this.props.definition;
+    return (
+      <Validation rules={validation} value={this.props.value}/>
+    );
   }
 
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 const remote = require('remote');
 const dialog = remote.require('dialog');
+const {shell} = require('electron');
 
 import fs from 'fs-extra';
 import path from 'path';
@@ -16,6 +17,7 @@ import styles from './FileField.css';
 import InputField from './InputField';
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
+import FilePreview from '../../../ui/FilePreview';
 
 export class FileField extends InputField {
   filepaths() {
@@ -32,22 +34,22 @@ export class FileField extends InputField {
   }
 
 
-  deleteFile(shortpath) {
+  getContent() {
     const {project, contentValues, contentId, definition} = this.props;
-    const content = new Content(project, contentValues, contentId);
-    const rmpath = content.expandAssetShortPath(definition, shortpath);
+    return new Content(project, contentValues, contentId);
+  }
 
-    fs.remove(rmpath, err => {
-      if (!err) return;
-      this.props.popError("Delete Error", `The file ${shortpath} could not be deleted`, err);
-    });
+
+  deleteFile(shortpath) {
+    const content = this.getContent();
+    const rmpath = content.expandAssetShortPath(this.props.definition, shortpath);
+    shell.moveItemToTrash(rmpath);
   }
 
 
   addFile(fullpath) {
-    const {project, contentValues, contentId, definition} = this.props;
-    const content = new Content(project, contentValues, contentId);
-    const shortpath = content.calculateAssetShortPath(definition, fullpath);
+    const content = this.getContent();
+    const shortpath = content.calculateAssetShortPath(this.props.definition, fullpath);
     const savepath = content.assetShortPathToFullPath(shortpath);
 
     fs.copy(fullpath, savepath, err => {
@@ -111,21 +113,26 @@ export class FileField extends InputField {
 
 
   renderInput() {
+    const definition = this.props.definition;
     const {
       multiple,
       accept,
       directory,
-    } = this.props.definition;
+    } = definition;
 
+    const content = this.getContent();
     const filepaths = this.filepaths();
     const actionName = (!multiple && filepaths.length) ? "Replace" : "Upload";
 
-    const fileList = filepaths.map((fp, i) => {
+    const fileList = filepaths.map((shortpath, i) => {
+      const fullpath = content.expandAssetShortPath(definition, shortpath);
+
       return (
         <div key={i} className={styles.file}>
-          <Button mode="warning" className={styles.delete} onClick={this.handleDelete.bind(this, fp, i)}>
+          <FilePreview src={fullpath}/>
+          <Button mode="warning" className={styles.delete} onClick={this.handleDelete.bind(this, shortpath, i)}>
             <Icon name="delete"/>
-            {fp}
+            {shortpath}
           </Button>
         </div>
       );

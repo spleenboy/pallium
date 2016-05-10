@@ -1,3 +1,5 @@
+const {shell} = require('electron');
+
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -62,7 +64,7 @@ export function deleteContent(project, data, _id) {
     .then(num => {
       process.nextTick(() => {
         fs.access(content.fullpath, fs.W_OK, (err) => {
-          !err && fs.unlink(content.fullpath);
+          !err && shell.moveItemToTrash(content.fullpath);
         });
         prune(project.path);
       });

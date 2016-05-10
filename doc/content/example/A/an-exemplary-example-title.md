@@ -17,7 +17,9 @@ collection:
 date: '2016-05-09'
 email: ''
 file:
-  - chicken-dance.gif
+  - An/bunny_high_five.jpg
+  - An/happy-dance.jpg
+  - An/pallium.project.json
 hidden: secret
 month: 2016-05
 number: '3'

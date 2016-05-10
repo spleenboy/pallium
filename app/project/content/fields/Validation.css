@@ -1,0 +1,8 @@
+.errors {
+  color: var(--warning);
+  font-size: 1.2rem;
+}
+
+.error {
+  display: block;
+}

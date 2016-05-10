@@ -1,0 +1,50 @@
+.filePreview {
+  float: left;
+  width: 140px;
+  max-height: 140px;
+}
+
+.thumbnail {
+  width: 120px;
+  max-height: 120px;
+}
+
+.thumbnail .image {
+  border-radius: 60px;
+  width: 100%;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: border-radius 0.5s;
+}
+
+.thumbnail .icon {
+  border-radius: 60px;
+  background-color: var(--gray);
+  color: var(--blue);
+  width: 100%;
+  font-size: 120px;
+  cursor: pointer;
+  transition: border-radius 0.5s;
+}
+
+.thumbnail .image:hover {
+  border-radius: 5px;
+}
+
+.thumbnail .icon:hover {
+  border-radius: 5px;
+}
+
+.small.thumbnail {
+
+}
+
+.large.thumbnail {
+
+}
+
+.full {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}

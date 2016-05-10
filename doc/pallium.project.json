@@ -34,10 +34,11 @@
             "label": "Title",
             "hint": "The title of your project",
             "defaultValue": "New Project",
-            "attributes": {
-                "required": true,
-                "autofocus": true
+            "validation": [
+            {
+                "type": "required"
             }
+            ]
         },
         {
             "type": "textarea",
@@ -54,27 +55,33 @@
             "label": "Content Directory",
             "hint": "The relative directory where your content will be saved",
             "defaultValue": "content",
-            "attributes": {
-                "required": true
+            "validation": [
+            {
+                "type": "required"
             }
+            ]
         },
         {
             "name": "assetDirectory",
             "label": "Asset Directory",
             "hint": "The relative directory where uploaded assets will be saved",
             "defaultValue": "content",
-            "attributes": {
-                "required": true
+            "validation": [
+            {
+                "type": "required"
             }
+            ]
         },
         {
             "name": "database",
             "label": "Database",
             "hint": "The relative filename for your database file",
             "defaultValue": "content/index.db",
-            "attributes": {
-                "required": true
+            "validation": [
+            {
+                "type": "required"
             }
+            ]
         },
         {
             "name": "contentTypes",
@@ -316,10 +323,12 @@
             "label": "Title",
             "defaultValue": "To do: this thing",
             "hint": "Give this a name",
-            "attributes": {
-                "required": true,
-                "autofocus": true
+            "validation": [
+            {
+                "type": "required",
+                "message": "A title is required"
             }
+            ]
         },
         {
             "name": "status",
@@ -468,9 +477,12 @@
             "name": "date",
             "type": "date",
             "label": "date",
-            "attributes": {
-                "required": true
+            "validation": [
+            {
+                "type": "required",
+                "message": "Please provide a date"
             }
+            ]
         },
         {
             "name": "email",
@@ -531,7 +543,14 @@
         {
             "name": "password",
             "type": "password",
-            "label": "password"
+            "label": "password",
+            "validation": [
+            {
+                "type": "pattern",
+                "message": "Please include at least 6 characters",
+                "pattern": "/^.{4,}"
+            }
+            ]
         },
         {
             "name": "radio",

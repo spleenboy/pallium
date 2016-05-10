@@ -27,7 +27,10 @@ export default class Transport {
   }
 
   clean(output) {
-    return JSON.parse(JSON.stringify(output));
+    if (this.format === YAML_FORMAT) {
+      return JSON.parse(JSON.stringify(output));
+    }
+    return Object.assign({}, output);
   }
 
   import(input) {

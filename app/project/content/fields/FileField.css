@@ -3,4 +3,7 @@
 }
 
 .file {
+  display: block;
+  height: 140px;
+  line-height: 140px;
 }

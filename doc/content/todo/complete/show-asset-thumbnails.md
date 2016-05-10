@@ -1,5 +1,5 @@
 ---
-title: Add support for content type "singles"
+title: Show asset thumbnails
 status: Complete
 priority: Medium
 description: ''
