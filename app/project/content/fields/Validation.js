@@ -18,7 +18,7 @@ Rules.pattern = function(value, {pattern}) {
 export default class Validation extends Component {
   static propTypes = {
     rules: React.PropTypes.array,
-    value: React.PropTypes.node,
+    value: React.PropTypes.any,
     onValidation: React.PropTypes.func,
   }
 

@@ -142,7 +142,7 @@
                         "name": "extension",
                         "label": "Extension",
                         "hint": "The extension that will be used to save files of this content type.",
-                        "defaultValue": ".md"
+                        "defaultValue": "md"
                     },
                     {
                         "name": "contentKey",
@@ -238,6 +238,62 @@
                         ]
                     },
                     {
+                        "label": "Option List",
+                        "fields": [
+                        {
+                            "name": "name",
+                            "label": "Name"
+                        },
+                        {
+                            "name": "type",
+                            "label": "Type",
+                            "type": "select",
+                            "options": [
+                            {
+                                "value": "select",
+                                "label": "Drop down list"
+                            },
+                            {
+                                "value": "radio",
+                                "label": "Radio button list"
+                            }
+                            ]
+                        },
+                        {
+                            "name": "label",
+                            "label": "Label"
+                        },
+                        {
+                            "name": "hint",
+                            "label": "Hint"
+                        },
+                        {
+                            "name": "defaultValue",
+                            "label": "Default Value"
+                        },
+                        {
+                            "name": "options",
+                            "label": "Options",
+                            "type": "collection",
+                            "definitions": [
+                            {
+                                "label": "Option",
+                                "fields": [
+                                {
+                                    "name": "value",
+                                    "label": "Value"
+                                },
+                                {
+                                    "name": "label",
+                                    "label": "Label"
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    },
+                    {
                         "label": "Range",
                         "fields": [
                         {
@@ -247,7 +303,7 @@
                         {
                             "name": "type",
                             "type": "hidden",
-                            "value": "text"
+                            "value": "range"
                         },
                         {
                             "name": "label",
@@ -540,6 +596,35 @@
             {
                 "name": "subtitle",
                 "label": "subtitle"
+            }
+            ]
+        },
+        {
+            "name": "objectArray",
+            "type": "objectArray",
+            "label": "objectArray",
+            "hint": "Stores an array of values that can be of one or more types. Note: only the values are saved. The 'name' field is ignored.",
+            "fields": [
+            {
+                "label": "Idea"
+            },
+            {
+                "label": "Big Idea",
+                "type": "textarea"
+            },
+            {
+                "label": "Object",
+                "type": "object",
+                "fields": [
+                {
+                    "name": "id",
+                    "label": "ID"
+                },
+                {
+                    "name": "value",
+                    "label": "Value"
+                }
+                ]
             }
             ]
         },

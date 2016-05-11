@@ -7,7 +7,7 @@ import SortableList from '../../../ui/SortableList';
 import Button from '../../../ui/Button';
 import Icon from '../../../ui/Icon';
 
-export default class ArrrayField extends InputField {
+export default class ArrayField extends InputField {
   handleAdd() {
     const values = Array.isArray(this.props.value) ? this.props.value : [];
     values.push(this.refs.input.value);

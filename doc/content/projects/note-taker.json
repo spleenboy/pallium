@@ -15,6 +15,7 @@
       },
       "storage": {
         "contentKey": "content",
+        "extension": "md",
         "directory": [],
         "filename": {
           "field": "title",

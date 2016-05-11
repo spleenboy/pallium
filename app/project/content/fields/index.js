@@ -6,6 +6,7 @@ import InputField from './InputField';
 import MarkdownField from './MarkdownField';
 import MarkupField from './MarkupField';
 import ObjectField from './ObjectField';
+import ObjectArrayField from './ObjectArrayField';
 import OptionListField from './OptionListField';
 import RangeField from './RangeField';
 import SelectField from './SelectField';
@@ -21,6 +22,7 @@ export default {
   'md': MarkdownField,
   'markup': MarkupField,
   'object': ObjectField,
+  'objectArray': ObjectArrayField,
   'radio': OptionListField,
   'range': RangeField,
   'select': SelectField,
