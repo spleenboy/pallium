@@ -618,7 +618,13 @@
                 "fields": [
                 {
                     "name": "id",
-                    "label": "ID"
+                    "label": "ID",
+                    "validation": [
+                    {
+                        "type": "required",
+                        "message": "ID is required"
+                    }
+                    ]
                 },
                 {
                     "name": "value",

@@ -26,6 +26,11 @@ number: '3'
 object:
   title: A title
   subtitle: Subtitle?
+objectArray:
+  - An Internet-Connected Toaster
+  - World Peace
+  - id: '12345'
+    value: Albatross
 password: secret
 radio: Value 2
 range: '5'
