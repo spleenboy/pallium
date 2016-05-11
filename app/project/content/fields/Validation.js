@@ -27,6 +27,7 @@ export default class Validation extends Component {
     const {rules, value} = this.props;
 
     if (!rules) {
+      this.props.onValidation && this.props.onValidation(true, []);
       return null;
     }
 

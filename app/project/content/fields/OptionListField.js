@@ -105,6 +105,7 @@ export default class OptionListField extends InputField {
         {this.renderHeader()}
         {optionList}
         <div className={styles.heading}>{label}</div>
+        {this.renderValidation()}
       </div>
     );
   }

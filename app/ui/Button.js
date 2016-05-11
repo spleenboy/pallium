@@ -3,6 +3,9 @@ import styles from './Button.css';
 
 export default class Button extends Component {
   handleClick(e) {
+    if (this.props.disabled) {
+      return;
+    }
     this.props.onClick && this.props.onClick(e);
   }
 

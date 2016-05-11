@@ -83,7 +83,7 @@ export default class InputField extends Component {
   }
 
 
-  renderError() {
+  renderValidation() {
     const {validation} = this.props.definition;
     return (
       <Validation rules={validation} value={this.props.value}/>
@@ -100,7 +100,7 @@ export default class InputField extends Component {
         {this.renderHeader()}
         {this.renderInput()}
         {this.renderLabel()}
-        {this.renderError()}
+        {this.renderValidation()}
       </div>
     );
   }

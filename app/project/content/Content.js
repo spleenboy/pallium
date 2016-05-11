@@ -9,6 +9,8 @@ export default class Content {
     this.project = project;
     this.contentType = project.contentType;
     this.values = {};
+    this.dirty = false;
+    this.valid = true;
     this.load(project.contentType.fields, data);
   }
 
@@ -16,6 +18,8 @@ export default class Content {
     return {
       _id: this._id,
       contentType: this.contentType.settings.handle,
+      dirty: this.dirty,
+      valid: this.valid,
       title: this.title,
       directory: this.directory,
       basedir: this.basedir,

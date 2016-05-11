@@ -16,6 +16,7 @@ methods[Actions.UPDATE_CONTENT] = function(state, action) {
   contentValues[action.key] = action.value;
 
   const content = new Content(project, contentValues, _id);
+  content.dirty = true;
 
   state.contentType.content = content.toJson();
 

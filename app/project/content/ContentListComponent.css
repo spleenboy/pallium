@@ -2,12 +2,20 @@
   transition: background 0.5s;
 }
 
+.itemWrapper {
+
+}
+
 .item {
   cursor: pointer;
 }
 
 .item:hover {
   background-color: var(--orange);
+}
+
+.active {
+  background-color: var(--white);
 }
 
 .header {

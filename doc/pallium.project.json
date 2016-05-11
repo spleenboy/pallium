@@ -551,7 +551,7 @@
             {
                 "type": "pattern",
                 "message": "Please include at least 6 characters",
-                "pattern": "/^.{4,}"
+                "pattern": "^.{6,}$"
             }
             ]
         },

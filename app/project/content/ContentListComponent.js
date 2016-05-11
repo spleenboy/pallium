@@ -43,7 +43,7 @@ export class ContentListComponent extends Component {
 
     let lastHeading = null;
     let items = sortedList.map((c, i) => {
-      let cn = c._id === content && content._id ? styles.active : "";
+      let cn = (content && c._id === content._id) ? styles.active : "";
       let metadata = [];
       for (var key in c.metadata) {
         metadata.push(
@@ -69,10 +69,9 @@ export class ContentListComponent extends Component {
         <div key={i} className={styles.itemWrapper}>
           {header}
           <ListItem
-            className={cn}
             avatar={c.title[0]}
             body={metadata}
-            className={styles.item}
+            className={`${styles.item} ${cn}`}
             onClick={this.handleSelect.bind(this, c.fullpath, c._id)}>
             {c.title}
           </ListItem>
