@@ -1,6 +1,6 @@
 ---
 title: Support file uploads
-status: In Progress
+status: Complete
 priority: Medium
 description: ''
 ---

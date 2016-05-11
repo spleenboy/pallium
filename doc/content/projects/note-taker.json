@@ -1,14 +1,15 @@
 {
-  "title": "Notes",
+  "title": "Note Taker",
   "description": "A tool for writing notes",
   "icon": "note",
-  "directory": "notes",
+  "contentDirectory": "content",
+  "assetDirectory": "content",
   "database": "content/index.db",
   "contentTypes": [
     {
       "settings": {
         "title": "Note",
-        "plural": "notes",
+        "plural": "Notes",
         "handle": "note",
         "icon": "note_add"
       },
@@ -16,12 +17,12 @@
         "contentKey": "content",
         "directory": [],
         "filename": {
-          "type": "slug",
-          "field": "title"
+          "field": "title",
+          "type": "slug"
         },
         "title": {
-          "type": "reflect",
-          "field": "title"
+          "field": "title",
+          "type": "reflect"
         }
       },
       "fields": [

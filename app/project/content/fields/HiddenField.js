@@ -4,6 +4,10 @@ import InputField from './InputField';
 
 export default class HiddenField extends InputField {
   componentDidMount() {
-    this.props.onValueChange(this.props.value);
+    this.props.onValueChange(this.props.definition, this.props.value);
+  }
+
+  render() {
+    return null;
   }
 }
