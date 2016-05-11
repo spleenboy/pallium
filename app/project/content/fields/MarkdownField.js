@@ -25,6 +25,15 @@ export default class MarkdownField extends InputField {
   }
 
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.catdown.value() !== this.props.value) {
+      this.catdown.set(this.props.value);
+    }
+  }
+
+
+
+
   renderInput() {
     const {
       name,
