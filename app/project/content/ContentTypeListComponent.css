@@ -8,7 +8,8 @@
 
 .contentTypeList li {
   cursor: pointer;
-  &:hover {
-    background-color: var(--lime);
-  }
+}
+
+.contentTypeList li:hover {
+  background-color: var(--orange-film);
 }
