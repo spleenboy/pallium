@@ -1,70 +1,45 @@
-import React, { Component, PropTypes } from 'react';
 import _ from 'lodash';
-
-import styles from './Validation.css';
 
 export const Rules = {};
 
 Rules.required = function(value) {
-  return _.isEmpty(value) || _.toString(value).length === 0;
+  return !_.isEmpty(value) && _.toString(value).length > 0;
 }
 
 Rules.pattern = function(value, {pattern}) {
   const regex = new RegExp(pattern);
-  return !regex.test(value);
+  return regex.test(value);
 }
 
 
-export default class Validation extends Component {
-  static propTypes = {
-    rules: React.PropTypes.array,
-    value: React.PropTypes.any,
-    onValidation: React.PropTypes.func,
+export default class Validation {
+  constructor(rules = [], value) {
+    this.valid = true;
+    this.rules = _.clone(rules);
+    this.validate(value);
   }
 
+  validate(value) {
+    this.valid = true;
 
-  render() {
-    const {rules, value} = this.props;
-
-    if (!rules) {
-      this.props.onValidation && this.props.onValidation(true, []);
-      return null;
+    if (!this.rules || !this.rules.forEach) {
+      return;
     }
 
-    const messages = [];
-    let isValid = true;
-    rules.forEach(rule => {
-      if (rule.type in Rules) {
-        const invalid = Rules[rule.type];
-        if (invalid(value, rule)) {
-          isValid = false;
-          messages.push(
-            <div className={styles.error} key={messages.length}>
-              {rule.message}
-            </div>
-          );
-        } else if (rule.label) {
-          messages.push(
-            <div className={styles.label} key={messages.length}>
-              {rule.label}
-            </div>
-          );
-        }
-      } else {
+    this.rules.forEach((rule, i) => {
+      const test = Rules[rule.type];
+      if (!test) {
+        rule.valid = false;
+        this.valid = false;
         console.error("Invalid rule", rule);
+      } else if (test(value)) {
+        rule.valid = true;
+      } else {
+        rule.valid = false;
+        this.valid = false;
       }
     });
 
-    this.props.onValidation && this.props.onValidation(isValid, messages);
-
-    if (!messages) {
-      return null;
-    }
-
-    return (
-      <div className={styles.messages}>
-        {messages}
-      </div>
-    );
+    return this.valid;
   }
 }

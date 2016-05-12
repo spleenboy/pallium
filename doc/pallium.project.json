@@ -382,7 +382,7 @@
             "validation": [
             {
                 "type": "required",
-                "message": "A title is required"
+                "warning": "A title is required"
             }
             ]
         },
@@ -452,7 +452,7 @@
             {
                 "type": "required",
                 "label": "* Required",
-                "message": "* You didn't listen!"
+                "warning": "* You didn't listen!"
             }
             ]
         },
@@ -539,7 +539,7 @@
             {
                 "type": "required",
                 "label": "* Required",
-                "message": "Please provide a date"
+                "warning": "Please provide a date"
             }
             ]
         },
@@ -622,7 +622,7 @@
                     "validation": [
                     {
                         "type": "required",
-                        "message": "ID is required"
+                        "warning": "ID is required"
                     }
                     ]
                 },
@@ -641,7 +641,7 @@
             "validation": [
             {
                 "type": "pattern",
-                "message": "Please include at least 6 characters",
+                "warning": "Please include at least 6 characters",
                 "pattern": "^.{6,}$"
             }
             ]

@@ -4,6 +4,15 @@
   transition: color 0.5s;
 }
 
+.valid {
+
+}
+
+
+.invalid input {
+  outline: var(--warning);
+}
+
 .active {
   color: var(--blue);
 }
