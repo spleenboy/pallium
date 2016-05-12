@@ -32,7 +32,7 @@ export default class Validation {
         rule.valid = false;
         this.valid = false;
         console.error("Invalid rule", rule);
-      } else if (test(value)) {
+      } else if (test(value, rule)) {
         rule.valid = true;
       } else {
         rule.valid = false;

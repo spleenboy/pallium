@@ -20,13 +20,10 @@ export default class Field extends Component {
   }
 
 
-  componentWillReceiveProps(props) {
-    this.state.validation = new Validation(props.definition.validation, props.value);
-  }
-
-
   handleValueChange(definition, value) {
-    this.props.onValueChange(definition, value, this.state.validation);
+    const validation = new Validation(definition.validation, value);
+    this.setState({validation});
+    this.props.onValueChange(definition, value, validation);
   }
 
   render() {

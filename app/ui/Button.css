@@ -16,6 +16,11 @@
   -webkit-filter: saturate(1.5);
 }
 
+.button[disabled] {
+  -webkit-filter: saturate(0.3);
+  cursor: not-allowed;
+}
+
 .text {
   box-shadow: none;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
