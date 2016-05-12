@@ -8,6 +8,13 @@ import * as Actions from './ContentActions.js';
 import styles from './ContentFormComponent.css';
 
 export class ContentFormComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      validations: {},
+    }
+  }
+
   handleCancel(e) {
     this.props.clearContent();
   }
@@ -26,13 +33,21 @@ export class ContentFormComponent extends Component {
   }
 
 
-  handleFieldValueChange(definition, value, e) {
+  handleFieldValueChange(definition, value, validation) {
+    const validations = Object.assign({}, this.state.validations);
+    validations[definition.name] = validation.valid;
+    this.setState({validations});
     this.props.updateContent(definition.name, value);
   }
 
 
   render() {
     const {contentType, content} = this.props;
+
+    let fieldNames = Object.keys(this.state.validations);
+    const invalid = fieldNames.some(fieldName => {
+      return !this.state.validations[fieldName];
+    });
 
     const fields = contentType.fields.map((def, i) => {
       return (
@@ -54,7 +69,7 @@ export class ContentFormComponent extends Component {
           <div className={styles.buttons}>
             <Button mode="warning" className={styles.deleteBtn} onClick={this.handleDelete.bind(this)}>Delete</Button>
             <Button onClick={this.handleCancel.bind(this)}>Cancel</Button>
-            <Button mode="primary" onClick={this.handleSave.bind(this)}>Save</Button>
+            <Button mode="primary" disabled={invalid} onClick={this.handleSave.bind(this)}>Save</Button>
           </div>
         </div>
       </div>

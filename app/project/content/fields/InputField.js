@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import styles from './InputField.css';
-import Validation from './Validation';
+import ValidationComponent from './ValidationComponent';
 
 export default class InputField extends Component {
   constructor(props) {
@@ -84,19 +84,20 @@ export default class InputField extends Component {
 
 
   renderValidation() {
-    const {validation} = this.props.definition;
     return (
-      <Validation rules={validation} value={this.props.value}/>
+      <ValidationComponent validation={this.props.validation}/>
     );
   }
 
 
   render() {
+    const {validation, definition} = this.props;
     let mode = this.state.active ? styles.active : styles.inactive;
-    let type = styles[this.props.definition.type] || '';
+    let valid = !validation || validation.valid ? styles.valid : styles.invalid;
+    let type = styles[definition.type] || '';
 
     return (
-      <div className={`${styles.inputField} ${mode} ${type}`} onClick={this.handleFocus.bind(this)}>
+      <div className={`${styles.inputField} ${mode} ${type} ${valid}`} onClick={this.handleFocus.bind(this)}>
         {this.renderHeader()}
         {this.renderInput()}
         {this.renderLabel()}

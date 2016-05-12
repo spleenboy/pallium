@@ -50,7 +50,7 @@ export default class ObjectArrayField extends ArrayField {
 
     buttons = this.props.definition.fields.map((definition, i) => {
       return (
-        <Button onClick={this.handleNewItemCreate.bind(this, definition)}>
+        <Button key={i} onClick={this.handleNewItemCreate.bind(this, definition)}>
           {definition.label} <Icon name="add"/>
         </Button>
       );
