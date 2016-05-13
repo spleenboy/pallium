@@ -1,6 +1,6 @@
 ---
 title: Fix Markdown Editor
-status: Not Started
+status: Complete
 priority: Medium
 description: >-
   Use the blur event instead of the active change event to register updates.

@@ -5,10 +5,10 @@ import InputField from './InputField';
 import Field from './Field';
 
 export default class ObjectField extends InputField {
-  handleItemChange(key, definition, value, e) {
+  handleItemChange(key, definition, value, validation) {
     const item = this.props.value || {};
     item[key] = value;
-    this.props.onValueChange(this.props.definition, item, e);
+    this.props.onValueChange(this.props.definition, item);
   }
 
 

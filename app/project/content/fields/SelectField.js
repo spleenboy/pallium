@@ -4,6 +4,10 @@ import InputField from './InputField';
 import styles from './SelectField.css';
 
 export default class SelectField extends InputField {
+  onComponentDidMount() {
+    this.props.onValueChange(this.props.definition, this.props.value);
+  }
+
 
   renderInput() {
     const {options, name, attributes} = this.props.definition;

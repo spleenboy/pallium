@@ -6,7 +6,9 @@ import styles from './MarkupField.css';
 
 export default class MarkupField extends Component {
   render() {
-    if (!this.props.value) {
+    const {value} = this.props.definition;
+
+    if (!value) {
       return null;
     }
 
@@ -17,7 +19,7 @@ export default class MarkupField extends Component {
 
     return (
       <div className={styles.markup}>
-        <div dangerouslySetInnerHTML={markup(this.props.value)}/>
+        <div dangerouslySetInnerHTML={markup(value)}/>
       </div>
     );
   }

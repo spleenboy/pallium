@@ -32,7 +32,7 @@ export default class ObjectArrayField extends ArrayField {
   }
 
 
-  handleNewItemValueChange(def, value) {
+  handleNewItemValueChange(def, value, validation) {
     this.setState({value});
   }
 

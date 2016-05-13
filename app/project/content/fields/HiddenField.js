@@ -4,7 +4,8 @@ import InputField from './InputField';
 
 export default class HiddenField extends InputField {
   componentDidMount() {
-    this.props.onValueChange(this.props.definition, this.props.value);
+    const {value, defaultValue} = this.props.definition;
+    this.props.onValueChange(this.props.definition, value);
   }
 
   render() {

@@ -53,6 +53,7 @@
         {
             "name": "contentDirectory",
             "label": "Content Directory",
+            "type": "array",
             "hint": "The relative directory where your content will be saved",
             "defaultValue": "content",
             "validation": [
@@ -64,6 +65,7 @@
         {
             "name": "assetDirectory",
             "label": "Asset Directory",
+            "type": "array",
             "hint": "The relative directory where uploaded assets will be saved",
             "defaultValue": "content",
             "validation": [
@@ -157,36 +159,64 @@
                     },
                     {
                         "name": "filename",
-                        "type": "object",
+                        "label": "Generated Filename",
+                        "type": "objectArray",
                         "fields": [
+                        {
+                            "label": "Static name"
+                        },
+                        {
+                            "label": "Dynamic name",
+                            "type": "object",
+                            "fields": [
                             {
                                 "name": "type",
-                                "label": "Reflection Method",
-                                "type": "hidden",
-                                "value": "slug"
+                                "label": "Method Type",
+                                "type": "select",
+                                "defaultValue": "slug",
+                                "options": [
+                                    {"label": "Slug", "value": "slug"},
+                                    {"label": "Reflection", "value": "reflect"}
+                                ]
                             },
                             {
                                 "name": "field",
                                 "label": "Filename Source Field",
                                 "hint": "The name of the field to use for creating the file name"
                             }
+                            ]
+                        }
                         ]
                     },
                     {
                         "name": "title",
-                        "type": "object",
+                        "label": "Generated Display Title",
+                        "type": "objectArray",
                         "fields": [
+                        {
+                            "label": "Static name"
+                        },
+                        {
+                            "label": "Dynamic name",
+                            "type": "object",
+                            "fields": [
                             {
                                 "name": "type",
-                                "label": "Reflection Method",
-                                "type": "hidden",
-                                "value": "reflect"
+                                "label": "Method Type",
+                                "type": "select",
+                                "defaultValue": "slug",
+                                "options": [
+                                    {"label": "Slug", "value": "slug"},
+                                    {"label": "Reflection", "value": "reflect"}
+                                ]
                             },
                             {
                                 "name": "field",
-                                "label": "Title Source Field",
-                                "hint": "The name of the field to as the display title"
+                                "label": "Filename Source Field",
+                                "hint": "The name of the field to use for creating the file name"
                             }
+                            ]
+                        }
                         ]
                     }
                     ]
@@ -387,6 +417,11 @@
             ]
         },
         {
+            "name": "description",
+            "type": "md",
+            "label": "Description"
+        },
+        {
             "name": "status",
             "type": "radio",
             "label": "Status",
@@ -407,11 +442,6 @@
                 {"label": "Medium", "value": "Medium"},
                 {"label": "Low", "value": "Low"}
             ]
-        },
-        {
-            "name": "description",
-            "type": "md",
-            "label": "Description"
         }
         ]
     },
