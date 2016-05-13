@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+import _ from 'lodash';
 import Fields from './index';
 import Validation from './Validation';
 
@@ -17,6 +18,12 @@ export default class Field extends Component {
       value: PropTypes.object.isRequired,
       onValueChange: PropTypes.func.isRequired,
     }
+  }
+
+
+  // Perform deep comparisons on the props and state
+  shouldComponentUpdate(nextProps, nextState) {
+    return !_.isEqual(this.state, nextState) || !_.isEqual(this.props, nextProps);
   }
 
 
