@@ -9,15 +9,13 @@ import styles from './SearchResultsComponent.css';
 
 import * as ContentActions from './content/ContentActions';
 
-export default class SearchResultsComponent extends Component {
-  static get propTypes() {
-    return {
-      project: PropTypes.object.isRequired,
-      query: PropTypes.string,
-      results: PropTypes.array,
-      onOpenContent: PropTypes.func.isRequired,
-    }
+export class SearchResultsComponent extends Component {
+  handleOpenContent(result) {
+    const {project} = this.props;
+    this.props.searchContent(project, "");
+    this.props.openContent(project, result.fullpath, result._id);
   }
+
 
   render() {
     const {project, query, results} = this.props;
@@ -26,7 +24,7 @@ export default class SearchResultsComponent extends Component {
       return null;
     }
 
-    if (results.length === 0) {
+    if (!results || results.length === 0) {
       return (
         <div className={styles.noresults}>
           <p className={styles.shrug}>¯\_(ツ)_/¯</p>
@@ -37,12 +35,13 @@ export default class SearchResultsComponent extends Component {
 
     const items = results.map((result, i) => {
       let contentType = project.contentTypes.find(ct => ct.settings.handle === result.contentType);
-      let icon = contentType ? contentType.icon : "unarchive";
+      let icon = contentType ? contentType.settings.icon : "unarchive";
       return (
         <div className={styles.resultWrapper} key={i}>
           <ListItem
             className={styles.result}
             icon={icon}
+            onClick={this.handleOpenContent.bind(this, result)}
           >
           {result.title}
           </ListItem>
@@ -57,3 +56,23 @@ export default class SearchResultsComponent extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const project = state.project;
+  return {
+    project: project,
+    query: project && project.query,
+    results: project && project.queryResults,
+  };
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    searchContent: ContentActions.searchContent,
+    openContent: ContentActions.openContent,
+  }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsComponent);

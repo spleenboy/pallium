@@ -24,21 +24,13 @@ export class ProjectPage extends Component {
       project,
       projectList,
       query,
-      results
     } = this.props;
 
     let drawer, main;
 
     if (query && query.length) {
       main = (
-        <Main>
-          <SearchResultsComponent
-            project={project}
-            query={query}
-            results={results}
-            onOpenContent={this.props.openContent}
-          />
-        </Main>
+        <Main><SearchResultsComponent/></Main>
       );
     }
 
@@ -101,16 +93,7 @@ function mapStateToProps(state) {
     projectList: state.projectList,
     project: project,
     query: project && project.query,
-    results: project && project.queryResults,
   };
 }
 
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    openContent: ContentActions.openContent,
-  }, dispatch);
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);
+export default connect(mapStateToProps)(ProjectPage);

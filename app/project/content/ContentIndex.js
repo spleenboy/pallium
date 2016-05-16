@@ -74,11 +74,11 @@ export default class ContentIndex {
     let fields = [];
     contentTypes.forEach(contentType => {
       if (contentType.storage.contentKey) {
-        fields.push(contentType.storage.contentKey);
+        fields.push("values." + contentType.storage.contentKey);
       }
 
       const searchable = contentType.fields.filter(field => field.searchable);
-      fields = fields.concat(searchable.map(s => s.name));
+      fields = fields.concat(searchable.map(s => "fields." + s.name));
     });
 
     return _.uniq(fields)
