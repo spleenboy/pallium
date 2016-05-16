@@ -63,20 +63,33 @@ export default class Content {
   }
 
   get directory() {
-    const parts = this.calculate(this.contentType.storage.directory);
-    return parts.join(path.sep);
+    return this.toPath(this.contentType.storage.directory);
   }
 
   get basedir() {
-    return path.join(path.dirname(this.project.path), this.project.contentDirectory);
+    return path.join(
+      path.dirname(this.project.path),
+      this.toPath(this.project.contentDirectory)
+    );
   }
 
   get assetdir() {
-    return path.join(path.dirname(this.project.path), this.project.assetDirectory);
+    return path.join(
+      path.dirname(this.project.path),
+      this.toPath(this.project.assetDirectory)
+    );
   }
 
   get fullpath() {
     return path.join(this.basedir, this.directory, this.filename);
+  }
+
+  toPath(parts) {
+    const calculated = this.calculate(parts);
+    if (calculated.length === 0) {
+      return '';
+    }
+    return calculated.join(path.sep);
   }
 
   expandAssetShortPath(definition, shortpath) {

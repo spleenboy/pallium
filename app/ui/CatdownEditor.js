@@ -29,7 +29,8 @@ export default class CatdownEditor extends Component {
 
   componentWillReceiveProps(nextProps) {
     const catval = this.catdown.value();
-    if (nextProps.value !== undefined && nextProps.value != catval) {
+    const newval = nextProps.value || "";
+    if (newval != catval) {
       this.catdown.set(nextProps.value);
     }
   }

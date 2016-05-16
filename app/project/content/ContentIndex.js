@@ -1,5 +1,6 @@
 import path from 'path';
 import Datastore from 'nedb';
+import _ from 'lodash';
 
 /**
  * Singleton datastores
@@ -17,7 +18,10 @@ export default class ContentIndex {
       stores[filename] = new Datastore({filename, autoload: true});
     }
     this.store = stores[filename];
+    this.project = project;
+    this.ensureIndices();
   }
+
 
   // Saves a JSON content object
   save(doc) {
@@ -39,6 +43,7 @@ export default class ContentIndex {
     });
   }
 
+
   remove(_id) {
     return new Promise((resolve, reject) => {
       this.store.remove({_id}, (err, num) => {
@@ -47,11 +52,62 @@ export default class ContentIndex {
     });
   }
 
+
   find(search) {
     return new Promise((resolve, reject) => {
       this.store.find(search, (err, docs) => {
         err && reject(err) || resolve(docs);
       });
     });
+  }
+
+
+  getIndices(contentTypes = null) {
+    if (contentTypes === null) {
+      contentTypes = this.project.contentTypes;
+    }
+
+    if (!contentTypes) {
+      return [];
+    }
+
+    let fields = [];
+    contentTypes.forEach(contentType => {
+      if (contentType.storage.contentKey) {
+        fields.push(contentType.storage.contentKey);
+      }
+
+      const searchable = contentType.fields.filter(field => field.searchable);
+      fields = fields.concat(searchable.map(s => s.name));
+    });
+
+    return _.uniq(fields)
+  }
+
+
+  ensureIndices() {
+    const indices = this.getIndices();
+    indices.forEach(index => {
+      this.store.ensureIndex({fieldName: index, sparse: true});
+    });
+  }
+
+
+  search(terms, contentTypes = null) {
+    const searchex = new RegExp(terms, 'ig');
+    const indices = this.getIndices(contentTypes);
+    const conditions = [];
+
+    indices.forEach(index => {
+      const condition = {};
+      condition[index] = searchex;
+      conditions.push(condition);
+    });
+
+    if (!conditions) {
+      return Promise.resolve([]);
+    }
+
+    return this.find({$or: conditions});
   }
 }

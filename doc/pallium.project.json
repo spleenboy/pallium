@@ -34,6 +34,7 @@
             "label": "Title",
             "hint": "The title of your project",
             "defaultValue": "New Project",
+            "searchable": true,
             "validation": [
             {
                 "type": "required"
@@ -43,6 +44,7 @@
         {
             "type": "textarea",
             "name": "description",
+            "searchable": true,
             "label": "Description"
         },
         {
@@ -391,7 +393,7 @@
         "storage": {
           "format": "yaml",
           "extension": "md",
-          "contentKey": "md",
+          "contentKey": "description",
           "directory": [
               "todo",
               {"type": "slug", "field": "status"}
@@ -407,6 +409,7 @@
         {
             "name": "title",
             "label": "Title",
+            "searchable": true,
             "defaultValue": "To do: this thing",
             "hint": "Give this a name",
             "validation": [
@@ -478,6 +481,7 @@
             "label": "text",
             "defaultValue": "Example Title",
             "hint": "Give this post a good name",
+            "searchable": true,
             "validation": [
             {
                 "type": "required",
@@ -577,6 +581,7 @@
             "name": "email",
             "type": "email",
             "label": "email",
+            "searchable": true,
             "attributes": {
                 "placeholder": "example@domain.com"
             }
@@ -593,10 +598,17 @@
             ]
         },
         {
+            "type": "markup",
+            "value": "Between the lines below, there's a _hidden_ field. You can't see it, obviously, but it will still add a key/value pair to the information stored for this content type.\n- - -"
+        },
+        {
             "name": "hidden",
             "type": "hidden",
-            "label": "hidden",
             "value": "secret"
+        },
+        {
+            "type": "markup",
+            "value": "- - -\n**Look up!** That's the hidden field."
         },
         {
             "name": "month",
@@ -606,8 +618,8 @@
         {
             "name": "md",
             "type": "md",
-            "rows": 20,
-            "label": "md"
+            "label": "md",
+            "hint": "Here's a Markdown field. You can make one of these the main content area for your ContentType by using the `contentKey` property in the `storage` object."
         },
         {
             "name": "number",
@@ -709,7 +721,8 @@
             "name": "textarea",
             "type": "textarea",
             "label": "textarea",
-            "rows": 5
+            "searchable": true,
+            "hint": "Textarea fields are automatically resized to fit the content in them"
         },
         {
             "name": "time",

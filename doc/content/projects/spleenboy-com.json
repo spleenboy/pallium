@@ -1,0 +1,91 @@
+{
+  "title": "spleenboy.com",
+  "description": "Poetry, essays and nonesuch",
+  "icon": "explore",
+  "contentDirectory": [
+    "content"
+  ],
+  "assetDirectory": [
+    "content",
+    "assets"
+  ],
+  "database": "index.db",
+  "contentTypes": [
+    {
+      "settings": {
+        "title": "Post",
+        "plural": "Posts",
+        "handle": "post",
+        "icon": "line_style"
+      },
+      "storage": {
+        "contentKey": "content",
+        "directory": [],
+        "filename": [
+          {
+            "type": "reflect",
+            "field": "format"
+          },
+          {
+            "type": "slug",
+            "field": "title"
+          },
+          "index"
+        ],
+        "title": [
+          {
+            "type": "reflect",
+            "field": "title"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title",
+          "hint": null,
+          "defaultValue": null
+        },
+        {
+          "name": "format",
+          "type": "radio",
+          "label": "Format",
+          "hint": null,
+          "defaultValue": null,
+          "options": [
+            {
+              "value": "poem",
+              "label": "Poem"
+            },
+            {
+              "value": "prose",
+              "label": "Prose"
+            }
+          ]
+        },
+        {
+          "name": "content",
+          "type": "md",
+          "label": "Content",
+          "hint": null,
+          "defaultValue": null
+        },
+        {
+          "name": "postDate",
+          "type": "date",
+          "label": "Date",
+          "hint": null,
+          "defaultValue": null
+        },
+        {
+          "name": "description",
+          "type": "textarea",
+          "label": "Description",
+          "hint": null,
+          "defaultValue": null
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,16 @@ import Content from './Content';
 
 const methods = {};
 
+methods[Actions.SET_SEARCH_QUERY] = function(state, action) {
+  state.query = action.query;
+  return state;
+}
+
+methods[Actions.SET_SEARCH_RESULTS] = function(state, action) {
+  state.queryResults = action.results;
+  return state;
+}
+
 methods[Actions.SET_CONTENT] = function(state, action) {
   state.contentType.content = action.content;
   return state;

@@ -10,6 +10,9 @@ import ContentIndex from './ContentIndex';
 import Content from './Content';
 import prune from '../../storage/prune';
 
+export const SET_SEARCH_QUERY = 'set.search.query';
+export const SET_SEARCH_RESULTS = 'set.search.results';
+
 export const SET_CONTENT = 'set.content';
 export const UPDATE_CONTENT = 'update.content';
 export const CLEAR_CONTENT = 'clear.content';
@@ -19,6 +22,43 @@ export const RESTORE_CONTENT = 'restore.content';
 export const SET_CONTENT_TYPE = 'set.contentType';
 export const CLEAR_CONTENT_TYPE = 'clear.contentType';
 export const SET_CONTENT_LIST = 'set.contentList';
+
+
+export function searchContent(project, query) {
+  return (dispatch) => {
+    dispatch(setSearchQuery(query));
+
+    if (!query || query.length === 0) {
+      dispatch(setSearchResults([]));
+      return;
+    }
+
+    const index = new ContentIndex(project);
+    index.search(query)
+      .then(docs => {
+        dispatch(setSearchResults(docs));
+      })
+      .catch(err => {
+        dispatch(ToastActions.error(err, "Error searching"));
+      });
+  }
+}
+
+
+export function setSearchQuery(query) {
+  return {
+    type: SET_SEARCH_QUERY,
+    query,
+  };
+}
+
+
+export function setSearchResults(results) {
+  return {
+    type: SET_SEARCH_RESULTS,
+    results,
+  };
+}
 
 
 export function updateContent(key, value) {
