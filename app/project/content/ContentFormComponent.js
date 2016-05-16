@@ -15,6 +15,7 @@ export class ContentFormComponent extends Component {
     }
   }
 
+
   handleCancel(e) {
     this.props.clearContent();
   }
@@ -79,10 +80,17 @@ export class ContentFormComponent extends Component {
 }
 
 function mapStateToProps(state) {
+  const project = state.project;
+  const contentType = project && project.contentType;
+  const content = contentType && contentType.content;
+  const contentTitle = content && content.title;
+  const contentFilename = content && content.filename;
   return {
-    project: state.project,
-    contentType: state.project && state.project.contentType,
-    content: state.project && state.project.contentType && state.project.contentType.content,
+    project,
+    contentType,
+    content,
+    contentTitle,
+    contentFilename,
   };
 }
 

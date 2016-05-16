@@ -49,7 +49,14 @@ export class Breadcrumb extends Component {
 
 
   render() {
-    const {project, projectList, contentType, content} = this.props;
+    const {
+      project,
+      projectList,
+      contentType,
+      content
+    } = this.props;
+
+    const title = [];
     const single = contentType && !contentType.settings.plural;
 
     const items = [(
@@ -68,11 +75,14 @@ export class Breadcrumb extends Component {
     }
 
     if (project && project.title) {
+      title.push(project.title);
+
       add(
         <span onClick={this.handleClearContentType.bind(this)} className={styles.btn}>{project.title}</span>
       );
 
       if (contentType) {
+        title.push(single ? contentType.settings.title : contentType.settings.plural);
         add(
           <span className={styles.btn} onClick={this.handleClearContent.bind(this)}>
             {single ? contentType.settings.title : contentType.settings.plural}
@@ -80,6 +90,7 @@ export class Breadcrumb extends Component {
         );
 
         if (content) {
+          title.push(content.title);
           add(
             <span className={styles.btn}>{content.title}</span>
           );
@@ -92,12 +103,15 @@ export class Breadcrumb extends Component {
         }
       }
     } else {
+        title.push("Pallium");
         add(
           <span onClick={this.handleOpenClick.bind(this)} className={styles.btn} title="Open a Project">
             <Icon className={styles.icon} name="folder open"/>
           </span>
         );
     }
+
+    document.title = title.join(' / ');
 
     return (
       <div className={styles.breadcrumb}>
@@ -109,11 +123,16 @@ export class Breadcrumb extends Component {
 }
 
 function mapStateToProps(state) {
+  const project = state.project;
+  const contentType = project && project.contentType;
+  const content = contentType && contentType.content;
+  const contentFilename = content && content.filename;
   return {
     projectList: state.projectList,
-    project: state.project,
-    contentType: state.project && state.project.contentType,
-    content: state.project && state.project.contentType && state.project.contentType.content,
+    project,
+    contentType,
+    content,
+    contentFilename,
   };
 }
 

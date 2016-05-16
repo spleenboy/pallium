@@ -23,7 +23,9 @@ export default class CatdownEditor extends Component {
     this.catdown.editor.on("focus", this.handleFocus.bind(this));
     this.catdown.editor.on("blur", this.handleBlur.bind(this));
 
-    this.catdown.set(this.props.value);
+    if (this.props.value) {
+      this.catdown.set(this.props.value);
+    }
   }
 
 
@@ -31,7 +33,7 @@ export default class CatdownEditor extends Component {
     const catval = this.catdown.value();
     const newval = nextProps.value || "";
     if (newval != catval) {
-      this.catdown.set(nextProps.value);
+      this.catdown.set(newval);
     }
   }
 

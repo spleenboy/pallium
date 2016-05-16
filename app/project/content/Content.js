@@ -35,7 +35,7 @@ export default class Content {
       if (typeof part === 'object' && part.type in Calculate) {
         return Calculate[part.type](values, part);
       } else {
-        return part;
+        return String(part);
       }
     });
   }
