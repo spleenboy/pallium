@@ -10,23 +10,15 @@ import styles from './SearchComponent.css';
 import * as ContentActions from './content/ContentActions';
 
 export class SearchComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searching: false,
-    };
-  }
-
-
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.searching && !prevState.searching) {
+    if (this.props.searching && !prevProps.searching) {
       this.refs.input.focus();
     }
   }
 
 
   handleStartSearch() {
-    this.setState({searching: true});
+    this.props.searchContent(this.props.project, this.refs.input.value);
   }
 
 
@@ -37,28 +29,27 @@ export class SearchComponent extends Component {
 
   handleQueryBlur(e) {
     if (!this.props.query) {
-      this.setState({searching: false});
+      this.props.clearSearch();
     }
   }
 
 
   handleCancelSearch() {
-    this.props.searchContent("");
-    this.setState({searching: false});
+    this.props.clearSearch();
   }
 
 
 
   render() {
-    const {project, query} = this.props;
+    const {project, query, searching} = this.props;
 
     if (!project) {
       return null;
     }
 
-    const searching = this.state.searching ? styles.searching : "";
+    const visible = searching ? styles.searching : "";
     return (
-      <div className={`${styles.search} ${searching}`}>
+      <div className={`${styles.search} ${visible}`}>
         <div className={styles.input}>
           <Icon className={styles.icon} name="search"/>
           <input
@@ -68,7 +59,7 @@ export class SearchComponent extends Component {
             onBlur={this.handleQueryBlur.bind(this)}
           />
         </div>
-        {this.state.searching
+        {searching
           ? <Button className={styles.button} mode="text" onClick={this.handleCancelSearch.bind(this)}>
             <Icon name="close"/>
           </Button>
@@ -84,15 +75,18 @@ export class SearchComponent extends Component {
 
 function mapStateToProps(state) {
   const project = state.project;
+  const search = project && project.search;
   return {
     project: project,
-    query: project && project.query,
+    searching: search && search.searching,
+    query: search && search.query,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     searchContent: ContentActions.searchContent,
+    clearSearch: ContentActions.clearSearch,
   }, dispatch);
 }
 

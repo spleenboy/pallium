@@ -12,8 +12,8 @@ import Toaster from '../toast/Toaster';
 import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
 
-import SearchResultsComponent from './SearchResultsComponent';
 import ProjectListComponent from './ProjectListComponent';
+import SearchResultsComponent from './content/SearchResultsComponent';
 import ContentTypeListComponent from './content/ContentTypeListComponent';
 import ContentListComponent from './content/ContentListComponent';
 import ContentFormComponent from './content/ContentFormComponent';
@@ -28,7 +28,7 @@ export class ProjectPage extends Component {
 
     let drawer, main;
 
-    if (query && query.length) {
+    if (query && query.length > 0) {
       main = (
         <Main><SearchResultsComponent/></Main>
       );
@@ -89,10 +89,11 @@ export class ProjectPage extends Component {
 
 function mapStateToProps(state) {
   const project = state.project;
+  const search = project && project.search;
   return {
     projectList: state.projectList,
     project: project,
-    query: project && project.query,
+    query: search && search.query,
   };
 }
 

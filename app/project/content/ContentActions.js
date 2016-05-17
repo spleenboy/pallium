@@ -10,8 +10,7 @@ import ContentIndex from './ContentIndex';
 import Content from './Content';
 import prune from '../../storage/prune';
 
-export const SET_SEARCH_QUERY = 'set.search.query';
-export const SET_SEARCH_RESULTS = 'set.search.results';
+export const SET_SEARCH = 'set.search';
 
 export const SET_CONTENT = 'set.content';
 export const UPDATE_CONTENT = 'update.content';
@@ -24,19 +23,33 @@ export const CLEAR_CONTENT_TYPE = 'clear.contentType';
 export const SET_CONTENT_LIST = 'set.contentList';
 
 
+export function setSearch(search) {
+  return {
+    type: SET_SEARCH,
+    search,
+  }
+}
+
+
 export function searchContent(project, query) {
   return (dispatch) => {
-    dispatch(setSearchQuery(query));
-
     if (!query || query.length === 0) {
-      dispatch(setSearchResults([]));
+      dispatch(setSearch({
+        searching: true,
+        query,
+        results: [],
+      }));
       return;
     }
 
     const index = new ContentIndex(project);
     index.search(query)
       .then(docs => {
-        dispatch(setSearchResults(docs));
+        dispatch(setSearch({
+          searching: true,
+          query,
+          results: docs,
+        }));
       })
       .catch(err => {
         dispatch(ToastActions.error(err, "Error searching"));
@@ -44,20 +57,12 @@ export function searchContent(project, query) {
   }
 }
 
-
-export function setSearchQuery(query) {
-  return {
-    type: SET_SEARCH_QUERY,
-    query,
-  };
-}
-
-
-export function setSearchResults(results) {
-  return {
-    type: SET_SEARCH_RESULTS,
-    results,
-  };
+export function clearSearch() {
+  return setSearch({
+    searching: false,
+    query: "",
+    results: [],
+  });
 }
 
 

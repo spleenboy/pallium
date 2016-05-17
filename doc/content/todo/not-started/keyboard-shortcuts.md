@@ -1,8 +1,8 @@
 ---
 title: Keyboard Shortcuts
-description: |-
-  - `Command+S` **Save**
-  - `Command+N` **New**
 status: Not Started
 priority: Medium
 ---
+- `Cmd+S` Save
+- `Cmd+N` New
+- `Cmd+/` Search

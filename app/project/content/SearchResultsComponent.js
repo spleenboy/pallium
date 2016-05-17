@@ -2,25 +2,26 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import List from '../ui/List';
-import ListItem from '../ui/ListItem';
+import List from '../../ui/List';
+import ListItem from '../../ui/ListItem';
 
 import styles from './SearchResultsComponent.css';
 
-import * as ContentActions from './content/ContentActions';
+import * as ContentActions from './ContentActions';
 
 export class SearchResultsComponent extends Component {
   handleOpenContent(result) {
     const {project} = this.props;
-    this.props.searchContent(project, "");
+    this.props.clearSearch();
+    this.props.selectContentType(project, result.contentType);
     this.props.openContent(project, result.fullpath, result._id);
   }
 
 
   render() {
-    const {project, query, results} = this.props;
+    const {project, searching, query, results} = this.props;
 
-    if (!project || !query) {
+    if (!searching || !query || query.length === 0) {
       return null;
     }
 
@@ -59,17 +60,20 @@ export class SearchResultsComponent extends Component {
 
 function mapStateToProps(state) {
   const project = state.project;
+  const search = project && project.search;
   return {
     project: project,
-    query: project && project.query,
-    results: project && project.queryResults,
+    query: search && search.query,
+    searching: search && search.searching,
+    results: search && search.results,
   };
 }
 
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    searchContent: ContentActions.searchContent,
+    selectContentType: ContentActions.selectContentType,
+    clearSearch: ContentActions.clearSearch,
     openContent: ContentActions.openContent,
   }, dispatch);
 }
