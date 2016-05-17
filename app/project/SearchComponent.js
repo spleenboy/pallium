@@ -28,7 +28,7 @@ export class SearchComponent extends Component {
 
 
   handleQueryBlur(e) {
-    if (!this.props.query) {
+    if (!this.props.query || this.props.query.length === 0) {
       this.props.clearSearch();
     }
   }

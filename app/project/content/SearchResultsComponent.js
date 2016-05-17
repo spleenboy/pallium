@@ -37,12 +37,25 @@ export class SearchResultsComponent extends Component {
     const items = results.map((result, i) => {
       let contentType = project.contentTypes.find(ct => ct.settings.handle === result.contentType);
       let icon = contentType ? contentType.settings.icon : "unarchive";
+      let metadata = [];
+      let metakeys = Object.keys(result.metadata || {});
+
+      metakeys.forEach((mk, i) => {
+        metadata.push(
+          <div className={styles.metadata} key={i}>
+            <div className={styles.label}>{mk}</div>
+            <div className={styles.value}>{result.metadata[mk]}</div>
+          </div>
+        );
+      });
+
       return (
         <div className={styles.resultWrapper} key={i}>
           <ListItem
             className={styles.result}
             icon={icon}
             onClick={this.handleOpenContent.bind(this, result)}
+            subtitle={metadata}
           >
           {result.title}
           </ListItem>

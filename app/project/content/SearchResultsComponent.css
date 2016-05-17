@@ -19,3 +19,21 @@
 .result:hover {
   background-color: var(--orange-film);
 }
+
+.metadata {
+  margin-left: 6rem;
+}
+
+.metadata .label {
+  width: 6rem;
+  text-overflow: ellipsis;
+  margin-right: 2rem;
+  font-weight: bold;
+  text-align: right;
+  display: inline-block;
+}
+
+.metadata .value {
+  font-weight: italic;
+  display: inline;
+}
