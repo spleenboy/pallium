@@ -3,13 +3,12 @@
   "description": "A tool for writing notes",
   "icon": "note",
   "contentDirectory": [
-    "content"
+    "notes"
   ],
   "assetDirectory": [
-    "content",
     "assets"
   ],
-  "database": "content/index.db",
+  "database": "notes.db",
   "contentTypes": [
     {
       "settings": {

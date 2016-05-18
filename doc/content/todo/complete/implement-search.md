@@ -1,6 +1,6 @@
 ---
 title: Implement search
-status: In Progress
+status: Complete
 priority: High
 ---
 Make sure that it handles search result selection gracefully.

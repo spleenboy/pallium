@@ -5,6 +5,46 @@
     "contentDirectory": "content",
     "assetDirectory": "assets",
     "database": "content/pallium.db",
+    "references": {
+        "fileSystemNames": [
+        {
+            "label": "Static name"
+        },
+        {
+            "label": "Slug",
+            "type": "object",
+            "fields": [
+            {
+                "name": "type",
+                "type": "hidden",
+                "value": "slug"
+            },
+            {
+                "name": "field",
+                "label": "Filename Source Field",
+                "hint": "The name of the field to use for creating the file name"
+            }
+            ]
+        },
+        {
+            "label": "Reflected Field",
+            "type": "object",
+            "fields": [
+            {
+                "name": "type",
+                "type": "hidden",
+                "value": "reflect"
+            },
+            {
+                "name": "field",
+                "label": "Filename Source Field",
+                "hint": "The name of the field to use for creating the file name"
+            }
+            ]
+        }
+        ]
+    },
+
     "contentTypes": [
     {
         "settings": {
@@ -156,70 +196,21 @@
                     {
                         "name": "directory",
                         "label": "Directory",
-                        "type": "array",
-                        "hint": "An array of folders where this content will be saved"
+                        "type": "objectArray",
+                        "hint": "An array of folders where this content will be saved",
+                        "fields": {"reference": "fileSystemNames"}
                     },
                     {
                         "name": "filename",
                         "label": "Generated Filename",
                         "type": "objectArray",
-                        "fields": [
-                        {
-                            "label": "Static name"
-                        },
-                        {
-                            "label": "Dynamic name",
-                            "type": "object",
-                            "fields": [
-                            {
-                                "name": "type",
-                                "label": "Method Type",
-                                "type": "select",
-                                "defaultValue": "slug",
-                                "options": [
-                                    {"label": "Slug", "value": "slug"},
-                                    {"label": "Reflection", "value": "reflect"}
-                                ]
-                            },
-                            {
-                                "name": "field",
-                                "label": "Filename Source Field",
-                                "hint": "The name of the field to use for creating the file name"
-                            }
-                            ]
-                        }
-                        ]
+                        "fields": {"reference": "fileSystemNames"}
                     },
                     {
                         "name": "title",
                         "label": "Generated Display Title",
                         "type": "objectArray",
-                        "fields": [
-                        {
-                            "label": "Static name"
-                        },
-                        {
-                            "label": "Dynamic name",
-                            "type": "object",
-                            "fields": [
-                            {
-                                "name": "type",
-                                "label": "Method Type",
-                                "type": "select",
-                                "defaultValue": "slug",
-                                "options": [
-                                    {"label": "Slug", "value": "slug"},
-                                    {"label": "Reflection", "value": "reflect"}
-                                ]
-                            },
-                            {
-                                "name": "field",
-                                "label": "Filename Source Field",
-                                "hint": "The name of the field to use for creating the file name"
-                            }
-                            ]
-                        }
-                        ]
+                        "fields": {"reference": "fileSystemNames"}
                     }
                     ]
                 },
@@ -270,6 +261,68 @@
                         ]
                     },
                     {
+                        "label": "File",
+                        "fields": [
+                        {
+                            "name": "name",
+                            "label": "Name"
+                        },
+                        {
+                            "name": "type",
+                            "type": "hidden",
+                            "value": "file"
+                        },
+                        {
+                            "name": "hint",
+                            "label": "Hint"
+                        },
+                        {
+                            "name": "multiple",
+                            "type": "checkbox",
+                            "options": [
+                                {"value": true, "label": "Allow multiple files?"}
+                            ]
+                        },
+                        {
+                            "name": "accept",
+                            "type": "array",
+                            "label": "Accepted file extensions",
+                            "hint": "Exclude the `.`"
+                        },
+                        {
+                            "name": "directory",
+                            "label": "Directory",
+                            "type": "objectArray",
+                            "fields": [
+
+                            ]
+                        }
+                        ]
+                    },
+                    {
+                        "label": "Markup",
+                        "fields": [
+                        {
+                            "name": "name",
+                            "label": "Name"
+                        },
+                        {
+                            "name": "type",
+                            "type": "hidden",
+                            "value": "markup"
+                        },
+                        {
+                            "name": "hint",
+                            "label": "Hint"
+                        },
+                        {
+                            "name": "value",
+                            "label": "Value",
+                            "type": "md"
+                        }
+                        ]
+                    },
+                    {
                         "label": "Option List",
                         "fields": [
                         {
@@ -282,12 +335,20 @@
                             "type": "select",
                             "options": [
                             {
+                                "value": "",
+                                "label": "Select a field type"
+                            },
+                            {
                                 "value": "select",
                                 "label": "Drop down list"
                             },
                             {
                                 "value": "radio",
                                 "label": "Radio button list"
+                            },
+                            {
+                                "value": "checkbox",
+                                "label": "Checkbox list"
                             }
                             ]
                         },

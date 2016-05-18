@@ -20,14 +20,14 @@
       },
       "storage": {
         "contentKey": "content",
-        "directory": [],
-        "filename": [
+        "directory": [
           {
             "type": "reflect",
             "field": "format"
-          },
+          }
+        ],
+        "filename": [
           {
-            "type": "slug",
             "field": "title"
           },
           "index"

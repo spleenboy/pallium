@@ -11,7 +11,7 @@
 }
 
 .item:hover {
-  background-color: var(--orange);
+  background-color: var(--orange-film);
 }
 
 .active {

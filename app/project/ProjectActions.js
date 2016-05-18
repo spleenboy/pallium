@@ -1,5 +1,8 @@
 import Transport from '../storage/Transport';
 import fs from 'fs-extra';
+import _ from 'lodash';
+
+import traverse from '../util/traverse';
 
 export const OPEN_PROJECT = 'open.project';
 export const OPENED_PROJECT = 'opened.project';
@@ -23,9 +26,28 @@ export function opened(project) {
   }
 }
 
+// Replaces {"reference": "referenceId"} values
+// with the specified reference
+function dereference(project) {
+  if (!project.references) {
+    return project;
+  }
+
+  const copy = Object.assign({}, project);
+  const refs = copy.references;
+
+  traverse(project, (val, keyPath) => {
+    const refId = val && val.reference;
+    if (refId && refId in refs) {
+      _.set(copy, keyPath, _.clone(refs[refId]));
+    }
+  });
+
+  return copy;
+}
+
 // Opens a project from the file system
 export function open(path) {
-
   return (dispatch) => {
 
     const Toast = require('../toast/ToastActions');
@@ -38,6 +60,7 @@ export function open(path) {
 
       if (!err) {
         project.path = path;
+        project = dereference(project);
         dispatch(opened(project));
         dispatch(ProjectList.add(project, path));
       } else {
