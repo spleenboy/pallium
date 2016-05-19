@@ -28,6 +28,7 @@
         ],
         "filename": [
           {
+            "type": "kebab",
             "field": "title"
           },
           "index"

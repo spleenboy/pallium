@@ -6,18 +6,26 @@
     "assetDirectory": "assets",
     "database": "content/pallium.db",
     "references": {
-        "fileSystemNames": [
+        "calculations": [
         {
             "label": "Static name"
         },
         {
-            "label": "Slug",
+            "label": "Reflected Field",
             "type": "object",
+            "hint": "Use the value from another field.",
             "fields": [
             {
                 "name": "type",
-                "type": "hidden",
-                "value": "slug"
+                "type": "select",
+                "label": "Transformation",
+                "options": [
+                    {"value": "reflect", "label": "None"},
+                    {"value": "slug", "label": "Slug"},
+                    {"value": "kebab", "label": "Kebab"},
+                    {"value": "camel", "label": "Camel Case"},
+                    {"value": "snake", "label": "Snake Case"}
+                ]
             },
             {
                 "name": "field",
@@ -27,18 +35,54 @@
             ]
         },
         {
-            "label": "Reflected Field",
+            "label": "Substring",
             "type": "object",
+            "hint": "Use part of a value from another field.",
             "fields": [
             {
                 "name": "type",
                 "type": "hidden",
-                "value": "reflect"
+                "value": "substring"
             },
             {
                 "name": "field",
                 "label": "Filename Source Field",
                 "hint": "The name of the field to use for creating the file name"
+            },
+            {
+                "name": "start",
+                "type": "number",
+                "label": "Starting Index",
+                "defaultValue": 0
+            },
+            {
+                "name": "count",
+                "type": "number",
+                "label": "Number of characters",
+                "defaultValue": 1
+            }
+            ]
+        },
+        {
+            "label": "Formatted Date",
+            "type": "object",
+            "hint": "Use a date to format the value.",
+            "fields": [
+            {
+                "name": "type",
+                "type": "hidden",
+                "value": "moment"
+            },
+            {
+                "name": "field",
+                "label": "Filename Source Field",
+                "hint": "The name of the field to use for creating the file name. Leave blank to use the current date."
+            },
+            {
+                "name": "format",
+                "label": "Format",
+                "hint": "This calculation uses Moment.js to format the value.",
+                "defaultValue": "Y-MM-DD"
             }
             ]
         }
@@ -198,19 +242,19 @@
                         "label": "Directory",
                         "type": "objectArray",
                         "hint": "An array of folders where this content will be saved",
-                        "fields": {"reference": "fileSystemNames"}
+                        "fields": {"reference": "calculations"}
                     },
                     {
                         "name": "filename",
                         "label": "Generated Filename",
                         "type": "objectArray",
-                        "fields": {"reference": "fileSystemNames"}
+                        "fields": {"reference": "calculations"}
                     },
                     {
                         "name": "title",
                         "label": "Generated Display Title",
                         "type": "objectArray",
-                        "fields": {"reference": "fileSystemNames"}
+                        "fields": {"reference": "calculations"}
                     }
                     ]
                 },
