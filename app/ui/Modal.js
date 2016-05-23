@@ -10,8 +10,9 @@ export default class Modal extends Component {
       title: PropTypes.string,
       hideHeader: PropTypes.bool,
       hideFooter: PropTypes.bool,
+      footer: PropTypes.node,
       open: PropTypes.bool,
-      onClose: PropTypes.func,
+      onClose: PropTypes.func.isRequired,
     }
   }
 
@@ -38,6 +39,7 @@ export default class Modal extends Component {
     if (!this.props.hideFooter) {
       footer = (
         <div className={styles.footer}>
+          {this.props.footer}
         </div>
       );
     }
