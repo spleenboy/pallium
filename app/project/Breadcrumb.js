@@ -6,43 +6,31 @@ import Icon from '../ui/Icon';
 
 import styles from './Breadcrumb.css';
 
-import ProjectStartComponent from './ProjectStartComponent';
 import * as ProjectActions from './ProjectActions';
 import * as ContentActions from './content/ContentActions';
 
+const remote = require('remote');
+const dialog = remote.require('dialog');
+
 export class Breadcrumb extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      startingProject: false,
-    };
-  }
-
-
-  handleOpenProject(filename) {
-    this.props.openProject(filename);
-    this.setState({startingProject: false});
-  }
-
-
-  handleCloneProject(remoteUrl, branch, target) {
-    this.props.cloneProject(remoteUrl, branch, target);
-    this.setState({startingProject: false});
+  handleOpenProject() {
+    const openProject = this.props.openProject.bind(this);
+    dialog.showOpenDialog({
+      title: "Select a project file",
+      filters: [{name: "JSON", extensions: ['json']}],
+      properties: ['openFile'],
+    },
+    (filenames) => {
+      if (filenames) {
+        openProject(filenames[0]);
+      }
+    }
+    );
   }
 
 
   handleNewContentClick(e) {
     this.props.createContent(this.props.project);
-  }
-
-
-  handleStartProject(e) {
-    this.setState({startingProject: true});
-  }
-
-
-  handleCancelStartProject(e) {
-    this.setState({startingProject: false});
   }
 
 
@@ -118,7 +106,7 @@ export class Breadcrumb extends Component {
     } else {
         title.push("Pallium");
         add(
-          <span onClick={this.handleStartProject.bind(this)} className={styles.btn} title="Open a Project">
+          <span onClick={this.handleOpenProject.bind(this)} className={styles.btn} title="Open a Project">
             <Icon className={styles.icon} name="folder_open"/>
           </span>
         );
@@ -129,12 +117,6 @@ export class Breadcrumb extends Component {
     return (
       <div className={styles.breadcrumb}>
         {items}
-        <ProjectStartComponent
-          active={this.state.startingProject}
-          onCancel={this.handleCancelStartProject.bind(this)}
-          onOpen={this.handleOpenProject.bind(this)}
-          onClone={this.handleCloneProject.bind(this)}
-        />
       </div>
     );
   }
@@ -158,7 +140,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openProject: ProjectActions.open,
-    cloneProject: ProjectActions.clone,
     clearProject: ProjectActions.clear,
     clearContentType: ContentActions.clearContentType,
     clearContent: ContentActions.clearContent,
