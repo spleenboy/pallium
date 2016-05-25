@@ -55,7 +55,7 @@ export class ProjectPage extends Component {
     } else if (project && project.contentTypes) {
       // A project is selected
       drawer = (
-        <Drawer title={project.title}><ProjectListComponent/></Drawer>
+        <Drawer><ProjectListComponent/></Drawer>
       );
       main = main || (
         <Main><ContentTypeListComponent/></Main>
