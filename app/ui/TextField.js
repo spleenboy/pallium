@@ -38,7 +38,7 @@ export default class TextField extends Component {
 
 
   handleChange(e) {
-    this.props.onChange(this.refs.input.value);
+    this.props.onChange(e.currentTarget.value);
   }
 
 
