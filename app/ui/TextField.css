@@ -1,0 +1,44 @@
+.input {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.active {
+
+}
+
+.inactive {
+
+}
+
+.field  {
+  transition: border 0.5s;
+  width: 90%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--gray);
+  background: transparent;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.active .field {
+  border-bottom: 2px solid var(--blue);
+}
+
+.label {
+  margin: 0;
+  margin-top: -1.5rem;
+  padding: 0;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.active .label {
+  opacity: 1.0;
+}

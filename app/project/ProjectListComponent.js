@@ -34,7 +34,7 @@ export class ProjectListComponent extends Component {
 
     return (
       <div className={styles.projectList}>
-          <List>{links}</List>
+        <List>{links}</List>
       </div>
     );
   }
