@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'lodash';
 
 import parentStyles from './ArrayField.css';
 import styles from './ObjectArrayField.css';
@@ -32,6 +33,13 @@ export default class ObjectArrayField extends ArrayField {
   }
 
 
+  handleItemValueChange(index, def, value, validation) {
+    const values = Array.isArray(this.props.value) ? this.props.value : [];
+    values[index] = value;
+    this.props.onValueChange(this.props.definition, values);
+  }
+
+
   handleNewItemValueChange(def, value, validation) {
     this.setState({value});
   }
@@ -42,6 +50,26 @@ export default class ObjectArrayField extends ArrayField {
       value: definition.value || definition.defaultValue || null,
       definition
     })
+  }
+
+
+  pickFieldDefinition(item) {
+    const isObject = _.isObject(item);
+    const keys = isObject ? Object.keys(item) : [];
+    const defs = this.props.definition.fields;
+    return defs.find(def => {
+      if (!def.fields && !keys.length) {
+        // We're dealing with a simple value, so a guess can't be made well.
+        // Just return the first non-complex field definition.
+        return true;
+      }
+
+      if (!def.fields) return false;
+
+      const objectNames = def.fields.map(field => field.name);
+      return objectNames.length === keys.length &&
+             objectNames.every((el, i) => el === keys[i]);
+    });
   }
 
 
@@ -58,15 +86,34 @@ export default class ObjectArrayField extends ArrayField {
 
     if (Array.isArray(this.props.value)) {
       badges = this.props.value.map((item, i) => {
-        // @todo: Pick the appropriate field type for editing
-        if (typeof item === 'object') {
-          item = JSON.stringify(item, false, 2);
+        const fieldDefinition = this.pickFieldDefinition(item);
+        let itemField = item;
+
+        if (fieldDefinition) {
+          itemField = (
+            <Field
+              definition={fieldDefinition}
+              value={item}
+              onValueChange={this.handleItemValueChange.bind(this, i)}
+            />
+          );
+        } else if (_.isObject(item)) {
+          itemField = JSON.stringify(item, false, 2);
         }
+
         return (
-          <button className={parentStyles.badge} key={i} onClick={this.handleRemove.bind(this, i)} title="Delete">
-            <Icon name="delete_forever"/>
-            {item}
-          </button>
+          <div className={styles.item}>
+            <Button
+              mode="warning"
+              className={styles.badge}
+              key={i}
+              onClick={this.handleRemove.bind(this, i)}
+              title="Delete"
+            >
+              <Icon name="delete_forever"/>
+            </Button>
+            {itemField}
+          </div>
         );
       });
     }

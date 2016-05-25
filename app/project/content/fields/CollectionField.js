@@ -48,9 +48,7 @@ export default class CollectionField extends InputField {
     const keys = Object.keys(item || {});
     const defs = this.props.definition.definitions;
     return defs.find(def => {
-      const names = def.fields.map(field => {
-        return field.name;
-      });
+      const names = def.fields.map(field => field.name);
       return names.length === keys.length &&
              names.every((el, i) => el === keys[i]);
     });
