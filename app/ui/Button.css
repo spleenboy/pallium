@@ -46,6 +46,11 @@
   color: var(--black);
 }
 
+.accent {
+  background-color: var(--lime);
+  color: var(--black);
+}
+
 .warning {
   background-color: var(--warning);
 }

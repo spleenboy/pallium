@@ -131,6 +131,23 @@ export function deleteContent(project, data, _id) {
 }
 
 
+export function importContent(project, fullpath) {
+  return dispatch => {
+    dispatch(ToastActions.thinking(true));
+    const transport = new Transport(
+      project.contentType.storage.format,
+      project.contentType.storage.contentKey
+    );
+
+    fs.readFile(fullpath, ENCODING, (err, data) => {
+      dispatch(ToastActions.thinking(false));
+      const values = transport.import(data);
+      dispatch(saveContent(project, values));
+    });
+  }
+}
+
+
 export function openContent(project, fullpath, _id) {
   return dispatch => {
     dispatch(ToastActions.thinking(true));

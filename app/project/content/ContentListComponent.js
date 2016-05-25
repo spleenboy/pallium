@@ -3,13 +3,39 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
+const remote = require('remote');
+const dialog = remote.require('dialog');
+
 import * as Actions from './ContentActions.js';
 import styles from './ContentListComponent.css';
 
+import Button from '../../ui/Button';
+import Icon from '../../ui/Icon';
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentListComponent extends Component {
+
+  handleImport() {
+    const {project, contentType} = this.props;
+    const title = contentType.settings.plural || contentType.settings.title;
+    const importContent = this.props.importContent.bind(this);
+
+    dialog.showOpenDialog({
+      title: "Import " + title,
+      filters: [{name: title, extensions: [contentType.storage.extension]}],
+      properties: ['openFile', 'multiSelections'],
+    },
+    (filenames) => {
+      if (filenames) {
+        filenames.forEach(filename => {
+            importContent(project, filename);
+        });
+      }
+    }
+    );
+  }
+
   handleSelect(fullpath, _id, e) {
     this.props.openContent(this.props.project, fullpath, _id);
   }
@@ -23,6 +49,8 @@ export class ContentListComponent extends Component {
     if (!sortedList) {
       return null;
     }
+
+    const contentTypeTitle = contentType.settings.plural || contentType.settings.title;
 
     if (contentType.settings.orderBy) {
       sortedList = _.orderBy(
@@ -81,6 +109,11 @@ export class ContentListComponent extends Component {
 
     return (
       <div className={styles.contentList}>
+        <div className={styles.import}>
+          <Button mode="accent" onClick={this.handleImport.bind(this)}>
+            <Icon name="library_add"/> Import {contentTypeTitle}
+          </Button>
+        </div>
         <List>{items}</List>
       </div>
     );
@@ -104,6 +137,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openContent: Actions.openContent,
+    importContent: Actions.importContent,
   }, dispatch);
 }
 
