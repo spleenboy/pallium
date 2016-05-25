@@ -1,0 +1,80 @@
+{
+    "title": "Todos",
+    "description": "Keeping track of progress on the Pallium app",
+    "icon": "code",
+    "contentDirectory": "todo",
+    "assetDirectory": "todo",
+    "database": ["todo", "todos.db"],
+    "contentTypes": [
+    {
+        "settings": {
+            "title": "Todo",
+            "plural": "Todos",
+            "handle": "todo",
+            "description": "Plans in the works",
+            "icon": "done all",
+            "groupBy": "values.status",
+            "groupDirection": "desc",
+            "orderBy": ["values.priority"],
+            "orderDirection": ["desc"]
+        },
+        "storage": {
+          "format": "yaml",
+          "extension": "md",
+          "contentKey": "description",
+          "directory": [
+              "todo",
+              {"type": "slug", "field": "status"}
+          ],
+          "filename": {"type": "slug", "field": "title"},
+          "title": {"type": "reflect", "field": "title"},
+          "metadata": {
+              "Priority": {"type": "reflect", "field": "priority"},
+              "Status": {"type": "reflect", "field": "status"}
+          }
+        },
+        "fields": [
+        {
+            "name": "title",
+            "label": "Title",
+            "searchable": true,
+            "defaultValue": "To do: this thing",
+            "hint": "Give this a name",
+            "validation": [
+            {
+                "type": "required",
+                "warning": "A title is required"
+            }
+            ]
+        },
+        {
+            "name": "description",
+            "type": "md",
+            "label": "Description"
+        },
+        {
+            "name": "status",
+            "type": "radio",
+            "label": "Status",
+            "defaultValue": "Not Started",
+            "options": [
+                {"value": "Complete"},
+                {"value": "In Progress"},
+                {"value": "Not Started"}
+            ]
+        },
+        {
+            "name": "priority",
+            "type": "radio",
+            "label": "Priority",
+            "defaultValue": "Medium",
+            "options": [
+                {"label": "High", "value": "High"},
+                {"label": "Medium", "value": "Medium"},
+                {"label": "Low", "value": "Low"}
+            ]
+        }
+        ]
+    }
+    ]
+}
