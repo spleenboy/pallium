@@ -12,8 +12,13 @@ const stores = {};
 **/
 export default class ContentIndex {
   constructor(project) {
+
     const baseDir = path.dirname(project.path);
-    const filename = path.join(baseDir, project.database);
+    const database = Array.isArray(project.database)
+      ? project.database.join(path.sep)
+      : project.database;
+
+    const filename = path.join(baseDir, database);
     if (!stores[filename]) {
       stores[filename] = new Datastore({filename, autoload: true});
     }
