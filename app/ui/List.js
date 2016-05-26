@@ -7,7 +7,7 @@ export default class List extends Component {
       return null;
     }
 
-    const cn = `${styles.list} mdl-list`;
+    const cn = `${styles.list}`;
     return (
       <ul className={cn}>
         {this.props.children}

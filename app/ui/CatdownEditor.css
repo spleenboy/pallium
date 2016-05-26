@@ -1,0 +1,46 @@
+.edit {
+
+}
+
+.view {
+
+}
+
+.tabs {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 3rem;
+  width: 100%;
+}
+
+.tab {
+  float: left;
+  height: 3rem;
+  border: 1px solid var(--gray);
+  background-color: var(--off-white);
+}
+
+.tab:hover {
+  background-color: var(--lime);
+}
+
+.tab.active {
+  background-color: var(--white);
+  border-bottom: 0;
+  margin-bottom: -1px;
+}
+
+.tabButton {
+  padding: 0;
+}
+
+.editor, .preview {
+  display: none;
+  border: 1px solid var(--gray);
+  padding: 1rem;
+}
+
+.editor.active, .preview.active {
+  display: block;
+}

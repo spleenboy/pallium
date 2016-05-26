@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
 :root {
   --header-height: 60px;
@@ -12,6 +13,7 @@
   --orange-film: rgba(255, 212, 0, 0.3);
   --white-film: rgba(255, 255, 255, 0.4);
   --gray: rgb(170, 170, 170);
+  --dark-gray: rgb(128, 128, 110);
   --gray-film: rgba(200, 200, 200, 0.7);
   --warning: rgb(255, 50, 50);
   --shadow: rgba(0, 0, 0, 0.5);
@@ -22,6 +24,11 @@ body {
   padding: 0;
   min-height: 100%;
   background-color: var(--off-white);
+  font-family: 'Nunito';
+}
+
+html, body {
+  font-size: 14px;
 }
 
 a {
