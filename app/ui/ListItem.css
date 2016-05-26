@@ -8,7 +8,6 @@
 .avatar, .icon {
   float: left;
   display: inline-block;
-  font-size: 20px;
   width: 40px;
   text-align: center;
   margin-right: 10px;
@@ -16,10 +15,13 @@
 
 .avatar {
   height: 40px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 45px;
   border-radius: 30px;
   color: var(--lime)!important;
   background-color: var(--dark-gray);
+  border: 1px solid var(--lime);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .icon {

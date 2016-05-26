@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Cambay);
 
 :root {
   --header-height: 60px;
@@ -24,7 +24,7 @@ body {
   padding: 0;
   min-height: 100%;
   background-color: var(--off-white);
-  font-family: 'Nunito';
+  font-family: 'Cambay';
 }
 
 html, body {
