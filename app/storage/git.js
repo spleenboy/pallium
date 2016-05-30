@@ -11,8 +11,8 @@ import * as ContentActions from '../project/content/ContentActions';
 // Middleware to handle communication with a git repository
 export default function git(store) {
   return next => action => {
-    const state = store.getState();
     const result = next(action);
+    const state = store.getState();
 
     if (!isManaged(state.project)) {
       return result;

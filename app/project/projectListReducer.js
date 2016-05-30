@@ -15,12 +15,13 @@ methods[Actions.ADD] = function(state, action) {
     result.splice(existing, 1);
   }
 
-  let {title, description, icon} = action.project;
+  let {title, description, icon, git} = action.project;
 
   const added = {
     title,
     description,
     icon,
+    git,
     path: action.path
   };
 

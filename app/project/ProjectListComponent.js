@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import styles from './ProjectListComponent.css';
 import List from '../ui/List';
 import ListItem from '../ui/ListItem';
+import Icon from '../ui/Icon';
 
 import * as ProjectActions from './ProjectActions';
 
@@ -28,6 +29,7 @@ export class ProjectListComponent extends Component {
           icon={p.icon ? p.icon : "assignment"}
         >
           {p.title}
+          {p.git ? <Icon className={styles.linked} name="autorenew"/> : ""}
         </ListItem>
       );
     });
