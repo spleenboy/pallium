@@ -11,6 +11,7 @@ import styles from './ContentListComponent.css';
 
 import Button from '../../ui/Button';
 import Icon from '../../ui/Icon';
+import Shrug from '../../ui/Shrug';
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
@@ -114,7 +115,13 @@ export class ContentListComponent extends Component {
             <Icon name="library_add"/> Import {contentTypeTitle}
           </Button>
         </div>
-        <List>{items}</List>
+        {items.length
+          ? <List>{items}</List>
+          : <div className={styles.empty}>
+              <Shrug/>
+              <p>No {contentTypeTitle} Found</p>
+            </div>
+        }
       </div>
     );
   }

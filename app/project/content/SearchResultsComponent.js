@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import Shrug from '../../ui/Shrug';
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
@@ -28,7 +29,7 @@ export class SearchResultsComponent extends Component {
     if (!results || results.length === 0) {
       return (
         <div className={styles.noresults}>
-          <p className={styles.shrug}>¯\_(ツ)_/¯</p>
+          <Shrug/>
           <p>No results found for "{query}"</p>
         </div>
       );
