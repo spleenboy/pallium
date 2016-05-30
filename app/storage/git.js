@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 
 const remote = require('remote');
 const Git = remote.require('simple-git');
@@ -87,13 +88,14 @@ export class Repository {
   }
 
 
+  // Allows cloning into a non-empty directory
   clone() {
     return new Promise((resolve, reject) => {
-      this.repo.clone(
-        this.remoteUrl,
-        this.localpath,
-        this.done("Clone", resolve, reject)
-      );
+      this.repo
+        .init(false)
+        .addRemote(this.remoteName, this.remoteUrl)
+        .reset('hard')
+        .pull(this.remoteName, this.branch, this.done("Pull", resolve, reject));
     });
   }
 
