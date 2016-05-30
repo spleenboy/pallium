@@ -6,6 +6,7 @@ import createLogger from 'redux-logger';
 
 import rootReducer from './reducers';
 import * as memory from '../storage/memory';
+import git from '../storage/git';
 
 const isProduction = process.env.MODE_ENV === 'production';
 const reducer      = combineReducers(rootReducer);
@@ -13,14 +14,14 @@ const router       = routerMiddleware(hashHistory);
 
 let enhancer;
 if (isProduction) {
-  enhancer = applyMiddleware(thunk, router, memory.remember);
+  enhancer = applyMiddleware(thunk, router, memory.remember, git);
 } else {
   const logger = createLogger({
     level: 'info',
     collapsed: true,
   });
 
-  enhancer = applyMiddleware(thunk, router, logger, memory.remember);
+  enhancer = applyMiddleware(thunk, router, logger, memory.remember, git);
 }
 
 export default function configureStore(initialState) {

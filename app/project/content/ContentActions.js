@@ -10,17 +10,18 @@ import ContentIndex from './ContentIndex';
 import Content from './Content';
 import prune from '../../storage/prune';
 
-export const SET_SEARCH = 'set.search';
+export const SET_SEARCH = 'search.set';
 
-export const SET_CONTENT = 'set.content';
-export const UPDATE_CONTENT = 'update.content';
-export const CLEAR_CONTENT = 'clear.content';
-export const TRASH_CONTENT = 'trash.content';
-export const RESTORE_CONTENT = 'restore.content';
+export const SAVE_CONTENT = 'content.save';
+export const SET_CONTENT = 'content.set';
+export const UPDATE_CONTENT = 'content.update';
+export const CLEAR_CONTENT = 'content.clear';
+export const TRASH_CONTENT = 'content.trash';
+export const RESTORE_CONTENT = 'content.restore';
 
-export const SET_CONTENT_TYPE = 'set.contentType';
-export const CLEAR_CONTENT_TYPE = 'clear.contentType';
-export const SET_CONTENT_LIST = 'set.contentList';
+export const SET_CONTENT_TYPE = 'contentType.set';
+export const CLEAR_CONTENT_TYPE = 'contentType.clear';
+export const SET_CONTENT_LIST = 'contentList.set';
 
 
 export function setSearch(search) {
@@ -78,7 +79,7 @@ export function setContent(project, data, _id = null) {
   const content = new Content(project, data, _id);
   return {
     type: SET_CONTENT,
-    content: content.toJson(),
+    content: content,
   };
 }
 
@@ -87,7 +88,7 @@ export function createContent(project) {
   const content = new Content(project);
   return {
     type: SET_CONTENT,
-    content: content.toJson(),
+    content: content,
   }
 }
 
@@ -169,7 +170,7 @@ export function trashContent(project, data, _id) {
   const content = new Content(project, data, _id);
   return {
     type: TRASH_CONTENT,
-    content: content.toJson(),
+    content: content,
   }
 }
 
@@ -209,6 +210,12 @@ export function saveContent(project, data, _id = null) {
         if (err) {
           dispatch(ToastActions.error(err, "Error saving content"));
         }
+      });
+
+      // Signal that the content has been saved
+      dispatch({
+        type: SAVE_CONTENT,
+        content
       });
     });
   };

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.vim
 
 # Logs
@@ -34,3 +35,6 @@ node_modules
 # App packaged
 dist
 release
+=======
+.DS_Store
+>>>>>>> 3edcc6ab0f4b4f8a02c511c5818bd45063462342

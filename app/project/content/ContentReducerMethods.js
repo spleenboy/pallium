@@ -9,7 +9,7 @@ methods[Actions.SET_SEARCH] = function(state, action) {
 }
 
 methods[Actions.SET_CONTENT] = function(state, action) {
-  state.contentType.content = action.content;
+  state.contentType.content = action.content.toJson();
   return state;
 }
 
@@ -35,7 +35,7 @@ methods[Actions.TRASH_CONTENT] = function(state, action) {
     state.trash = {};
   }
 
-  state.trash[action.content._id] = action.content;
+  state.trash[action.content._id] = action.content.toJson();
 
   return state;
 }

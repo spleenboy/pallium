@@ -4,10 +4,10 @@ import _ from 'lodash';
 
 import traverse from '../util/traverse';
 
-export const OPEN_PROJECT = 'open.project';
-export const OPENED_PROJECT = 'opened.project';
-export const CLONE_PROJECT = 'clone.project';
-export const CLEAR_PROJECT = 'clear.project';
+export const OPEN_PROJECT = 'project.open';
+export const OPENED_PROJECT = 'project.opened';
+export const CLONE_PROJECT = 'project.clone';
+export const CLEAR_PROJECT = 'project.clear';
 
 export function error(e) {
   console.error(e);
