@@ -65,6 +65,7 @@ export function open(path) {
         dispatch(ProjectList.add(project, path));
       } else {
         dispatch(Toast.error("File Error", "There's a problem with your project file: " + err.message, err));
+        dispatch(ProjectList.remove(project, path));
       }
     });
   }

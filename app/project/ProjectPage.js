@@ -55,7 +55,7 @@ export class ProjectPage extends Component {
     } else if (project && project.contentTypes) {
       // A project is selected
       drawer = (
-        <Drawer><ProjectListComponent/></Drawer>
+        <Drawer><ProjectListComponent mode="drawer"/></Drawer>
       );
       main = main || (
         <Main><ContentTypeListComponent/></Main>
@@ -65,7 +65,7 @@ export class ProjectPage extends Component {
         <Drawer />
       );
       main = (
-        <Main><ProjectListComponent/></Main>
+        <Main><ProjectListComponent mode="main"/></Main>
       );
     }
 

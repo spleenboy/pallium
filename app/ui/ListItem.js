@@ -50,12 +50,15 @@ export default class ListItem extends Component {
     }
 
     return (
-      <li className={cns.join(' ')} onClick={this.handleClick.bind(this)}>
-        {area('icon', this.props.icon, 'material-icons')}
-        {area('avatar', this.props.avatar)}
-        {area('title', this.props.children)}
-        {area('sub-title', this.props.subtitle)}
-        {area('text-body', this.props.body)}
+      <li className={cns.join(' ')}>
+        {area('action', this.props.action)}
+        <div className={styles.itemBody} onClick={this.handleClick.bind(this)}>
+          {area('icon', this.props.icon, 'material-icons')}
+          {area('avatar', this.props.avatar)}
+          {area('title', this.props.children)}
+          {area('sub-title', this.props.subtitle)}
+          {area('text-body', this.props.body)}
+        </div>
       </li>
     );
   }

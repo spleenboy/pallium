@@ -17,7 +17,7 @@ export function add(project, path) {
   }
 }
 
-export function remove(project) {
+export function remove(project, path) {
   return {
     type: REMOVE,
     project,

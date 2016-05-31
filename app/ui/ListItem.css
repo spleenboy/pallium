@@ -39,7 +39,8 @@
   display: block;
   margin-left: 50px;
   line-height: 1.2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
   color: var(--dark-gray);
 }
 
@@ -48,5 +49,15 @@
   margin-left: 50px;
   line-height: 1.2rem;
   font-size: 1rem;
-  color: var(--shadow);
+  color: var(--blue);
+}
+
+.action {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+.item:hover .action {
+  display: block;
 }
