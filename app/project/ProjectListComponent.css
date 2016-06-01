@@ -19,3 +19,7 @@
   margin-top: -0.5rem;
   color: var(--gray);
 }
+
+.removeButton:hover {
+  background-color: var(--warning);
+}

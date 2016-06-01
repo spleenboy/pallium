@@ -28,7 +28,7 @@ export class ProjectListComponent extends Component {
     let links = projectList && projectList.map((p, i) => {
       let cn = project.title === p.title ? styles.active : "";
       const rmBtn = this.props.mode === 'main' ? (
-        <Button onClick={this.handleRemoveClick.bind(this, p, p.path)}>
+        <Button className={styles.removeButton} onClick={this.handleRemoveClick.bind(this, p, p.path)}>
           <Icon name="delete"/>
         </Button>
       ) : null;
