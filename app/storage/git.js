@@ -91,33 +91,12 @@ export class Repository {
   // Allows cloning into a non-empty directory
   clone() {
     return new Promise((resolve, reject) => {
-      const tmpDir = this.localPath + path.sep + _.uniqueId('git-');
-
-      // Step 3: Remove temp
-      const rmTmp = fs.remove.bind(
-        fs,
-        tmpDir,
-        this.done("Removed " + tmpDir, resolve, reject)
-      );
-
-      // Step 2: Move from temp
-      const moveFromTmp = fs.move.bind(
-        fs,
-        tmpDir + '/* ' + tmpDir + '/.[^.]*',
-        this.localPath,
-        this.done("Moved temp clone to " + this.localPath, rmTmp, reject)
-      );
-
-      // Step 1: Clone into temp
-      const cloneToTmp = this.repo.clone.bind(
-        this.repo,
-        this.remoteUrl,
-        tmpDir,
-        this.done("Cloned into " + tmpDir, moveFromTmp, reject)
-      );
-
-      // Start the chain!
-      cloneToTmp();
+      this.repo
+        .init(false)
+        .addRemote(this.remoteName, this.remoteUrl)
+        .fetch()
+        .reset(['--hard', this.remoteName + '/' + this.branch])
+        .pull(this.remoteName, this.branch, this.done("Pull", resolve, reject));
     });
   }
 
