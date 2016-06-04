@@ -11,6 +11,7 @@ import OptionListField from './OptionListField';
 import RangeField from './RangeField';
 import SelectField from './SelectField';
 import TextareaField from './TextareaField';
+import ToggleField from './ToggleField';
 
 export default {
   'array': ArrayField,
@@ -27,4 +28,5 @@ export default {
   'range': RangeField,
   'select': SelectField,
   'textarea': TextareaField,
+  'toggle': ToggleField,
 };

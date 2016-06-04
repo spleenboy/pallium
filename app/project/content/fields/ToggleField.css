@@ -1,0 +1,52 @@
+.toggle {
+  width: 200px;
+  text-align: center;
+}
+
+
+.panel {
+  cursor: pointer;
+  margin-bottom: 2rem;
+  text-align: left;
+  border: 3px solid var(--gray);
+  background-color: var(--white);
+  border-radius: 40px;
+  padding: 0;
+  display: block;
+  width: 200px;
+  height: 70px;
+  transition-delay: 0.2s;
+}
+
+.on .panel {
+  border-color: var(--lime);
+}
+
+.off .panel {
+  border-color: var(--gray);
+}
+
+.button {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 5px;
+  border-radius: 120px;
+  border: 0;
+  transition: margin 0.2s ease-in;
+}
+
+.on .button {
+  margin-left: 130px;
+  background-color: var(--lime);
+}
+
+.off .button {
+  margin-left: 5px;
+  background-color: var(--gray);
+}
+
+.state {
+  font-size: 2rem;
+}

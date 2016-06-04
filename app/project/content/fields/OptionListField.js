@@ -5,6 +5,13 @@ import Icon from '../../../ui/Icon';
 import styles from './OptionListField.css';
 
 export default class OptionListField extends InputField {
+  componentDidMount() {
+    const {options, value, defaultValue} = this.props.definition;
+    let initialValue = value || defaultValue || options && options.length && options[0].value;
+    this.props.onValueChange(this.props.definition, initialValue);
+  }
+
+
   isMultiple() {
     const {options, type} = this.props.definition;
     return type === 'checkbox' && options.length > 1;
