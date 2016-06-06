@@ -9,7 +9,7 @@
   margin-bottom: 2rem;
   text-align: left;
   border: 3px solid var(--gray);
-  background-color: var(--white);
+  background-color: var(--off-white);
   border-radius: 40px;
   padding: 0;
   display: block;
@@ -19,7 +19,7 @@
 }
 
 .on .panel {
-  border-color: var(--lime);
+  border-color: var(--blue);
 }
 
 .off .panel {
@@ -33,13 +33,12 @@
   padding: 0;
   margin: 5px;
   border-radius: 120px;
-  border: 0;
   transition: margin 0.2s ease-in;
 }
 
 .on .button {
   margin-left: 130px;
-  background-color: var(--lime);
+  background-color: var(--blue);
 }
 
 .off .button {
