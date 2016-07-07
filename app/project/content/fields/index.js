@@ -1,5 +1,6 @@
 import ArrayField from './ArrayField';
 import CollectionField from './CollectionField';
+import DateField from './DateField';
 import FileField from './FileField';
 import HiddenField from './HiddenField';
 import InputField from './InputField';
@@ -17,6 +18,7 @@ export default {
   'array': ArrayField,
   'checkbox': OptionListField,
   'collection': CollectionField,
+  'date': DateField,
   'default': InputField,
   'file': FileField,
   'hidden': HiddenField,

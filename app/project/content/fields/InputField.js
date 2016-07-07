@@ -48,6 +48,11 @@ export default class InputField extends Component {
   }
 
 
+  formattedValue() {
+    return this.props.value;
+  }
+
+
   renderInput() {
     const {
       name,
@@ -63,7 +68,7 @@ export default class InputField extends Component {
         name={name}
         id={name}
         type={type}
-        value={this.props.value}
+        value={this.formattedValue()}
         onChange={this.handleValueChange.bind(this)}
         onFocus={this.handleFocus.bind(this)}
         onBlur={this.handleBlur.bind(this)}
