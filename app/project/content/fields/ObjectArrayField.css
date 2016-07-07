@@ -21,3 +21,24 @@
   margin-left: 5%;
   margin-bottom: 2rem;
 }
+
+.newItemButton {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.newItemButton em {
+  font-size: 1rem;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--white-film);
+}
+
+.header .title {
+  display: inline;
+  font-size: 2rem;
+  margin-left: 2rem;
+  color: var(--blue);
+}

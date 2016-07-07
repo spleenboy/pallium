@@ -78,7 +78,7 @@ export default class ObjectArrayField extends ArrayField {
 
     buttons = this.props.definition.fields.map((definition, i) => {
       return (
-        <Button key={i} onClick={this.handleNewItemCreate.bind(this, definition)}>
+        <Button className={styles.newItemButton} key={i} onClick={this.handleNewItemCreate.bind(this, definition)}>
           {definition.label} <Icon name="add"/>
         </Button>
       );
@@ -88,8 +88,10 @@ export default class ObjectArrayField extends ArrayField {
       badges = this.props.value.map((item, i) => {
         const fieldDefinition = this.pickFieldDefinition(item);
         let itemField = item;
+        let itemTitle = '';
 
         if (fieldDefinition) {
+          itemTitle = fieldDefinition.label || fieldDefinition.name || '';
           itemField = (
             <Field
               definition={fieldDefinition}
@@ -98,20 +100,24 @@ export default class ObjectArrayField extends ArrayField {
             />
           );
         } else if (_.isObject(item)) {
+          itemTitle = 'Object';
           itemField = JSON.stringify(item, false, 2);
         }
 
         return (
           <div className={styles.item}>
-            <Button
-              mode="warning"
-              className={styles.badge}
-              key={i}
-              onClick={this.handleRemove.bind(this, i)}
-              title="Delete"
-            >
-              <Icon name="delete_forever"/>
-            </Button>
+            <div className={styles.header}>
+              <Button
+                mode="warning"
+                className={styles.badge}
+                key={i}
+                onClick={this.handleRemove.bind(this, i)}
+                title="Delete"
+              >
+                <Icon name="delete_forever"/>
+              </Button>
+              <div className={styles.title}>{itemTitle}</div>
+            </div>
             {itemField}
           </div>
         );

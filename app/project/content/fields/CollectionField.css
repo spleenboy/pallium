@@ -12,3 +12,12 @@
 .buttons {
 
 }
+
+.newItemButton {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.newItemButton em {
+  font-size: 1rem;
+}
