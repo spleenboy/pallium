@@ -9,6 +9,28 @@ import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentTypeListComponent extends Component {
+  componentDidMount() {
+    this.autoSelect();
+  }
+
+
+  componentDidUpdate(prevProps, nextState) {
+    this.autoSelect(prevProps);
+  }
+
+
+  autoSelect(prevProps = false) {
+    const {project} = this.props;
+    const contentTypes = project.contentTypes;
+
+    if (!contentTypes || contentTypes.length !== 1 || project.contentType) {
+      return;
+    }
+
+    this.props.selectContentType(project, contentTypes[0].settings.handle);
+  }
+
+
   handleSelect(contentType, e) {
     this.props.selectContentType(this.props.project, contentType.settings.handle);
   }

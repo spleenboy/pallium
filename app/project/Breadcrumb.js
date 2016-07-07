@@ -78,9 +78,11 @@ export class Breadcrumb extends Component {
     if (project && project.title) {
       title.push(project.title);
 
-      add(
-        <span onClick={this.handleClearContentType.bind(this)} className={styles.btn}>{project.title}</span>
-      );
+      if (project.contentTypes.length !== 1) {
+        add(
+          <span onClick={this.handleClearContentType.bind(this)} className={styles.btn}>{project.title}</span>
+        );
+      }
 
       if (contentType) {
         title.push(single ? contentType.settings.title : contentType.settings.plural);
