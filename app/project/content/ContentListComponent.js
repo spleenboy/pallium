@@ -110,11 +110,6 @@ export class ContentListComponent extends Component {
 
     return (
       <div className={styles.contentList}>
-        <div className={styles.import}>
-          <Button mode="accent" onClick={this.handleImport.bind(this)}>
-            <Icon name="library_add"/> Import {contentTypeTitle}
-          </Button>
-        </div>
         {items.length
           ? <List>{items}</List>
           : <div className={styles.empty}>
@@ -122,6 +117,11 @@ export class ContentListComponent extends Component {
               <p>No {contentTypeTitle} Found</p>
             </div>
         }
+        <div className={styles.import}>
+          <Button mode="accent" onClick={this.handleImport.bind(this)}>
+            <Icon name="library_add"/> Import {items.length ? "More " : ""}{contentTypeTitle}
+          </Button>
+        </div>
       </div>
     );
   }
