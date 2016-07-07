@@ -4,6 +4,7 @@
   position: fixed;
   overflow: scroll;
   top: 0;
+  left: 0;
   background-color: var(--white);
   transition: all 0.5s ease-out;
 }
