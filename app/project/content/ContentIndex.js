@@ -82,6 +82,10 @@ export default class ContentIndex {
         fields.push("values." + contentType.storage.contentKey);
       }
 
+      if (!contentType.fields) {
+        return;
+      }
+
       const searchable = contentType.fields.filter(field => field.searchable);
       fields = fields.concat(searchable.map(s => "fields." + s.name));
     });

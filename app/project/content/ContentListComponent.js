@@ -44,14 +44,25 @@ export class ContentListComponent extends Component {
 
   render() {
     const {contentType, contentList, content} = this.props;
+    const contentTypeTitle = contentType.settings.plural || contentType.settings.title;
+
     let groupBy = null;
     let sortedList = contentList;
+    let importButton = (
+      <div className={styles.import}>
+        <Button mode="accent" onClick={this.handleImport.bind(this)}>
+          <Icon name="library_add"/> Import {contentList && contentList.length ? "More " : ""}{contentTypeTitle}
+        </Button>
+      </div>
+    );
 
     if (!sortedList) {
-      return null;
+      return (
+        <div className={styles.contentList}>
+          {importButton}
+        </div>
+      );
     }
-
-    const contentTypeTitle = contentType.settings.plural || contentType.settings.title;
 
     if (contentType.settings.orderBy) {
       sortedList = _.orderBy(
@@ -117,11 +128,7 @@ export class ContentListComponent extends Component {
               <p>No {contentTypeTitle} Found</p>
             </div>
         }
-        <div className={styles.import}>
-          <Button mode="accent" onClick={this.handleImport.bind(this)}>
-            <Icon name="library_add"/> Import {items.length ? "More " : ""}{contentTypeTitle}
-          </Button>
-        </div>
+        {importButton}
       </div>
     );
   }
