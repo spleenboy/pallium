@@ -6,10 +6,10 @@ import Catdown from 'catdown';
 import Button from './Button';
 import Icon from './Icon';
 
-import globalStyles from './CatdownEditor.global.css';
-import styles from './CatdownEditor.css';
+import globalStyles from './MarkdownEditor.global.css';
+import styles from './MarkdownEditor.css';
 
-export default class CatdownEditor extends Component {
+export default class MarkdownEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ export default class CatdownEditor extends Component {
 
   static get propTypes() {
     return {
-      value: PropTypes.string,
+      initialValue: PropTypes.string,
       onFocus: PropTypes.func,
       onBlur: PropTypes.func
     }
@@ -35,15 +35,15 @@ export default class CatdownEditor extends Component {
     this.catdown.editor.on("focus", this.handleFocus.bind(this));
     this.catdown.editor.on("blur", this.handleBlur.bind(this));
 
-    if (this.props.value) {
-      this.catdown.set(this.props.value);
+    if (this.props.initialValue) {
+      this.catdown.set(this.props.initialValue);
     }
   }
 
 
   componentWillReceiveProps(nextProps) {
     const catval = this.catdown.value();
-    const newval = nextProps.value || "";
+    const newval = nextProps.initialValue || "";
     if (newval != catval) {
       this.catdown.set(newval);
     }
@@ -51,11 +51,13 @@ export default class CatdownEditor extends Component {
 
 
   handleFocus() {
+    console.log("CatdownEditor focused");
     this.props.onFocus && this.props.onFocus(this.catdown.value());
   }
 
 
   handleBlur() {
+    console.log("CatdownEditor blurred");
     this.props.onBlur && this.props.onBlur(this.catdown.value());
   }
 

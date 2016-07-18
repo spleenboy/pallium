@@ -113,7 +113,7 @@ export class ContentListComponent extends Component {
             body={metadata}
             className={`${styles.item} ${cn}`}
             onClick={this.handleSelect.bind(this, c.fullpath, c._id)}>
-            {c.title}
+            {c.title ? c.title : c._id}
           </ListItem>
         </div>
       );

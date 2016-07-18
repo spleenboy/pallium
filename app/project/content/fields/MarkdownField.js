@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import styles from './MarkdownField.css';
 import InputField from './InputField';
-import CatdownEditor from '../../../ui/CatdownEditor';
+import MarkdownEditor from '../../../ui/MarkdownEditor';
 
 export default class MarkdownField extends InputField {
   handleValueChange(value) {
@@ -13,8 +13,8 @@ export default class MarkdownField extends InputField {
   renderInput() {
     return (
       <div className={styles.markdown}>
-        <CatdownEditor
-          value={this.props.value}
+        <MarkdownEditor
+          initialValue={this.props.value}
           onBlur={this.handleValueChange.bind(this)}
         />
       </div>

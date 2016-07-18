@@ -4,11 +4,28 @@ import styles from './InputField.css';
 import ValidationComponent from './ValidationComponent';
 
 export default class InputField extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       active: false,
     };
+  }
+
+
+  componentDidMount() {
+    const {value, definition} = this.props;
+    let initialValue = null;
+
+    if (typeof value !== 'undefined') {
+      initialValue = value;
+    } else if (typeof definition.value !== 'undefined') {
+      initialValue = definition.value;
+    } else if (typeof definition.defaultValue !== 'undefined') {
+      initialValue = definition.defaultValue;
+    }
+
+    this.props.onValueChange(this.props.definition, initialValue);
   }
 
 
