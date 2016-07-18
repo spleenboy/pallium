@@ -26,6 +26,7 @@ export default class ObjectField extends InputField {
       const value = def.value || values[def.name] || def.defaultValue || null;
       return (
         <Field
+          id={this.props.id}
           key={i}
           level={level + 1}
           definition={def}

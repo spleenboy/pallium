@@ -19,6 +19,7 @@ export default class MarkdownEditor extends Component {
 
   static get propTypes() {
     return {
+      id: PropTypes.string,
       initialValue: PropTypes.string,
       onFocus: PropTypes.func,
       onBlur: PropTypes.func
@@ -42,6 +43,10 @@ export default class MarkdownEditor extends Component {
 
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.id === this.props.id) {
+        return;
+    }
+
     const catval = this.catdown.value();
     const newval = nextProps.initialValue || "";
     if (newval != catval) {

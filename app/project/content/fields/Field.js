@@ -14,6 +14,7 @@ export default class Field extends Component {
 
   static get PropTypes() {
     return {
+      id: PropTypes.string.isRequired,
       definition: PropTypes.object.isRequired,
       value: PropTypes.object.isRequired,
       onValueChange: PropTypes.func.isRequired,
@@ -39,6 +40,7 @@ export default class Field extends Component {
 
     return (
       <Element
+        id={this.props.id}
         definition={def}
         value={this.props.value}
         validation={this.state.validation}

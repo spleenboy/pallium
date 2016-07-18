@@ -94,6 +94,7 @@ export default class ObjectArrayField extends ArrayField {
           itemTitle = fieldDefinition.label || fieldDefinition.name || '';
           itemField = (
             <Field
+              id={this.props.id}
               definition={fieldDefinition}
               value={item}
               onValueChange={this.handleItemValueChange.bind(this, i)}

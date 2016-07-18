@@ -31,6 +31,7 @@ export default class InputField extends Component {
 
   static get PropTypes() {
     return {
+      id: PropTypes.string.isRequired,
       definition: PropTypes.object.isRequired,
       value: PropTypes.object.isRequired,
       onValueChange: PropTypes.func.isRequired,

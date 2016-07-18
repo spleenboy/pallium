@@ -11,9 +11,12 @@ export default class MarkdownField extends InputField {
 
 
   renderInput() {
+    const {name} = this.props.definition;
+    const id = this.props.id + '-' + name;
     return (
       <div className={styles.markdown}>
         <MarkdownEditor
+          id={id}
           initialValue={this.props.value}
           onBlur={this.handleValueChange.bind(this)}
         />

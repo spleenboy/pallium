@@ -53,6 +53,7 @@ export class ContentFormComponent extends Component {
     const fields = contentType.fields.map((def, i) => {
       return (
         <Field
+          id={content._id}
           key={i}
           definition={def}
           value={content.values[def.name]}

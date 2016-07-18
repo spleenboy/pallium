@@ -32,6 +32,7 @@ export default class CollectionFieldItem extends InputField {
     const inputs = fields.map((def, i) => {
       return (
         <Field
+          id={this.props.id}
           key={i}
           level={level}
           definition={def}
