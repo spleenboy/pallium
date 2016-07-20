@@ -74,7 +74,7 @@ export class FileField extends InputField {
 
     if (!multiple) {
       oldPaths.length && oldPaths.forEach(this.deleteFile.bind(this));
-      value = mappedPaths;
+      value = mappedPaths.length > 0 ? mappedPaths[0] : null;
     } else {
       value = _.union(oldPaths, mappedPaths);
     }
@@ -85,8 +85,13 @@ export class FileField extends InputField {
 
   handleDelete(shortpath, index, e) {
     this.deleteFile(shortpath);
-    const paths = this.filepaths();
+    let paths = this.filepaths();
     _.remove(paths, p => p === shortpath);
+
+    if (!this.props.definition.multiple) {
+        paths = paths.length > 0 ? paths[0] : null;
+    }
+
     this.props.onValueChange(this.props.definition, paths);
   }
 
