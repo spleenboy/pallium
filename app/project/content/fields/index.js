@@ -6,6 +6,7 @@ import HiddenField from './HiddenField';
 import InputField from './InputField';
 import MarkdownField from './MarkdownField';
 import MarkupField from './MarkupField';
+import NumberField from './NumberField';
 import ObjectField from './ObjectField';
 import ObjectArrayField from './ObjectArrayField';
 import OptionListField from './OptionListField';
@@ -24,6 +25,7 @@ export default {
   'hidden': HiddenField,
   'md': MarkdownField,
   'markup': MarkupField,
+  'number': NumberField,
   'object': ObjectField,
   'objectArray': ObjectArrayField,
   'radio': OptionListField,

@@ -43,18 +43,18 @@ export default class InputField extends Component {
 
   handleFocus(e) {
     this.setState({active: true});
-    this.props.onFocus && this.props.onFocus(this.props.definition, this.refs.input.value, e);
+    this.props.onFocus && this.props.onFocus(this.props.definition, this.rawInputValue(), e);
   }
 
 
   handleBlur(e) {
     this.setState({active: false});
-    this.props.onBlur && this.props.onBlur(this.props.definition, this.refs.input.value, e);
+    this.props.onBlur && this.props.onBlur(this.props.definition, this.rawInputValue(), e);
   }
 
 
   handleValueChange(e) {
-    this.props.onValueChange && this.props.onValueChange(this.props.definition, this.refs.input.value, e);
+    this.props.onValueChange && this.props.onValueChange(this.props.definition, this.rawInputValue(), e);
   }
 
 
@@ -63,6 +63,11 @@ export default class InputField extends Component {
     return (
       <label className={styles.label} htmlFor={name}>{label}</label>
     );
+  }
+
+
+  rawInputValue() {
+    return this.refs.input.value;
   }
 
 
