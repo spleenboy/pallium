@@ -6,9 +6,11 @@
   transition: background 0.5s;
 }
 
-.import {
-  margin-top: 40px;
-  margin-left: 20px;
+.buttons {
+}
+
+.add {
+  border-radius: 50px;
 }
 
 .itemWrapper {

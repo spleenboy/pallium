@@ -1,0 +1,32 @@
+.fan {
+  position: relative;
+  background: none;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+.tray {
+  transition: all 0.5s ease-in-out;
+}
+
+.tray button {
+  transition: all 0.3s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+}
+
+.show button {
+  transform: scale(1);
+}
+
+.hide {
+  opacity: 0;
+}
+
+.hide button {
+  transform: scale(0);
+}
