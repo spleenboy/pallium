@@ -7,6 +7,7 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
+const pkg = require('./package.json');
 const crashReporter = electron.crashReporter;
 const shell = electron.shell;
 let menu;
@@ -14,7 +15,11 @@ let template;
 let mainWindow = null;
 
 
-crashReporter.start();
+crashReporter.start({
+  productName: pkg.productName,
+  companyName: pkg.companyName,
+  submitURL: pkg.submitURL,
+});
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
@@ -50,9 +55,9 @@ app.on('ready', () => {
 
   if (process.platform === 'darwin') {
     template = [{
-      label: 'Electron',
+      label: 'Pallium',
       submenu: [{
-        label: 'About ElectronReact',
+        label: 'About Pallium',
         selector: 'orderFrontStandardAboutPanel:'
       }, {
         type: 'separator'
@@ -62,7 +67,7 @@ app.on('ready', () => {
       }, {
         type: 'separator'
       }, {
-        label: 'Hide ElectronReact',
+        label: 'Hide Pallium',
         accelerator: 'Command+H',
         selector: 'hide:'
       }, {
