@@ -7,19 +7,11 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
-const pkg = require('./package.json');
-const crashReporter = electron.crashReporter;
 const shell = electron.shell;
 let menu;
 let template;
 let mainWindow = null;
 
-
-crashReporter.start({
-  productName: pkg.productName,
-  companyName: pkg.companyName,
-  submitURL: pkg.submitURL,
-});
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
