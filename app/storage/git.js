@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 
-const remote = require('remote');
+const {remote} = require('electron');
 const Git = remote.require('simple-git');
 
 import * as ProjectActions from '../project/ProjectActions';

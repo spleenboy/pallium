@@ -9,8 +9,7 @@ import styles from './Breadcrumb.css';
 import * as ProjectActions from './ProjectActions';
 import * as ContentActions from './content/ContentActions';
 
-const remote = require('remote');
-const dialog = remote.require('dialog');
+const {dialog} = require('electron').remote;
 
 export class Breadcrumb extends Component {
   handleOpenProject() {

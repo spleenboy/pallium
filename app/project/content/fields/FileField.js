@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const remote = require('remote');
-const dialog = remote.require('dialog');
-const {shell} = require('electron');
+const {dialog, shell} = require('electron').remote;
 
 import fs from 'fs-extra';
 import path from 'path';

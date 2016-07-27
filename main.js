@@ -7,14 +7,11 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
-const crashReporter = electron.crashReporter;
 const shell = electron.shell;
 let menu;
 let template;
 let mainWindow = null;
 
-
-crashReporter.start();
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
