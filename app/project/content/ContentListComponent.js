@@ -3,8 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-const remote = require('remote');
-const dialog = remote.require('dialog');
+const {dialog} = require('electron').remote;
 
 import * as Actions from './ContentActions.js';
 import styles from './ContentListComponent.css';
