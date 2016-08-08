@@ -1,9 +1,9 @@
 {
   "name": "pallium",
   "productName": "Pallium",
-  "companyName": "spleenboy entersurprises",
+  "companyName": "spleenboy software",
   "submitURL": "http://spleenboy.com",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "YAML and JSON editor",
   "main": "main.js",
   "scripts": {
@@ -28,7 +28,6 @@
   },
   "author": {
     "name": "Alexander Barrett",
-    "email": "spleendini@yahoo.com",
     "url": "https://github.com/spleenboy"
   },
   "license": "MIT",
