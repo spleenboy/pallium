@@ -1,5 +1,6 @@
 ---
 title: Overview
+sequence: 0
 ---
 Pallium is a cross-platform desktop editor for JSON and YAML files. This application use a specially-formatted project file to present you with one or more custom forms.
 

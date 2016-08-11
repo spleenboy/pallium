@@ -23,13 +23,18 @@
         "plural": "Pages",
         "handle": "page",
         "description": "Main pages",
-        "icon": "description"
+        "icon": "description",
+        "orderBy": ["values.sequence", "values.title"],
+        "orderDirection": [false, true]
       },
       "storage": {
         "contentKey": "content",
         "format": "yaml",
         "extension": "md",
         "directory": ["pages"],
+        "metadata": {
+            "Sequence": {"type": "reflect", "field": "sequence"}
+        },
         "filename": [
           {
             "type": "kebab",
@@ -52,6 +57,12 @@
           "validation": [
             {"type": "required"}
           ]
+        },
+        {
+          "type": "number",
+          "label": "Sequence",
+          "name": "sequence",
+          "defaultValue": 0
         },
         {
           "type": "md",

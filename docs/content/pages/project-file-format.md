@@ -1,5 +1,6 @@
 ---
 title: Project File Format
+sequence: 1
 ---
 A Pallium project file is just a specially-formatted JSON file that defines how Pallium should display and store JSON or YAML-formatted files.
 
