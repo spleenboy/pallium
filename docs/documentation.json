@@ -68,6 +68,16 @@
           ]
         },
         {
+            "type": "hidden",
+            "name": "template",
+            "value": "page.jade"
+        },
+        {
+            "type": "hidden",
+            "name": "filename",
+            "value": "/:file/index.html"
+        },
+        {
           "type": "number",
           "label": "Sequence",
           "name": "sequence",

@@ -1,34 +1,22 @@
-doctype html
-html(lang='en')
-    head
-        link(rel='stylesheet', href='http://fonts.googleapis.com/icon?family=Material+Icons')
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css')
-        meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        title= locals.title
-    body.yellow.lighten-5
-        main
-            .container
-                h1= locals.title
-                - pages = _.sortBy(contents.pages, function(item) {return item.metadata['sequence'];}) 
-                .row
-                    .col.m9.12.l10
-                        each page in pages
-                            .section(id='#' + page.metadata.slug).scrollspy
-                                .divider
-                                h2.header= page.title
-                                != page.html
+extends ./layout.jade
+block container
+    h1= locals.title
+    - pages = _.sortBy(contents.pages, function(item) {return item.metadata.sequence}) 
+    - overview = contents.pages['overview.md']
+    .row
+        .col.m9.12.l10
+            block content
+                .section
+                    h2.header= overview.title
+                    != overview.html
 
-                    .col.m3.12.hide-on-small-only.l2
-                        .toc-wrapper.pinned
-                            ul.section.table-of-contents
-                                each page in pages
-                                    li
-                                        a(href='#' + page.metadata.slug)= page.title
-
-        script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js')
-        script.
-            $(document).ready(function() {
-                $('.scrollspy').scrollSpy();
-            });
+        .col.m3.12.hide-on-small-only.l2
+            block nav
+                .toc-wrapper.pinned
+                    ul.section.table-of-contents
+                        each p in pages
+                            li
+                                if page.url == p.url || page.url == '/' && p.url == overview.url
+                                    a.active(href=p.url)= p.title
+                                else
+                                    a(href=p.url)= p.title

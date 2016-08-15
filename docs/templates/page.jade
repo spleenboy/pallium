@@ -1,0 +1,23 @@
+extends ./index.jade
+
+block content
+    - prevPage = _.find(pages, function(p) {return p.metadata.sequence === page.metadata.sequence - 1})
+    - nextPage = _.find(pages, function(p) {return p.metadata.sequence === page.metadata.sequence + 1})
+
+    h1.header= page.title
+    != page.html
+
+    each p in pages
+        p.title
+
+    if prevPage
+        .left
+            a.btn.waves-effect.waves-light(href=prevPage.url)
+                = prevPage.title
+                i.material-icons.left skip_previous
+
+    if nextPage
+        .right
+            a.btn.waves-effect.waves-light(href=nextPage.url)
+                = nextPage.title
+                i.material-icons.right skip_next

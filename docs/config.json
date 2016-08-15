@@ -6,7 +6,6 @@
     "_": "underscore"
   },
   "contents": "./content",
-  "views": "./views",
   "output": "./build",
   "ignore": ["*.db", "*.md"]
 }
