@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Pallium Documentation</title></head><body><h1>References</h1><p>Whenever you what to use a reference instead of a value, you&#39;ll write <code>{&quot;reference&quot;: &quot;reference_key&quot;}</code>, where <code>reference_key</code> is the key you gave this snippet of JSON. For example, this:</p>
+<pre><code>{
+  &quot;references&quot;: {
+    &quot;slug&quot;: [
+      {
+        &quot;type&quot;: &quot;required&quot;
+      },
+      {
+        &quot;type&quot;: &quot;pattern&quot;,
+        &quot;value&quot;: &quot;^[a-z\-]+$&quot;
+      }
+      ]
+    }
+  }
+</code></pre><p>Will let you define a title field in a contentType like this:</p>
+<pre><code>{
+  &quot;contentTypes&quot;: [
+    {
+      &quot;fields&quot;: [
+        {
+          &quot;name&quot;: &quot;url&quot;,
+          &quot;label&quot;: &quot;URL&quot;,
+          &quot;validation&quot;: {
+            &quot;reference&quot;: &quot;slug&quot;
+          }
+      ]
+    }
+  ]
+}
+</code></pre></body></html>

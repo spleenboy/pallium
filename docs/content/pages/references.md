@@ -1,5 +1,6 @@
 ---
 title: References
+slug: references
 sequence: 4
 ---
 Whenever you what to use a reference instead of a value, you'll write `{"reference": "reference_key"}`, where `reference_key` is the key you gave this snippet of JSON. For example, this:

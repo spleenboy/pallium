@@ -1,0 +1,12 @@
+{
+  "locals": {
+    "title": "Pallium Documentation"
+  },
+  "require": {
+    "_": "underscore"
+  },
+  "contents": "./content",
+  "views": "./views",
+  "output": "./build",
+  "ignore": ["*.db", "*.md"]
+}

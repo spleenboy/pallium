@@ -59,6 +59,15 @@
           ]
         },
         {
+          "type": "text",
+          "name": "slug",
+          "label": "Slug",
+          "hint": "A short identifier",
+          "validation": [
+            {"type": "required"}
+          ]
+        },
+        {
           "type": "number",
           "label": "Sequence",
           "name": "sequence",
