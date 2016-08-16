@@ -42,8 +42,8 @@ Like the `contentDirectory`, this is a relative path used to store any files upl
 #### database
 Pallium uses a embedded NoSQL database to store information about your project files. This set of relative directories and a file name tells Pallium where to save this database file.
 
-#### [references](./references)
+#### [references](/references/)
 References are an advanced feature that you may use to store snippets of JSON for reuse within the `contentTypes` object.
 
-#### [contentTypes](./content-types)
+#### [contentTypes](/content-types/)
 Each content type may have a different set of fields, storage settings and file format. If you're setting up a project for a blog, for example, you may have content types for posts, external links, static pages, etc.

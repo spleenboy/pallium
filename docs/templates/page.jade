@@ -4,11 +4,8 @@ block content
     - prevPage = _.find(pages, function(p) {return p.metadata.sequence === page.metadata.sequence - 1})
     - nextPage = _.find(pages, function(p) {return p.metadata.sequence === page.metadata.sequence + 1})
 
-    h1.header= page.title
+    h2.header= page.title
     != page.html
-
-    each p in pages
-        p.title
 
     if prevPage
         .left

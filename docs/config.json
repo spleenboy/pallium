@@ -7,5 +7,5 @@
   },
   "contents": "./content",
   "output": "./build",
-  "ignore": ["*.db", "*.md"]
+  "ignore": ["*.db"]
 }

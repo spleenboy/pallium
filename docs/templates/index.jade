@@ -1,22 +1,27 @@
 extends ./layout.jade
 block container
-    h1= locals.title
+    h1.title= locals.title
     - pages = _.sortBy(contents.pages, function(item) {return item.metadata.sequence}) 
-    - overview = contents.pages['overview.md']
+    - home = contents['index.md']
     .row
-        .col.m9.12.l10
+        .col.s12.m8.l9.12.content
             block content
                 .section
-                    h2.header= overview.title
-                    != overview.html
+                    h2.header= home.title
+                    != home.html
 
-        .col.m3.12.hide-on-small-only.l2
+        .col.s12.m4.l3.12.nav
             block nav
                 .toc-wrapper.pinned
                     ul.section.table-of-contents
+                        li
+                            if page.url == home.url
+                                a.active(href=home.url)= home.title
+                            else
+                                a(href=home.url)= home.title
                         each p in pages
                             li
-                                if page.url == p.url || page.url == '/' && p.url == overview.url
+                                if page.url == p.url
                                     a.active(href=p.url)= p.title
                                 else
                                     a(href=p.url)= p.title
