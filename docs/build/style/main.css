@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(63, 81, 181);
+}
+.container.main {
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px 50px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+h1.title {
+    color: rgb(63, 81, 181);
+    border-bottom: 1px solid rgb(50, 50, 50);
+}
+h2.header {
+    color: rgb(63, 81, 181);
+}
+.content {}
+.nav {} 
