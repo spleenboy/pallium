@@ -7,6 +7,14 @@ block content
     h2.header= page.title
     != page.html
 
+    if page.metadata.slug == 'field-types'
+        - fieldsByCat = _.chain(contents.fieldtypes).sortBy('metadata.title').groupBy('metadata.category').value()
+        each fields, cat in fieldsByCat
+            h3.header= cat
+            each field in fields
+                h4.header= field.title
+                field.metadata.category
+
     if prevPage
         .left
             a.btn.waves-effect.waves-light(href=prevPage.url)
