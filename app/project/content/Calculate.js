@@ -1,5 +1,6 @@
 import Moment from 'moment';
 import _ from 'lodash';
+import uuid from 'node-uuid';
 import makeSlug from '../../storage/slug';
 
 export function reflect(values, {field, defaultValue}) {
@@ -35,4 +36,15 @@ export function snake(values, {field, defaultValue}) {
 export function slug(values, {field, defaultValue}) {
   const value = _.get(values, field, defaultValue);
   return makeSlug(value);
+}
+
+export function id(values, {type, prefix=''}) {
+  switch (type) {
+    case 'increment':
+      return _.uniqueId(prefix);
+    case 'v1':
+      return prefix + uuid.v1();
+    default:
+      return prefix + uuid.v4();
+  }
 }
