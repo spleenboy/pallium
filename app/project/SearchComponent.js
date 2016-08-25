@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -12,18 +13,18 @@ import * as ContentActions from './content/ContentActions';
 export class SearchComponent extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.searching && !prevProps.searching) {
-      this.refs.input.focus();
+      ReactDOM.findDOMNode(this.refs.input).focus();
     }
   }
 
 
   handleStartSearch() {
-    this.props.searchContent(this.props.project, this.refs.input.value);
+    this.props.searchContent(this.props.project, this.props.query);
   }
 
 
   handleQueryChange(e) {
-    this.props.searchContent(this.props.project, this.refs.input.value);
+    this.props.searchContent(this.props.project, e.target.value);
   }
 
 

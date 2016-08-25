@@ -1,0 +1,209 @@
+{
+  "title": "Pallium Documentation",
+  "description": "Provide documentation for the Pallium application.",
+  "icon": "redeem",
+  "contentDirectory": ["content"],
+  "assetDirectory": ["content","assets"],
+  "database": ["content", "index.db"],
+  "references": {
+    "contentTitle": {
+      "type": "text",
+      "label": "Title",
+      "name": "title",
+      "defaultValue": "New Thing",
+      "validation": [
+        {"type": "required"}
+      ]
+    }
+  },
+  "contentTypes": [
+    {
+      "settings": {
+        "title": "Home",
+        "handle": "home",
+        "description": "Home page",
+        "icon": "home"
+      },
+      "storage": {
+        "contentKey": "content",
+        "format": "yaml",
+        "extension": "md",
+        "directory": [],
+        "filename": "index",
+        "title": {"type": "reflect", "field": "title"}
+      },
+      "fields": [
+        {
+          "type": "text",
+          "label": "Title",
+          "name": "title",
+          "defaultValue": "Home Page",
+          "validation": [
+            {"type": "required"}
+          ]
+        },
+        {
+          "type": "hidden",
+          "name": "slug",
+          "value": "home"
+        },
+        {
+            "type": "hidden",
+            "name": "template",
+            "value": "index.jade"
+        },
+        {
+            "type": "hidden",
+            "name": "filename",
+            "value": "/index.html"
+        },
+        {
+          "type": "md",
+          "label": "Content",
+          "name": "content"
+        }
+      ]
+    },
+
+    {
+      "settings": {
+        "title": "Page",
+        "plural": "Pages",
+        "handle": "page",
+        "description": "Main pages",
+        "icon": "description",
+        "orderBy": ["values.sequence", "values.title"],
+        "orderDirection": [false, true]
+      },
+      "storage": {
+        "contentKey": "content",
+        "format": "yaml",
+        "extension": "md",
+        "directory": ["pages"],
+        "metadata": {
+            "Sequence": {"type": "reflect", "field": "sequence"}
+        },
+        "filename": [
+          {
+            "type": "kebab",
+            "field": "title"
+          }
+        ],
+        "title": [
+          {
+            "type": "reflect",
+            "field": "title"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "type": "text",
+          "label": "Title",
+          "name": "title",
+          "defaultValue": "New Page",
+          "validation": [
+            {"type": "required"}
+          ]
+        },
+        {
+          "type": "text",
+          "name": "slug",
+          "label": "Slug",
+          "hint": "A short identifier",
+          "validation": [
+            {"type": "required"}
+          ]
+        },
+        {
+            "type": "hidden",
+            "name": "template",
+            "value": "page.jade"
+        },
+        {
+            "type": "hidden",
+            "name": "filename",
+            "value": "/:file/index.html"
+        },
+        {
+          "type": "number",
+          "label": "Sequence",
+          "name": "sequence",
+          "defaultValue": 0
+        },
+        {
+          "type": "md",
+          "label": "Content",
+          "name": "content"
+        }
+      ]
+    },
+
+    {
+      "settings": {
+        "title": "Field Type",
+        "plural": "Field Types",
+        "handle": "fieldtype",
+        "description": "Describes a specific field type",
+        "icon": "extension",
+        "orderBy": ["values.category", "values.title"]
+      },
+      "storage": {
+        "contentKey": "content",
+        "format": "yaml",
+        "extension": "md",
+        "directory": ["fieldtypes"],
+        "metadata": {
+            "Category": {"type": "reflect", "field": "category"}
+        },
+        "filename": [
+          {
+            "type": "kebab",
+            "field": "title"
+          }
+        ],
+        "title": [
+          {
+            "type": "reflect",
+            "field": "title"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "type": "text",
+          "label": "Title",
+          "name": "title",
+          "defaultValue": "New Field Type",
+          "validation": [
+            {"type": "required"}
+          ]
+        },
+        {
+          "type": "textarea",
+          "label": "Example JSON",
+          "name": "example",
+          "hint": "Provide an example JSON snippet"
+        },
+        {
+          "type": "select",
+          "label": "Category",
+          "name": "category",
+          "options": [
+            {"label": "Select a category...", "value": ""},
+            {"value": "Basic Text"},
+            {"value": "Dates and Times"},
+            {"value": "Option Lists"},
+            {"value": "Complex"}
+          ]
+        },
+        {
+          "type": "md",
+          "label": "Content",
+          "name": "content"
+        }
+      ]
+    }
+
+  ]
+}

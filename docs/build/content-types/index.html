@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"><link rel="stylesheet" href="/style/main.css"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pallium Documentation</title></head><body><main><div class="container main"><h1 class="title">Pallium Documentation</h1><div class="row"><div class="col s12 m8 l9 12 content"><h2 class="header">Content Types</h2><p>Each content type may have a different set of fields and rules for how and where content is saved. For example, this is a portion of the content type for <code>Pages</code>, which are used for this documentation.</p>
+<pre><code>&quot;contentTypes&quot;: [
+    {
+      &quot;settings&quot;: {
+        &quot;title&quot;: &quot;Page&quot;,
+        &quot;plural&quot;: &quot;Pages&quot;,
+        &quot;handle&quot;: &quot;page&quot;,
+        &quot;description&quot;: &quot;Main pages&quot;,
+        &quot;icon&quot;: &quot;description&quot;,
+        &quot;orderBy&quot;: [&quot;values.sequence&quot;, &quot;values.title&quot;],
+        &quot;orderDirection&quot;: [false, true]
+      },
+      &quot;storage&quot;: {
+        &quot;contentKey&quot;: &quot;content&quot;,
+        &quot;format&quot;: &quot;yaml&quot;,
+        &quot;extension&quot;: &quot;md&quot;,
+        &quot;directory&quot;: [&quot;pages&quot;],
+        &quot;metadata&quot;: {
+            &quot;Sequence&quot;: {
+              &quot;type&quot;: &quot;reflect&quot;,
+              &quot;field&quot;: &quot;sequence&quot;
+            }
+        },
+        &quot;filename&quot;: [
+          {
+            &quot;type&quot;: &quot;kebab&quot;,
+            &quot;field&quot;: &quot;title&quot;
+          }
+        ],
+        &quot;title&quot;: [
+          {
+            &quot;type&quot;: &quot;reflect&quot;,
+            &quot;field&quot;: &quot;title&quot;
+          }
+        ]
+      },
+      &quot;fields&quot;: [...]
+    }
+]
+</code></pre><div class="left"><a href="/project-file-format/" class="btn waves-effect waves-light">Project File Format<i class="material-icons left">skip_previous</i></a></div><div class="right"><a href="/field-types/" class="btn waves-effect waves-light">Field Types<i class="material-icons right">skip_next</i></a></div></div><div class="col s12 m4 l3 12 nav"><div class="toc-wrapper pinned"><ul class="section table-of-contents"><li><a href="/">Overview</a></li><li><a href="/project-file-format/">Project File Format</a></li><li><a href="/content-types/" class="active">Content Types</a></li><li><a href="/field-types/">Field Types</a></li><li><a href="/reflection/">Reflection</a></li><li><a href="/validation/">Validation</a></li><li><a href="/references/">References</a></li></ul></div></div></div></div></main><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script></body></html>

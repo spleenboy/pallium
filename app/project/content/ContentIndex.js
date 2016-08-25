@@ -87,7 +87,7 @@ export default class ContentIndex {
       }
 
       const searchable = contentType.fields.filter(field => field.searchable);
-      fields = fields.concat(searchable.map(s => "fields." + s.name));
+      fields = fields.concat(searchable.map(s => "values." + s.name));
     });
 
     return _.uniq(fields)

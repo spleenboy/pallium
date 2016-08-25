@@ -1,7 +1,6 @@
 import * as Calculate from './Calculate';
 import path from 'path';
 import uid from '../../storage/uid';
-import slug from '../../storage/slug';
 
 export default class Content {
   constructor(project, data = {}, _id = null) {

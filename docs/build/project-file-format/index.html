@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"><link rel="stylesheet" href="/style/main.css"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pallium Documentation</title></head><body><main><div class="container main"><h1 class="title">Pallium Documentation</h1><div class="row"><div class="col s12 m8 l9 12 content"><h2 class="header">Project File Format</h2><p>A Pallium project file is just a specially-formatted JSON file that defines how Pallium should display and store JSON or YAML-formatted files.</p>
+<h3 id="document-root">Document Root</h3>
+<p>At the root of the project file, you&#39;ll include some general information and a <code>contentTypes</code> object, which defines all of the content types that will be included in your project. Optionally, you may include a <code>references</code> object, which is just a way of creating snippets for re-use across multiple <code>contentType</code> definitions.</p>
+<pre><code>{
+  &quot;title&quot;: &quot;Pallium Documentation&quot;,
+  &quot;description&quot;: &quot;Provide documentation for the Pallium application.&quot;,
+  &quot;icon&quot;: &quot;redeem&quot;,
+  &quot;contentDirectory&quot;: [&quot;content&quot;],
+  &quot;assetDirectory&quot;: [&quot;content&quot;, &quot;assets&quot;],
+  &quot;database&quot;: [&quot;content&quot;, &quot;index.db&quot;],
+  &quot;references&quot;: {...},
+  &quot;contentTypes&quot;: {...}
+}
+</code></pre><h4 id="title">title</h4>
+<p>The title will identify your project.</p>
+<h4 id="description">description</h4>
+<p>This will appear below the title of your project on the home page of the Pallium app.</p>
+<h4 id="icon">icon</h4>
+<p>You may use any class name from <a href="https://design.google.com/icons/">Google&#39;s material design icon set</a> here.</p>
+<h4 id="contentdirectory">contentDirectory</h4>
+<p>This array indicates the path (relative to the project file) where files managed by the project will be stored. Because this is a cross-platform application, you should save each directory as a separate item in the array. The application will handle joining the directories together in the right way for the OS being used.</p>
+<h4 id="assetdirectory">assetDirectory</h4>
+<p>Like the <code>contentDirectory</code>, this is a relative path used to store any files uploaded to the project.</p>
+<h4 id="database">database</h4>
+<p>Pallium uses a embedded NoSQL database to store information about your project files. This set of relative directories and a file name tells Pallium where to save this database file.</p>
+<h4 id="-references-references-"><a href="/references/">references</a></h4>
+<p>References are an advanced feature that you may use to store snippets of JSON for reuse within the <code>contentTypes</code> object.</p>
+<h4 id="-contenttypes-content-types-"><a href="/content-types/">contentTypes</a></h4>
+<p>Each content type may have a different set of fields, storage settings and file format. If you&#39;re setting up a project for a blog, for example, you may have content types for posts, external links, static pages, etc.</p>
+<div class="right"><a href="/content-types/" class="btn waves-effect waves-light">Content Types<i class="material-icons right">skip_next</i></a></div></div><div class="col s12 m4 l3 12 nav"><div class="toc-wrapper pinned"><ul class="section table-of-contents"><li><a href="/">Overview</a></li><li><a href="/project-file-format/" class="active">Project File Format</a></li><li><a href="/content-types/">Content Types</a></li><li><a href="/field-types/">Field Types</a></li><li><a href="/reflection/">Reflection</a></li><li><a href="/validation/">Validation</a></li><li><a href="/references/">References</a></li></ul></div></div></div></div></main><script src="https://code.jquery.com/jquery-2.1.1.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script></body></html>

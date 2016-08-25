@@ -11,10 +11,28 @@ import styles from './ContentListComponent.css';
 import Button from '../../ui/Button';
 import Icon from '../../ui/Icon';
 import Shrug from '../../ui/Shrug';
+import Fan from '../../ui/Fan';
 import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentListComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      adding: false,
+    };
+  }
+
+
+  changeState(key, value) {
+    this.setState({key: value});
+  }
+
+
+  handleCreate() {
+    this.props.createContent(this.props.project);
+  }
+
 
   handleImport() {
     const {project, contentType} = this.props;
@@ -36,6 +54,7 @@ export class ContentListComponent extends Component {
     );
   }
 
+
   handleSelect(fullpath, _id, e) {
     this.props.openContent(this.props.project, fullpath, _id);
   }
@@ -47,18 +66,29 @@ export class ContentListComponent extends Component {
 
     let groupBy = null;
     let sortedList = contentList;
-    let importButton = (
-      <div className={styles.import}>
-        <Button mode="accent" onClick={this.handleImport.bind(this)}>
-          <Icon name="library_add"/> Import {contentList && contentList.length ? "More " : ""}{contentTypeTitle}
-        </Button>
+
+    let addButton = (
+      <Button mode="primary" className={styles.add} onClick={this.changeState.bind(this, "adding", true)}>
+        <Icon name="add"/>
+      </Button>
+    );
+    let buttons = (
+      <div className={styles.buttons}>
+        <Fan visible={this.state.adding} trigger={addButton}>
+            <Button mode="primary" onClick={this.handleCreate.bind(this)}>
+              <Icon name="add"/> New {contentType.settings.title}
+            </Button><br/>
+            <Button mode="accent" onClick={this.handleImport.bind(this)}>
+              <Icon name="library_add"/> Import {contentList && contentList.length ? "More " : ""}{contentTypeTitle}
+            </Button>
+        </Fan>
       </div>
     );
 
     if (!sortedList) {
       return (
         <div className={styles.contentList}>
-          {importButton}
+          {buttons}
         </div>
       );
     }
@@ -127,7 +157,7 @@ export class ContentListComponent extends Component {
               <p>No {contentTypeTitle} Found</p>
             </div>
         }
-        {importButton}
+        {buttons}
       </div>
     );
   }
@@ -151,6 +181,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     openContent: Actions.openContent,
     importContent: Actions.importContent,
+    createContent: Actions.createContent,
   }, dispatch);
 }
 
