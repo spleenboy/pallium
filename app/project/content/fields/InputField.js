@@ -127,8 +127,8 @@ export default class InputField extends Component {
     return (
       <div className={`${styles.inputField} ${mode} ${type} ${valid}`} onClick={this.handleFocus.bind(this)}>
         {this.renderHeader()}
-        {this.renderInput()}
         {this.renderLabel()}
+        {this.renderInput()}
         {this.renderValidation()}
       </div>
     );

@@ -110,8 +110,8 @@ export default class OptionListField extends InputField {
     return (
       <div className={`${styles.optionList} ${mode} ${type}`} onClick={this.handleFocus.bind(this)}>
         {this.renderHeader()}
-        {optionList}
         <div className={styles.heading}>{label}</div>
+        {optionList}
         {this.renderValidation()}
       </div>
     );
