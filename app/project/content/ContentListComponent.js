@@ -16,19 +16,6 @@ import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentListComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      adding: false,
-    };
-  }
-
-
-  changeState(key, value) {
-    this.setState({key: value});
-  }
-
-
   handleCreate() {
     this.props.createContent(this.props.project);
   }
@@ -60,6 +47,11 @@ export class ContentListComponent extends Component {
   }
 
 
+  handleRefresh(e) {
+    this.props.refreshContent(this.props.project);
+  }
+
+
   render() {
     const {contentType, contentList, content} = this.props;
     const contentTypeTitle = contentType.settings.plural || contentType.settings.title;
@@ -68,19 +60,24 @@ export class ContentListComponent extends Component {
     let sortedList = contentList;
 
     let addButton = (
-      <Button mode="primary" className={styles.add} onClick={this.changeState.bind(this, "adding", true)}>
+      <Button mode="primary" className={styles.add}>
         <Icon name="add"/>
       </Button>
     );
     let buttons = (
       <div className={styles.buttons}>
-        <Fan visible={this.state.adding} trigger={addButton}>
+        <Fan trigger={addButton}>
             <Button mode="primary" onClick={this.handleCreate.bind(this)}>
               <Icon name="add"/> New {contentType.settings.title}
             </Button><br/>
             <Button mode="accent" onClick={this.handleImport.bind(this)}>
               <Icon name="library_add"/> Import {contentList && contentList.length ? "More " : ""}{contentTypeTitle}
-            </Button>
+            </Button><br/>
+            {contentList && contentList.length ?
+                <Button mode="accent" onClick={this.handleRefresh.bind(this)}>
+                  <Icon name="refresh"/> Refresh {contentTypeTitle}
+                </Button>
+            : ''}
         </Fan>
       </div>
     );
@@ -182,6 +179,7 @@ function mapDispatchToProps(dispatch) {
     openContent: Actions.openContent,
     importContent: Actions.importContent,
     createContent: Actions.createContent,
+    refreshContent: Actions.refreshContent,
   }, dispatch);
 }
 

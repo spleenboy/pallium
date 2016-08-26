@@ -101,6 +101,17 @@ export function restoreContent(_id) {
 }
 
 
+export function removeContentFromIndex(project, _id) {
+  return dispatch => {
+    const index = new ContentIndex(project);
+    index.remove(_id)
+    .then(num => {
+        dispatch(loadList(project, project.contentType.settings.handle));
+    });
+  };
+}
+
+
 export function deleteContent(project, data, _id) {
   return dispatch => {
     const content = new Content(project, data, _id);
@@ -144,6 +155,35 @@ export function importContent(project, fullpath) {
       dispatch(ToastActions.thinking(false));
       const values = transport.import(data);
       dispatch(saveContent(project, values));
+    });
+  }
+}
+
+
+export function refreshContent(project) {
+  return dispatch => {
+    const transport = new Transport(
+      project.contentType.storage.format,
+      project.contentType.storage.contentKey
+    );
+
+    dispatch(ToastActions.thinking(true));
+    const seen = [];
+    project.contentType.contentList.forEach(ct => {
+      if (seen[ct.fullpath]) {
+        // Remove the dupe from the index.
+        dispatch(removeContentFromIndex(project, ct._id));
+      } else {
+        seen[ct.fullpath] = true;
+        fs.readFile(ct.fullpath, ENCODING, (err, data) => {
+            if (err) {
+                dispatch(deleteContent(project, ct.fullpath, ct._id));
+            } else {
+                const values = transport.import(data);
+                dispatch(saveContent(project, values, ct._id));
+            }
+        });
+      }
     });
   }
 }
