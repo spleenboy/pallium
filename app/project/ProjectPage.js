@@ -11,6 +11,7 @@ import Search from './SearchComponent';
 import Toaster from '../toast/Toaster';
 import Drawer from '../ui/Drawer';
 import Main from '../ui/Main';
+import VersionCheck from '../ui/VersionCheck';
 
 import ProjectListComponent from './ProjectListComponent';
 import SearchResultsComponent from './content/SearchResultsComponent';
@@ -30,7 +31,9 @@ export class ProjectPage extends Component {
 
     if (query && query.length > 0) {
       main = (
-        <Main><SearchResultsComponent/></Main>
+        <Main>
+          <SearchResultsComponent/>
+        </Main>
       );
     }
 
@@ -74,6 +77,7 @@ export class ProjectPage extends Component {
         <Header>
           <Breadcrumb/>
           <Search/>
+          <VersionCheck/>
         </Header>
         <Toaster/>
         {drawer}
