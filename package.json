@@ -3,7 +3,7 @@
   "productName": "Pallium",
   "companyName": "spleenboy software",
   "submitURL": "http://spleenboy.com",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "masterUrl": "https://raw.githubusercontent.com/spleenboy/pallium/master/package.json",
   "releaseUrl": "https://github.com/spleenboy/pallium/releases",
   "description": "YAML and JSON editor",
