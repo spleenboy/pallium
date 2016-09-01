@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Icon from '../ui/Icon';
+import Shortcuts from '../util/Shortcuts';
 
 import styles from './Breadcrumb.css';
 
@@ -12,6 +13,23 @@ import * as ContentActions from './content/ContentActions';
 const {dialog} = require('electron').remote;
 
 export class Breadcrumb extends Component {
+  constructor(props) {
+    super(props);
+    this.shortcuts = new Shortcuts();
+    this.shortcuts.register('ctrl o', this.handleOpenProject.bind(this));
+  }
+
+
+  componentDidMount() {
+    this.shortcuts.start();
+  }
+
+
+  componentWillUnmount() {
+    this.shortcuts.stop();
+  }
+
+
   handleOpenProject() {
     const openProject = this.props.openProject.bind(this);
     dialog.showOpenDialog({
@@ -23,8 +41,7 @@ export class Breadcrumb extends Component {
       if (filenames) {
         openProject(filenames[0]);
       }
-    }
-    );
+    });
   }
 
 
