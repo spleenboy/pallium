@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import Shortcuts from '../util/Shortcuts';
 import Button from '../ui/Button';
 import Icon from '../ui/Icon';
 
@@ -11,6 +12,23 @@ import styles from './SearchComponent.css';
 import * as ContentActions from './content/ContentActions';
 
 export class SearchComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.shortcuts = new Shortcuts();
+    this.shortcuts.register('ctrl /', this.handleStartSearch.bind(this));
+  }
+
+
+  componentDidMount() {
+    this.shortcuts.start();
+  }
+
+
+  componentWillUnmount() {
+    this.shortcuts.stop();
+  }
+
+
   componentDidUpdate(prevProps, prevState) {
     if (this.props.searching && !prevProps.searching) {
       ReactDOM.findDOMNode(this.refs.input).focus();

@@ -8,6 +8,7 @@ const {dialog} = require('electron').remote;
 import * as Actions from './ContentActions.js';
 import styles from './ContentListComponent.css';
 
+import Shortcuts from '../../util/Shortcuts';
 import Button from '../../ui/Button';
 import Icon from '../../ui/Icon';
 import Shrug from '../../ui/Shrug';
@@ -16,8 +17,25 @@ import List from '../../ui/List';
 import ListItem from '../../ui/ListItem';
 
 export class ContentListComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.shortcuts = new Shortcuts();
+    this.shortcuts.register('ctrl n', this.handleCreate.bind(this));
+  }
+
+
   handleCreate() {
     this.props.createContent(this.props.project);
+  }
+
+
+  componentDidMount() {
+    this.shortcuts.start();
+  }
+
+
+  componentWillUnmount() {
+    this.shortcuts.stop();
   }
 
 

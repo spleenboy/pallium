@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import Shortcuts from '../../util/Shortcuts';
 import Button from '../../ui/Button';
 import Field from './fields/Field';
 import * as Actions from './ContentActions.js';
@@ -13,6 +14,19 @@ export class ContentFormComponent extends Component {
     this.state = {
       validations: {},
     }
+    this.shortcuts = new Shortcuts();
+    this.shortcuts.register('ctrl s', this.handleSave.bind(this));
+    this.shortcuts.register('escape', this.handleCancel.bind(this));
+  }
+
+
+  componentDidMount() {
+    this.shortcuts.start();
+  }
+
+
+  componentWillUnmount() {
+    this.shortcuts.stop();
   }
 
 

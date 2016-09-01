@@ -115,7 +115,8 @@
     "redux-thunk": "^2.0.1",
     "semver": "^5.3.0",
     "simple-git": "^1.35.0",
-    "strtotime": "^1.0.0"
+    "strtotime": "^1.0.0",
+    "vkeys": "^1.2.0"
   },
   "devEngines": {
     "node": "4.x || 5.x",
