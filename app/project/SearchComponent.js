@@ -15,7 +15,7 @@ export class SearchComponent extends Component {
   constructor(props) {
     super(props);
     this.shortcuts = new Shortcuts();
-    this.shortcuts.register('ctrl /', this.handleStartSearch.bind(this));
+    this.shortcuts.register('meta /', this.handleStartSearch.bind(this));
   }
 
 
@@ -31,7 +31,7 @@ export class SearchComponent extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.searching && !prevProps.searching) {
-      ReactDOM.findDOMNode(this.refs.input).focus();
+      ReactDOM.findDOMNode(this.input).focus();
     }
   }
 
@@ -72,7 +72,8 @@ export class SearchComponent extends Component {
         <div className={styles.input}>
           <Icon className={styles.icon} name="search"/>
           <input
-            ref="input"
+            type="text"
+            ref={input => this.input = input}
             value={query}
             onChange={this.handleQueryChange.bind(this)}
             onBlur={this.handleQueryBlur.bind(this)}

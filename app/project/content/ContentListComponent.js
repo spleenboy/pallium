@@ -20,7 +20,7 @@ export class ContentListComponent extends Component {
   constructor(props) {
     super(props);
     this.shortcuts = new Shortcuts();
-    this.shortcuts.register('ctrl n', this.handleCreate.bind(this));
+    this.shortcuts.register('meta n', this.handleCreate.bind(this));
   }
 
 

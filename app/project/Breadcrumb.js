@@ -16,7 +16,7 @@ export class Breadcrumb extends Component {
   constructor(props) {
     super(props);
     this.shortcuts = new Shortcuts();
-    this.shortcuts.register('ctrl o', this.handleOpenProject.bind(this));
+    this.shortcuts.register('meta o', this.handleOpenProject.bind(this));
   }
 
 
