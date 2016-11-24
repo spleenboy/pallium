@@ -14,6 +14,7 @@ import RangeField from './RangeField';
 import SelectField from './SelectField';
 import TextareaField from './TextareaField';
 import ToggleField from './ToggleField';
+import Wysiwyg from './Wysiwyg';
 
 export default {
   'array': ArrayField,
@@ -33,4 +34,5 @@ export default {
   'select': SelectField,
   'textarea': TextareaField,
   'toggle': ToggleField,
+  'wysiwyg': Wysiwyg,
 };
